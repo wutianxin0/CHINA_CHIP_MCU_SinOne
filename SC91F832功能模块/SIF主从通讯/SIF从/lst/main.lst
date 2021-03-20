@@ -1,0 +1,79 @@
+C51 COMPILER V9.03   MAIN                                                                  04/16/2014 15:28:44 PAGE 1   
+
+
+C51 COMPILER V9.03, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\output\main.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE c\main.c BROWSE DEBUG OBJECTEXTEND PRINT(.\lst\main.lst) OBJECT(.\output\ma
+                    -in.obj)
+
+line level    source
+
+   1          //************************************************************
+   2          //  Copyright (c) 深圳市赛元微电子有限公司
+   3          //      文件名称        : slave_8_1.c
+   4          //      作者            : 
+   5          //      模块功能        : SIF slave 8+1接收——发送模块
+   6          //      局部函数列表:
+   7          //  最后更正日期:
+   8          //      版本            :
+   9          //      更改记录        : 
+  10          //*************************************************************
+  11          #include "H\SC91F832_C.H"
+  12          #include "H\Slave_8_1.H"
+  13          
+  14          //=====================================
+  15          //声明需要调用的全局变量
+  16          //=====================================
+  17          
+  18          unsigned char Sif_Send_dat ;    //从机发送的数据
+  19          unsigned char Sif_Rece_dat;             //从机接收的数据
+  20          unsigned char Sif_Send_dat_1;
+  21          unsigned char Sif_Send_dat_2;
+  22          unsigned char Sif_Send_dat_3;
+  23          unsigned char Sif_Rec_dat_1 ;
+  24          unsigned char Sif_Rec_dat_2 ;
+  25          unsigned char Sif_Rec_dat_3 ;
+  26          
+  27          unsigned char Rece_Date_Cnt;     //发送数据标志 
+  28          unsigned char Send_Date_Cnt;
+  29          
+  30          //*************************************************************
+  31          // 函数名       ：void main()
+  32          // 作者         ：
+  33          // 功能         ：SIF 从模式接收数据
+  34          // 参数         ：无
+  35          // 返回值       ：无
+  36          // 调用全局变量：无
+  37          // 修改全局变量：无
+  38          // 备注         ：
+  39          //**************************************************************
+  40          void main()
+  41          {
+  42   1              RSTCFG = 0x20;
+  43   1              sif_init();
+  44   1      //      Sif_Send_dat_1 = 0x31;
+  45   1      //      Sif_Send_dat_2 = 0x13;
+  46   1      //      Sif_Send_dat_3 = 0x51;
+  47   1      //      Sif_Send_dat = 0x31;
+  48   1              EA = 1;                                         //开总中断
+  49   1              for(; ; )
+  50   1              {
+  51   2                      
+  52   2              }
+  53   1      }
+
+C51 COMPILER V9.03   MAIN                                                                  04/16/2014 15:28:44 PAGE 2   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     10    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

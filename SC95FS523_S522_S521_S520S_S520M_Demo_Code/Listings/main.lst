@@ -1,0 +1,95 @@
+C51 COMPILER V9.55   MAIN                                                                  05/19/2020 16:42:07 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE c\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ma
+                    -in.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "H/Function_Init.H"
+   2          
+   3          void Multiplier_Divider_Test(void);  
+   4          /**************************************************************
+   5          Àµ√˜£∫
+   6          1°¢Options for Target°ÆTarget1°Ø£∫BL51 Locate->Code Range:0x100£¨…’¬º—°œÓ«Î—°‘ÒDISRST£¨∏¥ŒªΩ≈◊˜Œ™∆’Õ®IO π”
+             -√£ª
+   7          2°¢∏ƒ±‰TESTµƒ∂®“Â£¨ø…“‘∑÷±≤‚ ‘∂‘”¶µƒπ¶ƒ‹£ª
+   8          3°¢◊¢“‚£∫œ»‘⁄Function.H¿Ô√Ê—°‘Ò≤‚ ‘–Õ∫≈
+   9          4°¢∞Ê±æ£∫V1.0
+  10          ***************************************************************/
+  11          #define Test  12    //BTM:0 EXTI:1 Timer:2 PWM:3 Uart0:4 SSI0:5 SSI1:6 SSI2:7 ADC:8 IAP:9 Multiplier_Divid
+             -er:10 CRC:11 SmartCard:12
+  12          
+  13          void main(void)
+  14          {
+  15   1              IO_Init();
+  16   1      //      WDTCON |= 0x10;             //«Âø¥√≈π∑
+  17   1              switch(Test)
+  18   1              {
+  19   2                      case 0: BTM_Test();
+  20   2                      break;
+  21   2                      case 1: EXTI_Test();
+  22   2                      break;
+  23   2                      case 2: Timer_Test();
+  24   2                      break;
+  25   2                      case 3: PWM_Test();
+  26   2                      break;
+  27   2                      case 4: Uart_Test();
+  28   2                      break;
+  29   2                      case 5: SSI0_Test();
+  30   2                      break;
+  31   2              case 6: SSI1_Test();
+  32   2                      break;
+  33   2              case 7: SSI2_Test();
+  34   2                      break;
+  35   2                      case 8: ADC_Test();
+  36   2                      break;
+  37   2                      case 9: IAP_Test(0x1FFF);   //∂‘µÿ÷∑0x1fffΩ¯––∂¡–¥≤‚ ‘
+  38   2                      break;
+  39   2                      case 10: Multiplier_Divider_Test();
+  40   2                      break;
+  41   2              case 11: CRC_Test();
+  42   2                      break;
+  43   2              case 12: SmartCard_Test();
+  44   2                      break;
+  45   2                      default:
+  46   2                      break;
+  47   2              }
+  48   1      }
+  49          
+  50          void Multiplier_Divider_Test(void)
+  51          {
+  52   1              while(1)
+C51 COMPILER V9.55   MAIN                                                                  05/19/2020 16:42:07 PAGE 2   
+
+  53   1              {               
+  54   2                      //≥À≥˝∑®∆˜
+  55   2                      Multiplication(0x55AA, 0xAA55);  //≥À∑®º∆À„
+  56   2                      if(product == 0x38ff5572)   //≈–∂œª˝
+  57   2                      {
+  58   3                              P04 = 0;
+  59   3                      }
+  60   2                      
+  61   2                      Division(0xFFAA5500,0xAA55);    //≥˝∑®º∆À„
+  62   2                      if(quotient == 0x18040 && remainder == 0x3FC0)  //≈–∂œ…Ã∫Õ”‡ ˝
+  63   2                      {
+  64   3                              P04 = 1;
+  65   3                      }
+  66   2              }               
+  67   1      }       
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    191    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

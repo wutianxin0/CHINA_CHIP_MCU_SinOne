@@ -1,0 +1,404 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        11/20/2011  15:55:52  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE main.obj TO main CODE (0X0400)
+
+
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  main.obj (MAIN)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FPADD)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FPDIV)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FCAST)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?CASTF)
+  C:\KEIL\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LNEG)
+
+
+LINK MAP OF MODULE:  main (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000BH     UNIT         ?DT?MAIN
+            DATA    0013H     0001H     UNIT         _DATA_GROUP_
+                    0014H     000CH                  *** GAP ***
+            BIT     0020H.0   0000H.2   UNIT         ?BI?MAIN
+                    0020H.2   0000H.6                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     000DH                  *** GAP ***
+            CODE    001BH     0003H     ABSOLUTE     
+                    001EH     000DH                  *** GAP ***
+            CODE    002BH     0003H     ABSOLUTE     
+                    002EH     0005H                  *** GAP ***
+            CODE    0033H     0003H     ABSOLUTE     
+                    0036H     0005H                  *** GAP ***
+            CODE    003BH     0003H     ABSOLUTE     
+                    003EH     0005H                  *** GAP ***
+            CODE    0043H     0003H     ABSOLUTE     
+                    0046H     0005H                  *** GAP ***
+            CODE    004BH     0003H     ABSOLUTE     
+                    004EH     0005H                  *** GAP ***
+            CODE    0053H     0003H     ABSOLUTE     
+                    0056H     0005H                  *** GAP ***
+            CODE    005BH     0003H     ABSOLUTE     
+                    005EH     0005H                  *** GAP ***
+            CODE    0063H     0003H     ABSOLUTE     
+                    0066H     0005H                  *** GAP ***
+            CODE    006BH     0003H     ABSOLUTE     
+                    006EH     0005H                  *** GAP ***
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2011  15:55:52  PAGE 2
+
+
+            CODE    0073H     0003H     ABSOLUTE     
+                    0076H     038AH                  *** GAP ***
+            CODE    0400H     0265H     UNIT         ?C?LIB_CODE
+            CODE    0665H     0089H     INBLOCK      ?PR?ADC_CONVERT?MAIN
+            CODE    06EEH     001FH     INBLOCK      ?PR?MAIN?MAIN
+            CODE    070DH     0017H     INBLOCK      ?PR?IO_INIT?MAIN
+            CODE    0724H     0015H     INBLOCK      ?PR?TIMER0?MAIN
+            CODE    0739H     0013H     INBLOCK      ?PR?TIMER0_INIT?MAIN
+            CODE    074CH     0013H     INBLOCK      ?PR?TIMER1_INIT?MAIN
+            CODE    075FH     0010H     INBLOCK      ?PR?PWM_INIT?MAIN
+            CODE    076FH     0010H     UNIT         ?CO?MAIN
+            CODE    077FH     000CH     UNIT         ?C_C51STARTUP
+            CODE    078BH     000AH     INBLOCK      ?PR?INT_INIT?MAIN
+            CODE    0795H     000AH     INBLOCK      ?PR?ADC_INIT?MAIN
+            CODE    079FH     0005H     INBLOCK      ?PR?PWM_SET?MAIN
+            CODE    07A4H     0001H     INBLOCK      ?PR?TIMER1?MAIN
+            CODE    07A5H     0001H     INBLOCK      ?PR?PWM?MAIN
+            CODE    07A6H     0001H     INBLOCK      ?PR?ADC?MAIN
+            CODE    07A7H     0001H     INBLOCK      ?PR?INT0?MAIN
+            CODE    07A8H     0001H     INBLOCK      ?PR?INT1?MAIN
+            CODE    07A9H     0001H     INBLOCK      ?PR?INT2?MAIN
+            CODE    07AAH     0001H     INBLOCK      ?PR?INT3?MAIN
+            CODE    07ABH     0001H     INBLOCK      ?PR?INT4?MAIN
+            CODE    07ACH     0001H     INBLOCK      ?PR?INT5?MAIN
+            CODE    07ADH     0001H     INBLOCK      ?PR?INT6?MAIN
+            CODE    07AEH     0001H     INBLOCK      ?PR?INT7?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   main (MAIN)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                  -----    -----
+  +--> ?PR?IO_INIT?MAIN
+  +--> ?PR?TIMER0_INIT?MAIN
+  +--> ?PR?ADC_INIT?MAIN
+  +--> ?PR?PWM_INIT?MAIN
+  +--> ?PR?PWM_SET?MAIN
+  +--> ?PR?ADC_CONVERT?MAIN
+
+?PR?ADC_CONVERT?MAIN           0013H    0001H
+
+
+
+SYMBOL TABLE OF MODULE:  main (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2011  15:55:52  PAGE 3
+
+
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:078BH         PUBLIC        INT_init
+  D:008EH         PUBLIC        TMCON
+  D:0092H         PUBLIC        P1CFG0
+  D:00B0H         PUBLIC        P3
+  D:0091H         PUBLIC        P1CFG1
+  D:00A2H         PUBLIC        P2CFG0
+  D:00B2H         PUBLIC        P3CFG0
+  B:00A8H.7       PUBLIC        EA
+  D:00C1H         PUBLIC        WDTCR
+  D:00B1H         PUBLIC        P3CFG1
+  D:0008H         PUBLIC        ADC_AVG
+  B:00F8H.7       PUBLIC        ENPWM
+  D:00F8H         PUBLIC        PWMCR
+  C:075FH         PUBLIC        PWM_init
+  D:00A8H         PUBLIC        IE
+  C:0665H         PUBLIC        ADC_Convert
+  D:00FBH         PUBLIC        PWMDTY0
+  D:00FAH         PUBLIC        PWMDTY1
+  D:00B8H         PUBLIC        IP
+  D:00C4H         PUBLIC        ADCCFG
+  C:07A7H         PUBLIC        INT0
+  C:07A8H         PUBLIC        INT1
+  C:07A9H         PUBLIC        INT2
+  C:07AAH         PUBLIC        INT3
+  C:07ABH         PUBLIC        INT4
+  C:07ACH         PUBLIC        INT5
+  C:07ADH         PUBLIC        INT6
+  C:07AEH         PUBLIC        INT7
+  C:079FH         PUBLIC        PWM_set
+  D:000AH         PUBLIC        TusCounter
+  C:06EEH         PUBLIC        main
+  D:00B4H         PUBLIC        EXIE
+  C:070DH         PUBLIC        IO_init
+  D:000BH         PUBLIC        ADC16
+  D:0088H         PUBLIC        TCON
+  D:0089H         PUBLIC        TMOD
+  D:00B5H         PUBLIC        EXIP
+  D:000DH         PUBLIC        Checksum
+  B:00A8H.5       PUBLIC        EPWM
+  B:0020H.0       PUBLIC        FLGms
+  D:0093H         PUBLIC        INT4IT
+  C:076FH         PUBLIC        LEDTABLE
+  D:00FCH         PUBLIC        PWMCFG
+  C:07A6H         PUBLIC        ADC
+  D:0011H         PUBLIC        ValueH
+  B:00A8H.1       PUBLIC        ET0
+  B:00A8H.3       PUBLIC        ET1
+  D:00F6H         PUBLIC        RSTCFG
+  D:0012H         PUBLIC        ValueL
+  D:00B6H         PUBLIC        P3ADC
+  D:008CH         PUBLIC        TH0
+  D:008DH         PUBLIC        TH1
+  D:008AH         PUBLIC        TL0
+  D:008BH         PUBLIC        TL1
+  C:0724H         PUBLIC        timer0
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2011  15:55:52  PAGE 4
+
+
+  C:07A4H         PUBLIC        timer1
+  B:0088H.4       PUBLIC        TR0
+  B:0088H.6       PUBLIC        TR1
+  B:0020H.1       PUBLIC        FLG
+  D:00F9H         PUBLIC        PWMPRD
+  D:00C5H         PUBLIC        ADCCR
+  C:0795H         PUBLIC        ADC_init
+  D:00C6H         PUBLIC        ADCVH
+  C:0739H         PUBLIC        timer0_init
+  D:00C7H         PUBLIC        ADCVL
+  C:074CH         PUBLIC        timer1_init
+  C:07A5H         PUBLIC        PWM
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          IO_INIT
+  C:070DH         LINE#         42
+  C:070DH         LINE#         43
+  C:070DH         LINE#         44
+  C:0710H         LINE#         45
+  C:0713H         LINE#         46
+  C:0716H         LINE#         47
+  C:0719H         LINE#         48
+  C:071CH         LINE#         50
+  C:071EH         LINE#         51
+  C:0720H         LINE#         52
+  C:0723H         LINE#         53
+  -------         ENDPROC       IO_INIT
+  -------         PROC          TIMER0_INIT
+  C:0739H         LINE#         58
+  C:0739H         LINE#         59
+  C:0739H         LINE#         60
+  C:073CH         LINE#         61
+  C:073FH         LINE#         62
+  C:0742H         LINE#         63
+  C:0745H         LINE#         65
+  C:0747H         LINE#         66
+  C:0749H         LINE#         67
+  C:074BH         LINE#         68
+  -------         ENDPROC       TIMER0_INIT
+  -------         PROC          TIMER1_INIT
+  C:074CH         LINE#         73
+  C:074CH         LINE#         74
+  C:074CH         LINE#         75
+  C:074FH         LINE#         76
+  C:0752H         LINE#         77
+  C:0755H         LINE#         78
+  C:0758H         LINE#         80
+  C:075AH         LINE#         81
+  C:075CH         LINE#         82
+  C:075EH         LINE#         83
+  -------         ENDPROC       TIMER1_INIT
+  -------         PROC          INT_INIT
+  C:078BH         LINE#         88
+  C:078BH         LINE#         89
+  C:078BH         LINE#         90
+  C:078EH         LINE#         91
+  C:0791H         LINE#         92
+  C:0794H         LINE#         93
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2011  15:55:52  PAGE 5
+
+
+  -------         ENDPROC       INT_INIT
+  -------         PROC          ADC_INIT
+  C:0795H         LINE#         98
+  C:0795H         LINE#         99
+  C:0795H         LINE#         100
+  C:0798H         LINE#         101
+  C:079BH         LINE#         102
+  C:079EH         LINE#         103
+  -------         ENDPROC       ADC_INIT
+  -------         PROC          PWM_INIT
+  C:075FH         LINE#         108
+  C:075FH         LINE#         109
+  C:075FH         LINE#         110
+  C:0762H         LINE#         111
+  C:0765H         LINE#         113
+  C:0768H         LINE#         114
+  C:076BH         LINE#         115
+  C:076EH         LINE#         116
+  -------         ENDPROC       PWM_INIT
+  -------         PROC          PWM_SET
+  C:079FH         LINE#         121
+  C:079FH         LINE#         122
+  C:079FH         LINE#         123
+  C:07A1H         LINE#         124
+  C:07A3H         LINE#         125
+  -------         ENDPROC       PWM_SET
+  -------         PROC          ADC_CONVERT
+  -------         DO            
+  D:0013H         SYMBOL        i
+  -------         ENDDO         
+  C:0665H         LINE#         130
+  C:0665H         LINE#         131
+  C:0665H         LINE#         133
+  C:066EH         LINE#         134
+  C:0670H         LINE#         135
+  C:0670H         LINE#         136
+  C:0673H         LINE#         137
+  C:0678H         LINE#         139
+  C:067BH         LINE#         140
+  C:067EH         LINE#         142
+  C:0681H         LINE#         143
+  C:0684H         LINE#         146
+  C:0694H         LINE#         147
+  C:06A3H         LINE#         148
+  C:06CDH         LINE#         149
+  C:06D4H         LINE#         151
+  C:06EDH         LINE#         152
+  -------         ENDPROC       ADC_CONVERT
+  -------         PROC          TIMER0
+  C:0724H         LINE#         157
+  C:0728H         LINE#         159
+  C:072AH         LINE#         160
+  C:072FH         LINE#         161
+  C:072FH         LINE#         162
+  C:0732H         LINE#         163
+  C:0734H         LINE#         164
+  C:0734H         LINE#         165
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2011  15:55:52  PAGE 6
+
+
+  -------         ENDPROC       TIMER0
+  -------         PROC          TIMER1
+  C:07A4H         LINE#         170
+  C:07A4H         LINE#         172
+  -------         ENDPROC       TIMER1
+  -------         PROC          PWM
+  C:07A5H         LINE#         177
+  C:07A5H         LINE#         179
+  -------         ENDPROC       PWM
+  -------         PROC          ADC
+  C:07A6H         LINE#         184
+  C:07A6H         LINE#         186
+  -------         ENDPROC       ADC
+  -------         PROC          INT0
+  C:07A7H         LINE#         191
+  C:07A7H         LINE#         193
+  -------         ENDPROC       INT0
+  -------         PROC          INT1
+  C:07A8H         LINE#         194
+  C:07A8H         LINE#         196
+  -------         ENDPROC       INT1
+  -------         PROC          INT2
+  C:07A9H         LINE#         197
+  C:07A9H         LINE#         199
+  -------         ENDPROC       INT2
+  -------         PROC          INT3
+  C:07AAH         LINE#         200
+  C:07AAH         LINE#         202
+  -------         ENDPROC       INT3
+  -------         PROC          INT4
+  C:07ABH         LINE#         203
+  C:07ABH         LINE#         205
+  -------         ENDPROC       INT4
+  -------         PROC          INT5
+  C:07ACH         LINE#         206
+  C:07ACH         LINE#         208
+  -------         ENDPROC       INT5
+  -------         PROC          INT6
+  C:07ADH         LINE#         209
+  C:07ADH         LINE#         211
+  -------         ENDPROC       INT6
+  -------         PROC          INT7
+  C:07AEH         LINE#         212
+  C:07AEH         LINE#         214
+  -------         ENDPROC       INT7
+  -------         PROC          MAIN
+  C:06EEH         LINE#         220
+  C:06EEH         LINE#         221
+  C:06EEH         LINE#         224
+  C:06F1H         LINE#         225
+  C:06F4H         LINE#         232
+  C:06F7H         LINE#         233
+  C:06FAH         LINE#         234
+  C:06FDH         LINE#         235
+  C:0700H         LINE#         239
+  C:0702H         LINE#         243
+  C:0705H         LINE#         245
+BL51 BANKED LINKER/LOCATER V6.22                                                      11/20/2011  15:55:52  PAGE 7
+
+
+  C:0705H         LINE#         246
+  C:0708H         LINE#         252
+  C:070BH         LINE#         253
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?FPADD
+  C:0407H         PUBLIC        ?C?FPADD
+  C:0403H         PUBLIC        ?C?FPSUB
+  -------         ENDMOD        ?C?FPADD
+
+  -------         MODULE        ?C?FPDIV
+  C:04FBH         PUBLIC        ?C?FPDIV
+  -------         ENDMOD        ?C?FPDIV
+
+  -------         MODULE        ?C?FCAST
+  C:05A2H         PUBLIC        ?C?FCASTC
+  C:059DH         PUBLIC        ?C?FCASTI
+  C:0598H         PUBLIC        ?C?FCASTL
+  -------         ENDMOD        ?C?FCAST
+
+  -------         MODULE        ?C?CASTF
+  C:05D6H         PUBLIC        ?C?CASTF
+  -------         ENDMOD        ?C?CASTF
+
+  -------         MODULE        ?C?LNEG
+  C:0657H         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TIMER1_INIT?MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?INT_INIT?MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?CO?MAIN
+
+Program Size: data=21.2 xdata=0 code=982
+LINK/LOCATE RUN COMPLETE.  3 WARNING(S),  0 ERROR(S)

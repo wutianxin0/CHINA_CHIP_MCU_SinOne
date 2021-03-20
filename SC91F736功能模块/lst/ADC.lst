@@ -1,0 +1,98 @@
+C51 COMPILER V9.03   ADC                                                                   08/14/2016 21:36:30 PAGE 1   
+
+
+C51 COMPILER V9.03, COMPILATION OF MODULE ADC
+OBJECT MODULE PLACED IN .\output\ADC.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE c\ADC.c BROWSE DEBUG OBJECTEXTEND PRINT(.\lst\ADC.lst) OBJECT(.\output\ADC.
+                    -obj)
+
+line level    source
+
+   1          
+   2          //************************************************************
+   3          //  Copyright (c) 深圳市赛元微电子有限公司
+   4          //      文件名称        : ADC.c
+   5          //      作者            : 
+   6          //      模块功能        : ADC转换的使用
+   7          //      局部函数列表:
+   8          //  最后更正日期:
+   9          //      版本            :
+  10          //      更改记录        :rom前256byte禁止查表,因此在编译的时候，设置keil->option for Target->BL51 Locate->Code Range:
+             -0x100
+  11          //*************************************************************
+  12          #include "h\sc91f736_C.h"
+  13          unsigned char    ValueH;
+  14          unsigned char    ValueL;
+  15          unsigned int     adcdat;
+  16          //*************************************************************
+  17          // 函数名       ：void ADC_init(void)
+  18          // 作者         ：
+  19          // 功能         ：ADC转换初始化
+  20          // 参数         ：无
+  21          // 返回值       ：无
+  22          // 调用全局变量：无
+  23          // 修改全局变量：无
+  24          // 备注         ：选择参考电压;选择ADC输入口;开ADC电源;设置2M;选通ADC通道;开始转换;完成转换,清EOC标志.
+  25          //**************************************************************        
+  26          void ADC_init()
+  27          {
+  28   1              ADCCFG=0x80;                                            //选择ADD为参考电压VDD，选择P15作ADC输入口.
+  29   1              ADCCR=0x87;                                                     //打开ADC电源,选通P15通道
+  30   1      }
+  31          //*************************************************************
+  32          // 函数名       ：void  ADC_Convert(void)
+  33          // 作者         ：
+  34          // 功能         ：ADC转换过程
+  35          // 参数         ：无
+  36          // 返回值       ：无
+  37          // 调用全局变量：无
+  38          // 修改全局变量：无
+  39          // 备注         ：
+  40          //**************************************************************        
+  41          void  ADC_Convert(void)                                         
+  42          {                                                                                                       
+  43   1              ADCCR |= 0x40;                                                   //开始转换，ADCS置1
+  44   1              while(!(ADCCR&0x10));                            //等待 ADC转换完成;
+  45   1              adcdat=ADCVH;                                                    //ADC高8位存入8位寄存器
+  46   1              adcdat = (adcdat<<4)+ADCVL>>4;                   //取得adc的值
+  47   1              ADCCR &= 0xEF;                                                   //转换完毕，清EOC              
+  48   1      }
+  49          //*************************************************************
+  50          // 函数名       ：void main()
+  51          // 作者         ：
+  52          // 功能         ：主函数
+  53          // 参数         ：无
+C51 COMPILER V9.03   ADC                                                                   08/14/2016 21:36:30 PAGE 2   
+
+  54          // 返回值       ：无
+  55          // 调用全局变量：无
+  56          // 修改全局变量：无
+  57          // 备注         ：
+  58          //**************************************************************
+  59          void main()
+  60          {                                                                                               
+  61   1              RSTCFG=0x2A;                            //LVR=3.5V,P1.0切换为IO
+  62   1              WDTCR = 0x90;                           //1--1 -- 00    开WDT,WDT清0,WDT 262ms溢出;烧录时，可Code Option选择ENWDT
+  63   1              ADC_init();
+  64   1              while(1)
+  65   1              {
+  66   2                      ADC_Convert();          //ADC转换
+  67   2                      WDTCR = 0x90;                           //1--1 -- 00    开WDT,WDT清0,WDT 262ms溢出;烧录时，可Code Option选择ENWDT
+  68   2              }               
+  69   1                      
+  70   1      
+  71   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     83    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,100 @@
+C51 COMPILER V9.03   ADC                                                                   04/16/2014 15:15:30 PAGE 1   
+
+
+C51 COMPILER V9.03, COMPILATION OF MODULE ADC
+OBJECT MODULE PLACED IN .\output\ADC.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE c\ADC.c BROWSE DEBUG OBJECTEXTEND PRINT(.\lst\ADC.lst) OBJECT(.\output\ADC.
+                    -obj)
+
+line level    source
+
+   1          
+   2          //************************************************************
+   3          //  Copyright (c) ÉîÛÚÊÐÈüÔªÎ¢µç×ÓÓÐÏÞ¹«Ë¾
+   4          //      ÎÄ¼þÃû³Æ        : ADC.c
+   5          //      ×÷Õß            : 
+   6          //      Ä£¿é¹¦ÄÜ        : ADC×ª»»µÄÊ¹ÓÃ
+   7          //      ¾Ö²¿º¯ÊýÁÐ±í:
+   8          //  ×îºó¸üÕýÈÕÆÚ:
+   9          //      °æ±¾            :
+  10          //      ¸ü¸Ä¼ÇÂ¼        :832 romÇ°256byte½ûÖ¹²é±í,Òò´ËÔÚ±àÒëµÄÊ±ºò£¬ÉèÖÃkeil->option for Target->BL51 Locate->Code Ra
+             -nge:0x100
+  11          //*************************************************************
+  12          #include "h\sc91f832_C.h"
+  13          unsigned char    ValueH;
+  14          unsigned char    ValueL;
+  15          unsigned int     adcdat;
+  16          //*************************************************************
+  17          // º¯ÊýÃû       £ºvoid ADC_init(void)
+  18          // ×÷Õß         £º
+  19          // ¹¦ÄÜ         £ºADC×ª»»³õÊ¼»¯
+  20          // ²ÎÊý         £ºÎÞ
+  21          // ·µ»ØÖµ       £ºÎÞ
+  22          // µ÷ÓÃÈ«¾Ö±äÁ¿£ºÎÞ
+  23          // ÐÞ¸ÄÈ«¾Ö±äÁ¿£ºÎÞ
+  24          // ±¸×¢         £ºÑ¡Ôñ²Î¿¼µçÑ¹;Ñ¡ÔñADCÊäÈë¿Ú;¿ªADCµçÔ´;ÉèÖÃADC×ª»»Ê±ÖÓ(16MÖ÷Æµ×ª»»Ô¼7us);Ñ¡Í¨ADCÍ¨µÀ;¿ªÊ¼×ª»»;Íê³
+             -É×ª»»,ÇåEOC±êÖ¾.
+  25          //**************************************************************        
+  26          void ADC_init()
+  27          {
+  28   1              ADCCFG=0x80;                                            //Ñ¡ÔñADDÎª²Î¿¼µçÑ¹VDD£¬Ñ¡ÔñP17×÷ADCÊäÈë¿Ú.
+  29   1              ADCCR=0xA7;                                                     //´ò¿ªADCµçÔ´,ADC CLK=Fosc/6,Ñ¡Í¨P17Í¨µÀ
+  30   1      }
+  31          //*************************************************************
+  32          // º¯ÊýÃû       £ºvoid  ADC_Convert(void)
+  33          // ×÷Õß         £º
+  34          // ¹¦ÄÜ         £ºADC×ª»»¹ý³Ì
+  35          // ²ÎÊý         £ºÎÞ
+  36          // ·µ»ØÖµ       £ºÎÞ
+  37          // µ÷ÓÃÈ«¾Ö±äÁ¿£ºÎÞ
+  38          // ÐÞ¸ÄÈ«¾Ö±äÁ¿£ºÎÞ
+  39          // ±¸×¢         £º
+  40          //**************************************************************        
+  41          void  ADC_Convert(void)                                         
+  42          {                                                                                                       
+  43   1              ADCCR |= 0x40;                                                   //¿ªÊ¼×ª»»£¬ADCSÖÃ1
+  44   1              while(!(ADCCR&0x10));                            //µÈ´ý ADC×ª»»Íê³É;±¾ÀýÑ¡ÔñFosc/6·ÖÆµ£¬×ª»»Ê±¼äÔ¼42usÊ±¼ä
+  45   1              ValueH=ADCVH;                                                    //ADC¸ß8Î»´æÈë8Î»¼Ä´æÆ÷
+  46   1              ValueL=ADCVL;                                                    //ADCµÍ2Î»´æÈë8Î»¼Ä´æÆ÷
+  47   1              adcdat = (ADCVH<<2)+ADCVL;                               //È¡µÃadcµÄÖµ
+  48   1              ADCCR &= 0xEF;                                                   //×ª»»Íê±Ï£¬ÇåEOC              
+  49   1      }
+  50          //*************************************************************
+  51          // º¯ÊýÃû       £ºvoid main()
+  52          // ×÷Õß         £º
+C51 COMPILER V9.03   ADC                                                                   04/16/2014 15:15:30 PAGE 2   
+
+  53          // ¹¦ÄÜ         £ºÖ÷º¯Êý
+  54          // ²ÎÊý         £ºÎÞ
+  55          // ·µ»ØÖµ       £ºÎÞ
+  56          // µ÷ÓÃÈ«¾Ö±äÁ¿£ºÎÞ
+  57          // ÐÞ¸ÄÈ«¾Ö±äÁ¿£ºÎÞ
+  58          // ±¸×¢         £º
+  59          //**************************************************************
+  60          void main()
+  61          {                                                                                               
+  62   1              RSTCFG=0x2A;                            //LVR=3.5V,P1.0ÇÐ»»ÎªIO
+  63   1              WDTCR = 0x90;                           //1--1 -- 00    ¿ªWDT,WDTÇå0,WDT 262msÒç³ö;ÉÕÂ¼Ê±£¬¿ÉCode OptionÑ¡ÔñENWDT
+  64   1              ADC_init();
+  65   1              while(1)
+  66   1              {
+  67   2                      ADC_Convert();          //ADC×ª»»
+  68   2                      WDTCR = 0x90;                           //1--1 -- 00    ¿ªWDT,WDTÇå0,WDT 262msÒç³ö;ÉÕÂ¼Ê±£¬¿ÉCode OptionÑ¡ÔñENWDT
+  69   2              }               
+  70   1                      
+  71   1      
+  72   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     62    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

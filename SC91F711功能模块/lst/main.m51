@@ -1,0 +1,115 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        05/15/2013  13:47:19  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL\C51\BIN\BL51.EXE .\output\ADC.obj TO .\output\main PRINT (.\lst\main.m51) CODE (0X100)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\ADC.obj (ADC)
+  D:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\output\main (ADC)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         ?DT?ADC
+            IDATA   000CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     00FDH                  *** GAP ***
+            CODE    0100H     0026H     UNIT         ?PR?ADC_CONVERT?ADC
+            CODE    0126H     000EH     UNIT         ?PR?MAIN?ADC
+            CODE    0134H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0140H     000AH     UNIT         ?PR?ADC_INIT?ADC
+
+
+
+OVERLAY MAP OF MODULE:   .\output\main (ADC)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?ADC
+
+?PR?MAIN?ADC
+  +--> ?PR?ADC_INIT?ADC
+  +--> ?PR?ADC_CONVERT?ADC
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\main (ADC)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ADC
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00C1H         PUBLIC        WDTCR
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/15/2013  13:47:19  PAGE 2
+
+
+  D:00F8H         PUBLIC        PWMCR
+  D:00A8H         PUBLIC        IE
+  C:0100H         PUBLIC        ADC_Convert
+  D:00B8H         PUBLIC        IP
+  D:00C4H         PUBLIC        ADCCFG
+  C:0126H         PUBLIC        main
+  D:0088H         PUBLIC        TCON
+  D:0008H         PUBLIC        ValueH
+  D:00F6H         PUBLIC        RSTCFG
+  D:0009H         PUBLIC        ValueL
+  D:00B6H         PUBLIC        P3ADC
+  D:00C5H         PUBLIC        ADCCR
+  C:0140H         PUBLIC        ADC_init
+  D:000AH         PUBLIC        adcdat
+  D:00C6H         PUBLIC        ADCVH
+  D:00C7H         PUBLIC        ADCVL
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          ADC_INIT
+  C:0140H         LINE#         26
+  C:0140H         LINE#         27
+  C:0140H         LINE#         28
+  C:0143H         LINE#         29
+  C:0146H         LINE#         30
+  C:0149H         LINE#         31
+  -------         ENDPROC       ADC_INIT
+  -------         PROC          ADC_CONVERT
+  C:0100H         LINE#         42
+  C:0100H         LINE#         43
+  C:0100H         LINE#         44
+  C:0103H         LINE#         45
+  C:0108H         LINE#         46
+  C:010BH         LINE#         47
+  C:010EH         LINE#         48
+  C:0122H         LINE#         49
+  C:0125H         LINE#         50
+  -------         ENDPROC       ADC_CONVERT
+  -------         PROC          MAIN
+  C:0126H         LINE#         61
+  C:0126H         LINE#         62
+  C:0126H         LINE#         63
+  C:0129H         LINE#         64
+  C:012CH         LINE#         65
+  C:012FH         LINE#         66
+  C:012FH         LINE#         67
+  C:012FH         LINE#         68
+  C:0132H         LINE#         69
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        ADC
+
+Program Size: data=13.0 xdata=0 code=77
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

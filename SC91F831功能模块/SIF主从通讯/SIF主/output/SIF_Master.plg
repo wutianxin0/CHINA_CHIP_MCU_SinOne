@@ -1,0 +1,33 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\FAE（对外）\SOC产品客服资料（20160119）\SOC-功能模块\831功能模块\SIF主从通讯\SIF主\SIF_Master.uvproj
+Project File Date:  01/23/2013
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling Master_8_1.c...
+compiling Master_8_1_r_n.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_BYTE?MASTER_8_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SIF_WAITACK?MASTER_8_1
+Program Size: data=13.0 xdata=0 code=287
+creating hex file from ".\output\SIF_Master"...
+".\output\SIF_Master" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling Master_8_1.c...
+compiling Master_8_1_r_n.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_BYTE?MASTER_8_1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SIF_WAITACK?MASTER_8_1
+Program Size: data=13.0 xdata=0 code=287
+creating hex file from ".\output\SIF_Master"...
+".\output\SIF_Master" - 0 Error(s), 2 Warning(s).

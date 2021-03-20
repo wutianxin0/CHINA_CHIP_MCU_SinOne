@@ -1,0 +1,79 @@
+C51 COMPILER V9.55   IO_INIT                                                               07/01/2020 15:23:14 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE IO_INIT
+OBJECT MODULE PLACED IN .\Objects\IO_Init.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE c\IO_Init.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\IO_Init.lst) OBJECT(.\Objects\IO_Init.obj)
+
+line level    source
+
+   1          #include "H/Function_Init.H"
+   2          /*****************************************************
+   3          *函数名称：void IO_Init(void)
+   4          *函数功能：IO初始化
+   5          *入口参数：void
+   6          *出口参数：void
+   7          *****************************************************/
+   8          void IO_Init(void)
+   9          {
+  10   1              #if (IC_MODEL == SC92F74A7)  //SC92F74A7引脚定义
+  11   1              P0CON = 0xFF;  //设置P0为强推挽模式
+  12   1              P0PH  = 0x00;
+  13   1              P1CON = 0x00;  //设置P1为高阻输入模式
+  14   1              P1PH  = 0x00;
+  15   1              P2CON = 0x00;  //设置P2为高阻带上拉模式
+  16   1              P2PH  = 0xFF;
+  17   1              P3CON = 0xFF;  //设置P3为强推挽模式
+  18   1              P3PH  = 0x00;
+  19   1              P4CON = 0xFF;  //设置P4为强推挽模式
+  20   1              P4PH  = 0x01;
+  21   1              P5CON = 0xFF;  //设置P5为强推挽模式
+  22   1              P5PH  = 0x00;
+  23   1              #endif
+  24   1              
+  25   1              #if (IC_MODEL == SC92F74A6)  //SC92F74A6引脚定义
+                      P0CON = 0xFF;  //设置P0为强推挽模式
+                      P0PH  = 0x00;
+                      P1CON = 0x00;  //设置P1为高阻输入模式
+                      P1PH  = 0x00;
+                      P2CON = 0x00;  //设置P2为高阻带上拉模式
+                      P2PH  = 0xFF;
+                      P3CON = 0xFF;  //设置P3为强推挽模式
+                      P3PH  = 0x00;
+                      P4CON = 0xFF;  //设置P4为强推挽模式
+                      P4PH  = 0x01;
+                      P5CON = 0xFF;  //设置P5为强推挽模式
+                      P5PH  = 0x00;
+                      SC92F74A6_NIO_Init(); //未引出IO口配置
+                      #endif
+  40   1              
+  41   1              #if (IC_MODEL == SC92F74A5)  //SC92F74A5脚定义
+                      P0CON = 0xFF;  //设置P0为强推挽模式
+                      P0PH  = 0x00;
+                      P1CON = 0x00;  //设置P1为高阻输入模式
+                      P1PH  = 0x00;
+                      P2CON = 0x00;  //设置P2为高阻带上拉模式
+                      P2PH  = 0xFF;
+                      P4CON = 0xFF;  //设置P4为强推挽模式
+                      P4PH  = 0x01;
+                      SC92F74A5_NIO_Init(); //未引出IO口配置
+                      #endif
+  52   1      }
+  53          
+
+C51 COMPILER V9.55   IO_INIT                                                               07/01/2020 15:23:14 PAGE 2   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     32    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,80 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        05/04/2012  13:16:07  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE .\output\IO的设置.obj TO .\output\main PRINT (.\lst\main.m51) CODE (0X100)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\IO的设置.obj (IO的设置)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\output\main (IO的设置)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     00FDH                  *** GAP ***
+            CODE    0100H     0016H     UNIT         ?PR?MAIN?IO的设置
+            CODE    0116H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\output\main (IO的设置)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?IO的设置
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\main (IO的设置)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        IO的设置
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:0091H         PUBLIC        P1CFG1
+  D:00C1H         PUBLIC        WDTCR
+  D:00F8H         PUBLIC        PWMCR
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0100H         PUBLIC        main
+  D:0088H         PUBLIC        TCON
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/04/2012  13:16:07  PAGE 2
+
+
+  B:0090H.7       PUBLIC        P17
+  D:00F6H         PUBLIC        RSTCFG
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:0100H         LINE#         85
+  C:0100H         LINE#         86
+  C:0100H         LINE#         87
+  C:0103H         LINE#         88
+  C:0106H         LINE#         89
+  C:010EH         LINE#         90
+  C:0114H         LINE#         91
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        IO的设置
+
+Program Size: data=9.0 xdata=0 code=37
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

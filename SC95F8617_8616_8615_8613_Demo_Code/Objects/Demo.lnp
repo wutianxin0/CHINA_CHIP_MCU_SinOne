@@ -1,0 +1,20 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\IO_Init.obj",
+".\Objects\BTM.obj",
+".\Objects\EX_Init.obj",
+".\Objects\Timer_Init.obj",
+".\Objects\LCD_LED_Init.obj",
+".\Objects\Multiplication_Division.obj",
+".\Objects\ADC_Init.obj",
+".\Objects\Uart_Init.obj",
+".\Objects\IAP_Init.obj",
+".\Objects\CRC_Init.obj",
+".\Objects\CMP_Init.obj",
+".\Objects\SSI0_Init.obj",
+".\Objects\SSI1_Init.obj",
+".\Objects\SSI2_Init.obj",
+".\Objects\PWM_Init.obj" 
+TO ".\Objects\Demo" 
+PRINT(".\Listings\Demo.m51") RAMSIZE(256) 
+CODE( 0x100 )

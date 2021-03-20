@@ -1,0 +1,93 @@
+C51 COMPILER V9.55   PWM_INIT                                                              07/25/2019 10:23:11 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE PWM_INIT
+OBJECT MODULE PLACED IN .\Objects\PWM_Init.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE c\PWM_Init.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\PWM_Init.lst) OBJECT(.\Objects\PWM_Init.obj)
+
+line level    source
+
+   1          #include "H/Function_Init.H"
+   2          
+   3          void PWM_Init(void);
+   4          void PWM_Dead(void);
+   5          /*****************************************************
+   6          *函数名称：void PWM_Test(void)
+   7          *函数功能：PWM测试
+   8          *入口参数：void
+   9          *出口参数：void
+  10          *****************************************************/
+  11          void PWM_Test(void)
+  12          {
+  13   1              PWM_Init();
+  14   1      //      PWM_Dead();
+  15   1              while(1)
+  16   1              {
+  17   2              }
+  18   1      }
+  19          /*****************************************************
+  20          *函数名称：void PWM_Init(void)
+  21          *函数功能：PWM初始化
+  22          *入口参数：void
+  23          *出口参数：void
+  24          *注意：周期与占空比的低2位要先写值，再写高8位
+  25          *****************************************************/
+  26          void PWM_Init(void)
+  27          {
+  28   1              PWMCFG  = 0x00;         //PWM012输出不反向,PWM345输出反向
+  29   1              PWMCON0 = 0X81;         //PWM时钟为系统时钟
+  30   1              PWMDTYA = 0x55;         //设置PWM0123的低两位Duty
+  31   1              PWMDTYB = 0XaA;     //设置PWM456的低两位Duty
+  32   1              PWMPRD  = 0x3e;         //PWM周期高8位设置
+  33   1          PWMCON1 = 0X7f;     //模式设置，PWM口输出设置
+  34   1              PWMDTY0 = 0x1F;     //PWM0占空比高8位设置
+  35   1              PWMDTY1 = 0X1F;     //PWM1占空比高8位设置
+  36   1              PWMDTY2 = 0x1F;     //PWM2占空比高8位设置
+  37   1              PWMDTY3 = 0x1F;     //PWM3占空比高8位设置
+  38   1              PWMDTY4 = 0X0C;     //PWM4占空比高8位设置
+  39   1              PWMDTY5 = 0X0C;         //PWM5占空比高8位设置
+  40   1              PWMDTY6 = 0X0C;     //PWM6占空比高8位设置
+  41   1              IE1 |= 0x02;        //打开PWM中断
+  42   1              EA = 1;             //打开总中断
+  43   1      }
+  44          
+  45          /*
+  46          void PWM_Dead(void) //死区设置
+  47          {
+  48                  PWMCFG  = 0x38;         //PWM012输出不反向,PWM345输出反向
+  49                  PWMCON0 = 0X03;         //PWM时钟为系统时钟，pwm26正常输出
+  50                  PWMPRD  = 0x27;         //PWM周期高8位设置
+  51                  PWMCON1 = 0XFF;     //模式设置，PWM口输出设置
+  52                  PWMDTYA = 0x00;         //设置PWM0123的低两位Duty
+  53                          
+  54                  PWMDTY0 = 0x14;     //PWM0占空比高8位设置
+C51 COMPILER V9.55   PWM_INIT                                                              07/25/2019 10:23:11 PAGE 2   
+
+  55                  PWMDTY1 = 0X14;     //PWM1占空比高8位设置 
+  56                  PWMDTY2 = 0x14;     //PWM2占空比高8位设置
+  57                  PWMDTY3 = 0x88;     //死区时间设置  
+  58                  PWMDTYB = 0X00;     //PWM6占空比低2位设置
+  59                  PWMDTY6 = 0X10;     //PWM6占空比高8位设置
+  60                  PWMCON0 |= 0x80;        //打开PWM使能端
+  61          }
+  62          */
+  63          
+  64          void PWMInt(void) interrupt 8
+  65          {       
+  66   1              P20=~P20;         
+  67   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     53    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

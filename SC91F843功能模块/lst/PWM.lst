@@ -1,0 +1,86 @@
+C51 COMPILER V9.03   PWM                                                                   04/27/2017 10:05:50 PAGE 1   
+
+
+C51 COMPILER V9.03, COMPILATION OF MODULE PWM
+OBJECT MODULE PLACED IN .\output\PWM.obj
+COMPILER INVOKED BY: D:\keil\C51\BIN\C51.EXE c\PWM.C BROWSE DEBUG OBJECTEXTEND PRINT(.\lst\PWM.lst) OBJECT(.\output\PWM.
+                    -obj)
+
+line level    source
+
+   1          //************************************************************
+   2          //  Copyright (c) 深圳市赛元微电子有限公司
+   3          //      文件名称        : PWM.c
+   4          //      作者            : 
+   5          //      模块功能        :PWM的使用
+   6          //      局部函数列表:
+   7          //  最后更正日期:
+   8          //      版本            :
+   9          //      更改记录        :rom前256byte禁止查表,因此在编译的时候，设置keil->option for Target->BL51 Locate->Code Range:
+             -0x100
+  10          //*************************************************************
+  11          
+  12          #include "h\SC91F843_C.h"
+  13          #define  tst  P30
+  14          //*************************************************************
+  15          // 函数名       ：void PWMinit(void)
+  16          // 作者         ：
+  17          // 功能         ：PWM0/1分别输出1/2、1/4 Duty
+  18          // 参数         ：无
+  19          // 返回值       ：无
+  20          // 调用全局变量：无
+  21          // 修改全局变量：无
+  22          // 备注         ：
+  23          //**************************************************************
+  24          void PWMinit(void)
+  25          {
+  26   1              PWMCFG = 0x03;                  // - - 00 - 011  PWM0/1输出不反向,选择PWM时钟源为Fosc/8 = 2MHZ;1/2us
+  27   1              PWMPRD = 99;                    //PWM周期=(99+1)*(1/2us)约=50us;PWM0/1共用同一个周期
+  28   1              PWMDTY0 = 50;                   //PWM0的Duty = 50/100 =1/2
+  29   1              PWMDTY1 = 25;                   //PWM1的Duty = 25/100  约=1/4
+  30   1              PWMCR = 0x85;                   // 10-- 0101   开PWM,切换PWM0/1输出口
+  31   1      }
+  32          //*************************************************************
+  33          // 函数名       ：void PWM() interrupt 5
+  34          // 作者         ：
+  35          // 功能         ：PWM产生50us的中断
+  36          // 参数         ：无
+  37          // 返回值       ：无
+  38          // 调用全局变量：无
+  39          // 修改全局变量：无
+  40          // 备注         ：PWM中断需用户软件清除
+  41          //**************************************************************
+  42          void PWM() interrupt 5
+  43          {
+  44   1              PWMIF=0;                                //PWM计数溢出，需用户自行清除
+  45   1              tst =~tst;
+  46   1      }
+  47          void main()
+  48          {
+  49   1              RSTCFG=0x2A;                            //切换RstPin为GPIO,lvr选择3.5V复位
+  50   1              P3CFG0=0X00;
+  51   1              WDTCR = 0x90;                           //1--1 -- 00    开WDT,WDT清0,WDT 280ms溢出;烧录时，可Code Option选择ENWDT
+  52   1              PWMinit();
+  53   1              EPWM = 1;                               //使能PWM中断
+C51 COMPILER V9.03   PWM                                                                   04/27/2017 10:05:50 PAGE 2   
+
+  54   1              EA=1;                                           //开总中断
+  55   1              while(1)
+  56   1              {
+  57   2                      WDTCR = 0x90;                           //1--1 -- 00    开WDT,WDT清0,WDT 280ms溢出;烧录时，可Code Option选择ENWDT
+  58   2              }
+  59   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     42    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

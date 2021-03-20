@@ -1,0 +1,17 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\cheny\SIF主从通讯\SIF主从通讯\SIF从\SIF_SLAVE.uvproj
+Project File Date:  01/23/2013
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling main.c...
+compiling Slave_8_1_r.C...
+linking...
+Program Size: data=19.0 xdata=0 code=67
+creating hex file from ".\output\SIF_SLAVE"...
+".\output\SIF_SLAVE" - 0 Error(s), 0 Warning(s).

@@ -1,0 +1,151 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/27/2017  11:38:40  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL\C51\BIN\BL51.EXE .\output\EX0_6.obj TO .\output\main PRINT (.\lst\main.m51) RAMSIZE (256) CODE (0X100)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\EX0_6.obj (EX0_6)
+  D:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\output\main (EX0_6)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0038H                  *** GAP ***
+            CODE    003BH     0003H     ABSOLUTE     
+                    003EH     0005H                  *** GAP ***
+            CODE    0043H     0003H     ABSOLUTE     
+                    0046H     0005H                  *** GAP ***
+            CODE    004BH     0003H     ABSOLUTE     
+                    004EH     0005H                  *** GAP ***
+            CODE    0053H     0003H     ABSOLUTE     
+                    0056H     0005H                  *** GAP ***
+            CODE    005BH     0003H     ABSOLUTE     
+                    005EH     0005H                  *** GAP ***
+            CODE    0063H     0003H     ABSOLUTE     
+                    0066H     009AH                  *** GAP ***
+            CODE    0100H     0010H     UNIT         ?PR?MAIN?EX0_6
+            CODE    0110H     000CH     UNIT         ?C_C51STARTUP
+            CODE    011CH     0009H     UNIT         ?PR?EX0_6INIT?EX0_6
+            CODE    0125H     0001H     UNIT         ?PR?EX0?EX0_6
+            CODE    0126H     0001H     UNIT         ?PR?EX1?EX0_6
+            CODE    0127H     0001H     UNIT         ?PR?EX2?EX0_6
+            CODE    0128H     0001H     UNIT         ?PR?EX3?EX0_6
+            CODE    0129H     0001H     UNIT         ?PR?EX4?EX0_6
+            CODE    012AH     0001H     UNIT         ?PR?EX5?EX0_6
+
+
+
+OVERLAY MAP OF MODULE:   .\output\main (EX0_6)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?EX0_6
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/27/2017  11:38:40  PAGE 2
+
+
+?PR?MAIN?EX0_6
+  +--> ?PR?EX0_6INIT?EX0_6
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\main (EX0_6)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        EX0_6
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00D8H         PUBLIC        P5
+  B:00A8H.7       PUBLIC        EA
+  D:00C9H         PUBLIC        WDTCR
+  D:00F8H         PUBLIC        PWMCR
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:011CH         PUBLIC        EX0_6init
+  D:0093H         PUBLIC        P1IT
+  C:0100H         PUBLIC        main
+  D:00B4H         PUBLIC        EXIE
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00B5H         PUBLIC        EXIP
+  D:00F6H         PUBLIC        RSTCFG
+  C:0125H         PUBLIC        EX0
+  C:0126H         PUBLIC        EX1
+  C:0127H         PUBLIC        EX2
+  C:0128H         PUBLIC        EX3
+  C:0129H         PUBLIC        EX4
+  C:012AH         PUBLIC        EX5
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          EX0_6INIT
+  C:011CH         LINE#         23
+  C:011CH         LINE#         24
+  C:011CH         LINE#         25
+  C:011FH         LINE#         26
+  C:0122H         LINE#         27
+  C:0124H         LINE#         28
+  -------         ENDPROC       EX0_6INIT
+  -------         PROC          EX0
+  C:0125H         LINE#         39
+  C:0125H         LINE#         41
+  -------         ENDPROC       EX0
+  -------         PROC          EX1
+  C:0126H         LINE#         42
+  C:0126H         LINE#         44
+  -------         ENDPROC       EX1
+  -------         PROC          EX2
+  C:0127H         LINE#         45
+  C:0127H         LINE#         47
+  -------         ENDPROC       EX2
+  -------         PROC          EX3
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/27/2017  11:38:40  PAGE 3
+
+
+  C:0128H         LINE#         48
+  C:0128H         LINE#         50
+  -------         ENDPROC       EX3
+  -------         PROC          EX4
+  C:0129H         LINE#         51
+  C:0129H         LINE#         53
+  -------         ENDPROC       EX4
+  -------         PROC          EX5
+  C:012AH         LINE#         54
+  C:012AH         LINE#         56
+  -------         ENDPROC       EX5
+  -------         PROC          MAIN
+  C:0100H         LINE#         68
+  C:0100H         LINE#         69
+  C:0100H         LINE#         70
+  C:0103H         LINE#         71
+  C:0106H         LINE#         72
+  C:0109H         LINE#         73
+  C:010BH         LINE#         74
+  C:010BH         LINE#         75
+  C:010BH         LINE#         76
+  C:010EH         LINE#         77
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        EX0_6
+
+Program Size: data=9.0 xdata=0 code=64
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

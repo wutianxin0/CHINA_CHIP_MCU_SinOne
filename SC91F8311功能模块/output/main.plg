@@ -1,0 +1,15 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\FAE（对外）\SOC产品客服资料（20160812）\SOC-功能模块\8311功能模块\main.uvproj
+Project File Date:  08/14/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling ADC.c...
+linking...
+Program Size: data=13.0 xdata=0 code=98
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).

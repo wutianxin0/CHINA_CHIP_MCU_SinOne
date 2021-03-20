@@ -1,0 +1,47 @@
+C51 COMPILER V9.03   BUZZER                                                                06/03/2015 17:30:20 PAGE 1   
+
+
+C51 COMPILER V9.03, COMPILATION OF MODULE BUZZER
+OBJECT MODULE PLACED IN .\output\buzzer.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE c\buzzer.c BROWSE DEBUG OBJECTEXTEND PRINT(.\lst\buzzer.lst) OBJECT(.\outpu
+                    -t\buzzer.obj)
+
+line level    source
+
+   1          //************************************************************
+   2          //  Copyright (c) 深圳市赛元微电子有限公司
+   3          //      文件名称        : IO_Set.c
+   4          //      作者            : 
+   5          //      模块功能        : IO常用设置
+   6          //      局部函数列表:
+   7          //  最后更正日期:
+   8          //      版本            :
+   9          //      更改记录        :rom前256byte禁止查表,因此在编译的时候，设置keil->option for Target->BL51 Locate->Code Range:
+             -0x100
+  10          //*************************************************************
+  11          #include "h\sc91f735_C.h"
+  12          void main()
+  13          {
+  14   1              RSTCFG=0X0B;
+  15   1              WDTCR = 0x90;                           //1--1 -- 00    开WDT,WDT清0,WDT 524ms溢出;烧录时，可Code Option选择ENWDT
+  16   1              BUZTGPH=0X81;                           //启动BUZZER功能
+  17   1              BUZTGPL=0Xff;                           //频率：16M/（BUZTCP[11：0]+1）=16M/（256+255+1）=3.125M
+  18   1              while(1)
+  19   1              {
+  20   2                      WDTCR = 0x90;                           //1--1 -- 00    开WDT,WDT清0,WDT 524ms溢出;烧录时，可Code Option选择ENWDT
+  21   2              }
+  22   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     17    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

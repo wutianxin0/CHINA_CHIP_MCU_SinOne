@@ -1,0 +1,92 @@
+C51 COMPILER V9.55   PWM_INIT                                                              07/25/2019 10:20:04 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE PWM_INIT
+OBJECT MODULE PLACED IN .\Objects\PWM_Init.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE c\PWM_Init.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\PWM_Init.lst) OBJECT(.\Objects\PWM_Init.obj)
+
+line level    source
+
+   1          #include "H/Function_Init.H"
+   2          
+   3          #if (IC_MODEL == SC92FW40)
+   4          unsigned int xdata PWMRD[40]  _at_  0x700;
+   5          #endif
+   6          
+   7          #if (IC_MODEL == SC92FW24)
+              unsigned int xdata PWMRD_00_03[4]  _at_  0x700;
+              unsigned int xdata PWMRD_11  _at_  0x712;
+              unsigned int xdata PWMRD_13  _at_  0x716;
+              unsigned int xdata PWMRD_20_25[6]  _at_  0x720;
+              unsigned int xdata PWMRD_30_33[4]  _at_  0x730;
+              unsigned int xdata PWMRD_40_43[4]  _at_  0x740;
+              unsigned int xdata PWMRD_50_53[4]  _at_  0x748;
+              #endif
+  16          
+  17          #if (IC_MODEL == SC92FW16)
+              unsigned int xdata PWMRD_06  _at_  0x70C;
+              unsigned int xdata PWMRD_07  _at_  0x70E;
+              unsigned int xdata PWMRD_10_13[4]  _at_  0x710;
+              unsigned int xdata PWMRD_20_25[6]  _at_  0x720;
+              unsigned int xdata PWMRD_40_43[4]  _at_  0x740;
+              #endif
+  24          
+  25          unsigned int xdata PWMRD_Temp;
+  26          void PWM_Init(void);
+  27          /*****************************************************
+  28          *函数名称：void PWM_Test(void)
+  29          *函数功能：PWM测试
+  30          *入口参数：void
+  31          *出口参数：void
+  32          *****************************************************/
+  33          void PWM_Test(void)
+  34          {
+  35   1              PWM_Init();
+  36   1              while(1)
+  37   1              {
+  38   2              }
+  39   1      }
+  40          /*****************************************************
+  41          *函数名称：void PWM_Init(void)
+  42          *函数功能：PWM初始化
+  43          *入口参数：void
+  44          *出口参数：void
+  45          *****************************************************/
+  46          void PWM_Init(void)
+  47          {
+  48   1              //设置了周期为100us，占空比为50%的PWM波形
+  49   1              PWMCON0 = 0x7F;    //周期设置低8位,100us
+  50   1          PWMCFG0 = 0x8C;    //7:开关  5-4：时钟源选择  3-0：周期设置高4位
+  51   1              PWMCON1 = 0x7F;    //周期设置低8位,200us
+  52   1          PWMCFG1 = 0x8C;    //7:开关  5-4：时钟源选择  3-0：周期设置高4位
+  53   1              
+  54   1              PWMRD_Temp = 0x8000 | 0x0640;  //PWM的占空比调节寄存只可写,所以可借用变量PWMRD_temp来读写占空比的值
+C51 COMPILER V9.55   PWM_INIT                                                              07/25/2019 10:20:04 PAGE 2   
+
+  55   1              
+  56   1              #if (IC_MODEL == SC92FW40)
+  57   1              PWMRD[0] = PWMRD_Temp;
+  58   1              PWMRD[39] = PWMRD_Temp;
+  59   1              #endif
+  60   1              
+  61   1              #if (IC_MODEL == SC92FW24 || IC_MODEL == SC92FW16)
+                      PWMRD_20_25[0] = PWMRD_Temp;
+                      PWMRD_40_43[0] = PWMRD_Temp;    
+                      #endif
+  65   1              
+  66   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     48    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      2    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

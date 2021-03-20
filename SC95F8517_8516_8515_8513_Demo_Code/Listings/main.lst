@@ -1,0 +1,97 @@
+C51 COMPILER V9.55   MAIN                                                                  11/29/2019 15:28:11 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE c\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ma
+                    -in.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "H/Function_Init.H"
+   2          
+   3          void Multiplier_Divider_Test(void);  
+   4          /**************************************************************
+   5          Àµ√˜£∫
+   6          1°¢Options for Target°ÆTarget1°Ø£∫BL51 Locate->Code Range:0x100£¨…’¬º—°œÓ«Î—°‘ÒDISRST£¨∏¥ŒªΩ≈◊˜Œ™∆’Õ®IO π”
+             -√£ª
+   7          2°¢∏ƒ±‰TESTµƒ∂®“Â£¨ø…“‘∑÷±≤‚ ‘∂‘”¶µƒπ¶ƒ‹£ª
+   8          3°¢◊¢“‚£∫œ»‘⁄Function.H¿Ô√Ê—°‘Ò≤‚ ‘–Õ∫≈
+   9          4°¢∞Ê±æ£∫V3.0
+  10          ***************************************************************/
+  11          #define Test  2    //BTM:0 EXTI:1 Timer:2 LCD_LED:3 PWM:4 Uart0:5 SSI0:6 SSI1:7 SSI2:8 ADC:9 IAP:10 Multip
+             -lier_Divider:11 CMP:12 CRC:13
+  12          
+  13          void main(void)
+  14          {
+  15   1              IO_Init();
+  16   1      //      WDTCON |= 0x10;             //«Âø¥√≈π∑
+  17   1              switch(Test)
+  18   1              {
+  19   2                      case 0: BTM_Test();
+  20   2                      break;
+  21   2                      case 1: EXTI_Test();
+  22   2                      break;
+  23   2                      case 2: Timer_Test();
+  24   2                      break;
+  25   2                      case 3: LCD_LED_Test();
+  26   2                      break;
+  27   2                      case 4: PWM_Test();
+  28   2                      break;
+  29   2                      case 5: Uart_Test();
+  30   2                      break;
+  31   2                      case 6: SSI0_Test();
+  32   2                      break;
+  33   2              case 7: SSI1_Test();
+  34   2                      break;
+  35   2              case 8: SSI2_Test();
+  36   2                      break;
+  37   2                      case 9: ADC_Test();
+  38   2                      break;
+  39   2                      case 10: IAP_Test(0x1FFF);   //∂‘µÿ÷∑0x1fffΩ¯––∂¡–¥≤‚ ‘
+  40   2                      break;
+  41   2                      case 11: Multiplier_Divider_Test();
+  42   2                      break;
+  43   2                      case 12: CMP_Test();
+  44   2                      break;
+  45   2              case 13: CRC_Test();
+  46   2                      break;
+  47   2                      default:
+  48   2                      break;
+  49   2              }
+  50   1      }
+  51          
+  52          void Multiplier_Divider_Test(void)
+C51 COMPILER V9.55   MAIN                                                                  11/29/2019 15:28:11 PAGE 2   
+
+  53          {
+  54   1              while(1)
+  55   1              {               
+  56   2                      //≥À≥˝∑®∆˜
+  57   2                      Multiplication(0x55AA, 0xAA55);  //≥À∑®º∆À„
+  58   2                      if(product == 0x38ff5572)   //≈–∂œª˝
+  59   2                      {
+  60   3                              P04 = 0;
+  61   3                      }
+  62   2                      
+  63   2                      Division(0xFFAA5500,0xAA55);    //≥˝∑®º∆À„
+  64   2                      if(quotient == 0x18040 && remainder == 0x3FC0)  //≈–∂œ…Ã∫Õ”‡ ˝
+  65   2                      {
+  66   3                              P04 = 1;
+  67   3                      }
+  68   2              }               
+  69   1      }       
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    197    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

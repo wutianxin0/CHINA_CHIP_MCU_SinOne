@@ -1,0 +1,119 @@
+C51 COMPILER V9.03   MASTER_8_1_R_N                                                        04/08/2016 10:48:30 PAGE 1   
+
+
+C51 COMPILER V9.03, COMPILATION OF MODULE MASTER_8_1_R_N
+OBJECT MODULE PLACED IN .\output\Master_8_1_r_n.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE c\Master_8_1_r_n.c BROWSE DEBUG OBJECTEXTEND PRINT(.\lst\Master_8_1_r_n.lst
+                    -) OBJECT(.\output\Master_8_1_r_n.obj)
+
+line level    source
+
+   1          //************************************************************
+   2          //  Copyright (c) 深圳市赛元微电子有限公司
+   3          //      文件名称        : master_8_1.c
+   4          //      作者            : 
+   5          //      模块功能        : SIF master 8+1读写通讯
+   6          //      局部函数列表:
+   7          //  最后更正日期:
+   8          //      版本            :
+   9          //      更改记录        :SIF master (单）多字节读，最后一个字节读完，发送NoAck,之后,进入stop
+  10          //*************************************************************
+  11          #include "H\SC91F831_C.H"
+  12          #include "H\Master_8_1.H"
+  13          
+  14          //============================
+  15          //静态局部变量定义
+  16          //============================
+  17          
+  18          static  unsigned char receive_dat_buff[3]={0x00,0x00,0x00};
+  19          
+  20          //============================
+  21          //模块内常量定义
+  22          //============================
+  23          #define SIF_RDat_Num                    3                       //读字节的个数
+  24          #define false                                   0
+  25          #define ture                                    1
+  26          
+  27          
+  28          //============================
+  29          //内部函数声明
+  30          //============================
+  31          
+  32          void Sif_Read_N_Byte(void);
+  33          void I2C_Usdelay(unsigned int delay);
+  34          
+  35          //******************************************************************
+  36          // 函数名       ：void I2C_Usdelay(unsigned int delay)
+  37          // 作者         ：
+  38          // 功能         ：通信延时函数
+  39          // 参数         ：无
+  40          // 返回值       ：无
+  41          // 调用全局变量：无
+  42          // 修改全局变量：无
+  43          // 备注         ：
+  44          //******************************************************************
+  45          void I2C_Usdelay(unsigned int delay)
+  46          {
+  47   1              while(delay)
+  48   1              {
+  49   2                      delay--;
+  50   2              }
+  51   1      }
+  52          //*************************************************************
+  53          // 函数名       ：void Sif_Read_N_Byte(void)
+  54          // 作者         ：
+C51 COMPILER V9.03   MASTER_8_1_R_N                                                        04/08/2016 10:48:30 PAGE 2   
+
+  55          // 功能         ：(单)多字节读
+  56          // 参数         ：无
+  57          // 返回值       ：0/1
+  58          // 调用全局变量：无
+  59          // 修改全局变量：无
+  60          // 备注         ：
+  61          //**************************************************************
+  62          void Sif_Read_N_Byte(void)
+  63          {
+  64   1              unsigned char i=0;
+  65   1              for(i=0;i<SIF_RDat_Num;i++)
+  66   1                      {
+  67   2      //先判断是否给应答位,该bit位作为通讯控制位使用
+  68   2                              if(i==(SIF_RDat_Num-1))                         //最后一个byte读取完成，发送NOACK
+  69   2                                      {
+  70   3                                              sif_noack();                            //不发送应答
+  71   3                                      }
+  72   2                              else
+  73   2                                      {
+  74   3                                              sif_ack();                                      //发送应答
+  75   3                                      }
+  76   2      //完成判断，接收数据后，可完成应答位控制                                        
+  77   2                              receive_dat_buff[i]=receive_byte();     //读取字节              
+  78   2                      }
+  79   1                send_stop();                          //发送stop命令
+  80   1                I2C_Usdelay(50);                      //方便资料准备
+  81   1                              
+  82   1      }
+  83          void main()
+  84          {
+  85   1              RSTCFG = 0x20;
+  86   1              sif_init();                                               //SIF初始化
+  87   1              for(;;)
+  88   1              {                       
+  89   2                      send_start();                           //SIF通讯start,写Nbyte，读Nbyte会用到
+  90   2                      Sif_Read_N_Byte();                      //读N byte数据
+  91   2                      
+  92   2              }
+  93   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     73    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

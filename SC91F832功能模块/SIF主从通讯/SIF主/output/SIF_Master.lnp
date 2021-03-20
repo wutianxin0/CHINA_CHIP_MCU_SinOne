@@ -1,0 +1,6 @@
+".\output\STARTUP.obj",
+".\output\Master_8_1.obj",
+".\output\Master_8_1_r_n.obj" 
+TO ".\output\SIF_Master" 
+PRINT(".\lst\SIF_Master.m51") RAMSIZE(256) 
+CODE( 0x100 )

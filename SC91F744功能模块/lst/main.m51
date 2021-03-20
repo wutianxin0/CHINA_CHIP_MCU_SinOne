@@ -1,0 +1,186 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/27/2017  10:54:52  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL\C51\BIN\BL51.EXE .\output\UART.obj TO .\output\main PRINT (.\lst\main.m51) RAMSIZE (256) CODE (0X100)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\UART.obj (UART)
+  D:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\output\main (UART)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?UART
+                    0009H     0017H                  *** GAP ***
+            BIT     0020H.0   0000H.2   UNIT         ?BI?UART
+                    0020H.2   0000H.6                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0020H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+                    0026H     00DAH                  *** GAP ***
+            CODE    0100H     008CH     UNIT         ?C_C51STARTUP
+            CODE    018CH     0048H     UNIT         ?PR?MAIN?UART
+            CODE    01D4H     0012H     UNIT         ?PR?INIT_UART_MODE1?UART
+            CODE    01E6H     000DH     UNIT         ?PR?UART?UART
+            CODE    01F3H     000CH     UNIT         ?PR?IOINIT?UART
+            CODE    01FFH     0003H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\output\main (UART)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?UART
+  +--> ?C_INITSEG
+
+?PR?MAIN?UART
+  +--> ?PR?IOINIT?UART
+  +--> ?PR?INIT_UART_MODE1?UART
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\main (UART)
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/27/2017  10:54:52  PAGE 2
+
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        UART
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:0085H         PUBLIC        P0CFG0
+  D:00A0H         PUBLIC        P2
+  B:00A8H.4       PUBLIC        EUART
+  D:0084H         PUBLIC        P0CFG1
+  D:0092H         PUBLIC        P1CFG0
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00D8H         PUBLIC        P5
+  B:00A8H.7       PUBLIC        EA
+  D:00C9H         PUBLIC        WDTCR
+  D:00F8H         PUBLIC        PWMCR
+  D:00A8H         PUBLIC        IE
+  C:01D4H         PUBLIC        init_uart_mode1
+  B:0020H.0       PUBLIC        RI_FLAG
+  D:00B8H         PUBLIC        IP
+  B:0098H.0       PUBLIC        RI
+  B:0020H.1       PUBLIC        flag
+  B:0098H.1       PUBLIC        TI
+  C:018CH         PUBLIC        main
+  D:009BH         PUBLIC        BAUDGH
+  D:009AH         PUBLIC        BAUDGL
+  D:0099H         PUBLIC        SBUF
+  B:0090H.1       PUBLIC        P11
+  B:0080H.2       PUBLIC        P02
+  B:0080H.3       PUBLIC        P03
+  B:0080H.4       PUBLIC        P04
+  D:0098H         PUBLIC        SCON
+  B:0080H.5       PUBLIC        P05
+  D:0088H         PUBLIC        TCON
+  C:01E6H         PUBLIC        uart
+  D:00F6H         PUBLIC        RSTCFG
+  C:01F3H         PUBLIC        IOinit
+  B:0098H.7       PUBLIC        SM0
+  B:0098H.4       PUBLIC        REN
+  D:0008H         PUBLIC        i
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          IOINIT
+  C:01F3H         LINE#         37
+  C:01F3H         LINE#         38
+  C:01F3H         LINE#         39
+  C:01F6H         LINE#         40
+  C:01F9H         LINE#         41
+  C:01FCH         LINE#         42
+  C:01FEH         LINE#         43
+  -------         ENDPROC       IOINIT
+  -------         PROC          INIT_UART_MODE1
+  C:01D4H         LINE#         44
+  C:01D4H         LINE#         45
+  C:01D4H         LINE#         46
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/27/2017  10:54:52  PAGE 3
+
+
+  C:01D6H         LINE#         47
+  C:01D8H         LINE#         48
+  C:01DAH         LINE#         49
+  C:01DCH         LINE#         50
+  C:01DFH         LINE#         51
+  C:01E2H         LINE#         52
+  C:01E5H         LINE#         53
+  -------         ENDPROC       INIT_UART_MODE1
+  -------         PROC          UART
+  C:01E6H         LINE#         54
+  C:01E6H         LINE#         56
+  C:01E9H         LINE#         57
+  C:01E9H         LINE#         58
+  C:01EBH         LINE#         59
+  C:01EBH         LINE#         60
+  C:01EEH         LINE#         61
+  C:01EEH         LINE#         62
+  C:01F0H         LINE#         63
+  C:01F2H         LINE#         64
+  C:01F2H         LINE#         65
+  -------         ENDPROC       UART
+  -------         PROC          MAIN
+  C:018CH         LINE#         66
+  C:018CH         LINE#         67
+  C:018CH         LINE#         68
+  C:018FH         LINE#         69
+  C:0192H         LINE#         70
+  C:0195H         LINE#         71
+  C:0198H         LINE#         72
+  C:0198H         LINE#         73
+  C:0198H         LINE#         74
+  C:019BH         LINE#         75
+  C:019EH         LINE#         76
+  C:019EH         LINE#         77
+  C:01A0H         LINE#         78
+  C:01A3H         LINE#         79
+  C:01B3H         LINE#         80
+  C:01B3H         LINE#         81
+  C:01B7H         LINE#         82
+  C:01BBH         LINE#         83
+  C:01BFH         LINE#         84
+  C:01C1H         LINE#         85
+  C:01C1H         LINE#         86
+  C:01C1H         LINE#         87
+  C:01C3H         LINE#         88
+  C:01C3H         LINE#         90
+  C:01C6H         LINE#         91
+  C:01C6H         LINE#         92
+  C:01C8H         LINE#         93
+  C:01CAH         LINE#         94
+  C:01CDH         LINE#         95
+  C:01D0H         LINE#         96
+  C:01D2H         LINE#         97
+  C:01D2H         LINE#         98
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        UART
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/27/2017  10:54:52  PAGE 4
+
+
+Program Size: data=10.2 xdata=0 code=264
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

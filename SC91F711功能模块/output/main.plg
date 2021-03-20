@@ -1,0 +1,44 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\cheny\Desktop\SOCMCU资料\程序功能模块\711\C文件\main.uvproj
+Project File Date:  05/15/2013
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling EX0_5.c...
+c\EX0_5.c(12): warning C318: can't open file 'h\sc91f722_C.h'
+c\EX0_5.c(25): error C202: 'EXIE': undefined identifier
+c\EX0_5.c(26): error C202: 'EXIP': undefined identifier
+c\EX0_5.c(27): error C202: 'INT4IT': undefined identifier
+c\EX0_5.c(70): error C202: 'RSTCFG': undefined identifier
+c\EX0_5.c(71): error C202: 'WDTCR': undefined identifier
+c\EX0_5.c(73): error C202: 'EA': undefined identifier
+c\EX0_5.c(76): error C202: 'WDTCR': undefined identifier
+Target not created
+Build target 'Target 1'
+compiling EX0_5.c...
+linking...
+Program Size: data=9.0 xdata=0 code=65
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling EX0_5.c...
+linking...
+Program Size: data=9.0 xdata=0 code=65
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling ADC.c...
+linking...
+Program Size: data=13.0 xdata=0 code=77
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling ADC.c...
+linking...
+Program Size: data=13.0 xdata=0 code=77
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).

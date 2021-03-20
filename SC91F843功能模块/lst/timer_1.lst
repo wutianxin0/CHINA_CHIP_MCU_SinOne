@@ -1,0 +1,99 @@
+C51 COMPILER V9.03   TIMER_1                                                               04/27/2017 10:02:39 PAGE 1   
+
+
+C51 COMPILER V9.03, COMPILATION OF MODULE TIMER_1
+OBJECT MODULE PLACED IN .\output\timer_1.obj
+COMPILER INVOKED BY: D:\keil\C51\BIN\C51.EXE c\timer_1.c BROWSE DEBUG OBJECTEXTEND PRINT(.\lst\timer_1.lst) OBJECT(.\out
+                    -put\timer_1.obj)
+
+line level    source
+
+   1          //************************************************************
+   2          //  Copyright (c) 深圳市赛元微电子有限公司
+   3          //      文件名称        : timer_1.c
+   4          //      作者            : 
+   5          //      模块功能        : timer0工作方式1(16位定时器)的使用
+   6          //      局部函数列表:
+   7          //  最后更正日期:
+   8          //      版本            :
+   9          //      更改记录        :rom前256byte禁止查表,因此在编译的时候，设置keil->option for Target->BL51 Locate->Code Range:
+             -0x100
+  10          //*************************************************************
+  11          
+  12          #include "h\sc91f843_C.h"
+  13          #define         tst             P30
+  14          //*************************************************************
+  15          // 函数名       ：void timer0init(void)
+  16          // 作者         ：
+  17          // 功能         ：Timer工作方式1，16位定时器初始化
+  18          // 参数         ：无
+  19          // 返回值       ：无
+  20          // 调用全局变量：无
+  21          // 修改全局变量：无
+  22          // 备注         ：装入初值,125us定时
+  23          //**************************************************************
+  24          void timer0init(void)
+  25          {       
+  26   1              TMCON=0x01;                                                     //选择时钟分频,Fosc/4=4Mhz;
+  27   1              TMOD=0x01;                                              //设置工作方式1
+  28   1              TH0=(65536-500)/256;                            //500*1/4M=125us
+  29   1              TL0=(65536-500)%256;
+  30   1              TR0=0;                                  
+  31   1              ET0=1;                                                          //Timer0使能
+  32   1              TR0=1;                                                          //启动Timer0
+  33   1      }
+  34          //*************************************************************
+  35          // 函数名       ：void timer0()interrupt 1
+  36          // 作者         ：
+  37          // 功能         ：Timer0中断
+  38          // 参数         ：无
+  39          // 返回值       ：无
+  40          // 调用全局变量：无
+  41          // 修改全局变量：无
+  42          // 备注         ：硬件自动清除中断标志,16位定时器,需再次加载初值
+  43          //**************************************************************
+  44          void timer0()interrupt 1
+  45          {
+  46   1              TH0=(65536-500)/256;                            //再次装入初值
+  47   1              TL0=(65536-500)%256;
+  48   1              tst =~tst;
+  49   1      }
+  50          //*************************************************************
+  51          // 函数名       ：void main()
+  52          // 作者         ：
+  53          // 功能         ：主函数
+C51 COMPILER V9.03   TIMER_1                                                               04/27/2017 10:02:39 PAGE 2   
+
+  54          // 参数         ：无
+  55          // 返回值       ：无
+  56          // 调用全局变量：无
+  57          // 修改全局变量：无
+  58          // 备注         ：
+  59          //**************************************************************
+  60          void main()
+  61          {
+  62   1              RSTCFG=0x2A;                            //RSTpin切换GPIO,lvr 选择3.5V复位
+  63   1              P3CFG0=0X00;
+  64   1              WDTCR = 0x90;                           //1--1 -- 00    开WDT,WDT清0,WDT 280ms溢出;烧录时，可Code Option选择ENWDT
+  65   1              timer0init();
+  66   1              EA=1;                                           //开总中断
+  67   1      
+  68   1              while(1)
+  69   1              {
+  70   2                      WDTCR = 0x90;                           //1--1 -- 00    开WDT,WDT清0,WDT 280ms溢出;烧录时，可Code Option选择ENWDT
+  71   2              }
+  72   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     47    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

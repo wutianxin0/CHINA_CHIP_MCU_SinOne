@@ -1,0 +1,119 @@
+C51 COMPILER V9.03   IO的设置                                                              05/04/2012 13:16:07 PAGE 1   
+
+
+C51 COMPILER V9.03, COMPILATION OF MODULE IO的设置
+OBJECT MODULE PLACED IN .\output\IO的设置.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE c\IO的设置.c BROWSE DEBUG OBJECTEXTEND PRINT(.\lst\IO的设置.lst) OBJECT(.\o
+                    -utput\IO的设置.obj)
+
+line level    source
+
+   1          //************************************************************
+   2          //  Copyright (c) 深圳市赛元微电子有限公司
+   3          //      文件名称        : IO_Set.c
+   4          //      作者            : 
+   5          //      模块功能        : IO常用设置
+   6          //      局部函数列表:
+   7          //  最后更正日期:
+   8          //      版本            :
+   9          //      更改记录        :72B rom前256byte禁止查表,因此在编译的时候，设置keil->option for Target->BL51 Locate->Code Ra
+             -nge:0x100
+  10          //*************************************************************
+  11          #include "h\sc91f72B_C.h"
+  12          
+  13          //============================
+  14          //模块内宏定义
+  15          //============================
+  16          #define         BS(SFR,NUM)             (SFR|=(1<<NUM))             //位置1
+  17          #define         BC(SFR,NUM)             (SFR&=~(1<<NUM))                  //位清0
+  18          //============================
+  19          //按键输入，使用准双向模式时，需要切换为准双向模式，并对该IO口写1,输出则选择强推挽模式
+  20          //============================
+  21          #define         SET(SFR,NUM)    (SFR = NUM)     
+  22          
+  23          //=========================P1 准双向IO设置=========================================//
+  24          #define         P10M                                    (BC(P1CFG0,0),BC(P1CFG0,1))                                                     //设置P10为准双向IO
+  25          #define         P11M                                    (BC(P1CFG0,2),BC(P1CFG0,3))                                                      //设置P11为准双向IO
+  26          #define         P12M                                    (BC(P1CFG0,4),BC(P1CFG0,5))                                                     //设置P12为准双向IO
+  27          #define         P13M                                    (BC(P1CFG0,6),BC(P1CFG0,7))                                                     //设置P13为准双向IO
+  28          #define         P14M                                    (BC(P1CFG1,0),BC(P1CFG1,1))                                                     //设置P14为准双向IO
+  29          #define         P15M                                    (BC(P1CFG1,2),BC(P1CFG1,3))                                                      //设置P15为准双向IO
+  30          #define         P16M                                    (BC(P1CFG1,4),BC(P1CFG1,5))                                                     //设置P16为准双向IO
+  31          #define         P17M                                    (BC(P1CFG1,6),BC(P1CFG1,7))                                                     //设置P17为准双向IO     
+  32          
+  33          //=========================P1 强推挽IO设置=========================================//
+  34          
+  35          #define         P10PM                                   (BS(P1CFG0,0),BC(P1CFG0,1))                                                     //设置P10为强推挽IO
+  36          #define         P11PM                                   (BS(P1CFG0,2),BC(P1CFG0,3))                                                      //设置P11为强推挽IO
+  37          #define         P12PM                                   (BS(P1CFG0,4),BC(P1CFG0,5))                                                     //设置P12为强推挽IO
+  38          #define         P13PM                                   (BS(P1CFG0,6),BC(P1CFG0,7))                                                     //设置P13为强推挽IO
+  39          #define         P14PM                                   (BS(P1CFG1,0),BC(P1CFG1,1))                                                     //设置P14为强推挽IO
+  40          #define         P15PM                                   (BS(P1CFG1,2),BC(P1CFG1,3))                                                      //设置P15为强推挽IO
+  41          #define         P16PM                                   (BS(P1CFG1,4),BC(P1CFG1,5))                                                     //设置P16为强推挽IO
+  42          #define         P17PM                                   (BS(P1CFG1,6),BC(P1CFG1,7))                                                     //设置P17为强推挽IO
+  43          
+  44          //=========================P1 高阻态(仅输入)IO设置=========================================//
+  45          
+  46          #define         P10IM                                   (BC(P1CFG0,0),BS(P1CFG0,1))                                                     //设置P10为高阻态IO
+  47          #define         P11IM                                   (BC(P1CFG0,2),BS(P1CFG0,3))                                                      //设置P11为高阻态IO
+  48          #define         P12IM                                   (BC(P1CFG0,4),BS(P1CFG0,5))                                                     //设置P12为高阻态IO
+  49          #define         P13IM                                   (BC(P1CFG0,6),BS(P1CFG0,7))                                                     //设置P13为高阻态IO
+  50          #define         P14IM                                   (BC(P1CFG1,0),BS(P1CFG1,1))                                                     //设置P14为高阻态IO
+  51          #define         P15IM                                   (BC(P1CFG1,2),BS(P1CFG1,3))                                                      //设置P15为高阻态IO
+  52          #define         P16IM                                   (BC(P1CFG1,4),BS(P1CFG1,5))                                                     //设置P16为高阻态IO
+  53          #define         P17IM                                   (BC(P1CFG1,6),BS(P1CFG1,7))                                                     //设置P17为高阻态IO
+C51 COMPILER V9.03   IO的设置                                                              05/04/2012 13:16:07 PAGE 2   
+
+  54          
+  55          //=========================P1 开漏输出IO设置=========================================//
+  56          
+  57          #define         P10OM                                   (BS(P1CFG0,0),BS(P1CFG0,1))                                                     //设置P10为开漏输出IO
+  58          #define         P11OM                                   (BS(P1CFG0,2),BS(P1CFG0,3))                                                      //设置P11为开漏输出IO
+  59          #define         P12OM                                   (BS(P1CFG0,4),BS(P1CFG0,5))                                                     //设置P12为开漏输出IO
+  60          #define         P13OM                                   (BS(P1CFG0,6),BS(P1CFG0,7))                                                     //设置P13为开漏输出IO
+  61          #define         P14OM                                   (BS(P1CFG1,0),BS(P1CFG1,1))                                                     //设置P14为开漏输出IO
+  62          #define         P15OM                                   (BS(P1CFG1,2),BS(P1CFG1,3))                                                      //设置P15为开漏输出IO
+  63          #define         P16OM                                   (BS(P1CFG1,4),BS(P1CFG1,5))                                                     //设置P16为开漏输出IO
+  64          #define         P17OM                                   (BS(P1CFG1,6),BS(P1CFG1,7))                                                     //设置P17为开漏输出IO
+  65          
+  66          //=========================P1 准双向IO设置输入=========================================//
+  67          #define         P10MI                                   (BC(P1CFG0,0),BC(P1CFG0,1),SET(P10,1))                          //设置P10为准双向IO输入
+  68          #define         P11MI                                   (BC(P1CFG0,2),BC(P1CFG0,3),SET(P11,1))                          //设置P11为准双向IO输入
+  69          #define         P12MI                                   (BC(P1CFG0,4),BC(P1CFG0,5),SET(P12,1))                          //设置P12为准双向IO输入
+  70          #define         P13MI                                   (BC(P1CFG0,6),BC(P1CFG0,7),SET(P13,1))                          //设置P13为准双向IO输入
+  71          #define         P14MI                                   (BC(P1CFG1,0),BC(P1CFG1,1),SET(P14,1))                          //设置P14为准双向IO输入
+  72          #define         P15MI                                   (BC(P1CFG1,2),BC(P1CFG1,3),SET(P15,1))                          //设置P15为准双向IO输入
+  73          #define         P16MI                                   (BC(P1CFG1,4),BC(P1CFG1,5),SET(P16,1))                          //设置P16为准双向IO输入
+  74          #define         P17MI                                   (BC(P1CFG1,6),BC(P1CFG1,7),SET(P17,1))                          //设置P17为准双向IO输入
+  75          //*************************************************************
+  76          // 函数名       ：void main()
+  77          // 作者         ：
+  78          // 功能         ：主函数
+  79          // 参数         ：无
+  80          // 返回值       ：无
+  81          // 调用全局变量：无
+  82          // 修改全局变量：无
+  83          // 备注         ：
+  84          //**************************************************************
+  85          void main()
+  86          {
+  87   1              RSTCFG=0x0b;                            //RSTpin切换GPIO,lvr 选择3.5V复位
+  88   1              WDTCR = 0x90;                           //1--1 -- 00    开WDT,WDT清0,WDT 524.288ms溢出;烧录时，可Code Option选择ENWDT
+  89   1              P17MI;                                     //按键输入
+  90   1              P17PM;                                     //显示输出
+  91   1              for(; ;);
+  92   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     22    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,4 @@
+".\output\EX0_6.obj" 
+TO ".\output\main" 
+PRINT(".\lst\main.m51") RAMSIZE(256) 
+CODE( 0x100 )

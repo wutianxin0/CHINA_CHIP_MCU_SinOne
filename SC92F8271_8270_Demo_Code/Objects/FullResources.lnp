@@ -1,0 +1,12 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\BTM.obj",
+".\Objects\EX_Init.obj",
+".\Objects\IAP_Init.obj",
+".\Objects\IO_Init.obj",
+".\Objects\Timer_Init.obj",
+".\Objects\PWM_Init.obj",
+".\Objects\SSI_Init.obj" 
+TO ".\Objects\FullResources" 
+PRINT(".\Listings\FullResources.m51") RAMSIZE(256) 
+CODE( 0x100 )

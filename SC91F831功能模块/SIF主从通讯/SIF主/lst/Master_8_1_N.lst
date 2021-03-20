@@ -1,0 +1,216 @@
+C51 COMPILER V9.01   MASTER_8_1_N                                                          05/21/2012 13:58:30 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MASTER_8_1_N
+OBJECT MODULE PLACED IN .\output\Master_8_1_N.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE c\Master_8_1_N.C BROWSE DEBUG OBJECTEXTEND PRINT(.\lst\Master_8_1_N.lst) OB
+                    -JECT(.\output\Master_8_1_N.obj)
+
+line level    source
+
+   1          //************************************************************
+   2          //  Copyright (c) 深圳市赛元微电子有限公司
+   3          //      文件名称        : master_8_1.c
+   4          //      作者            : 
+   5          //      模块功能        : SIF master 8+1读写通讯
+   6          //      局部函数列表:
+   7          //  最后更正日期:
+   8          //      版本            :
+   9          //      更改记录        :
+  10          //*************************************************************
+  11          #include "H\SC91F73_C.H"
+  12          #include "H\Master_8_1.H"
+  13          
+  14          //============================
+  15          //静态局部变量定义
+  16          //============================
+  17          
+  18          static  unsigned char send_dat_buff[3]={0x31,0x5a,0xa5};
+  19          static  unsigned char receive_dat_buff[3]={0x00,0x00,0x00};
+  20          
+  21          //============================
+  22          //模块内常量定义
+  23          //============================
+  24          #define SIF_WDat_Num                    3                       //写字节的个数
+  25          #define SIF_RDat_Num                    3                       //读字节的个数
+  26          #define false                                   0
+  27          #define ture                                    1
+  28          
+  29          
+  30          //============================
+  31          //内部函数声明
+  32          //============================
+  33          bit Sif_Write_N_Byte(void);
+  34          void Sif_Read_N_Byte(void);
+  35          bit Sif_Writ_Read_Byte(void);
+  36          bit Sif_Read_Writ_Byte(void);
+  37          void I2C_Usdelay(unsigned int delay);
+  38          
+  39          //******************************************************************
+  40          // 函数名       ：void I2C_Usdelay(unsigned int delay)
+  41          // 作者         ：
+  42          // 功能         ：通信延时函数
+  43          // 参数         ：无
+  44          // 返回值       ：无
+  45          // 调用全局变量：无
+  46          // 修改全局变量：无
+  47          // 备注         ：
+  48          //******************************************************************
+  49          void I2C_Usdelay(unsigned int delay)
+  50          {
+  51   1              while(delay)
+  52   1              {
+  53   2                      delay--;
+  54   2              }
+C51 COMPILER V9.01   MASTER_8_1_N                                                          05/21/2012 13:58:30 PAGE 2   
+
+  55   1      }
+  56          
+  57          //*************************************************************
+  58          // 函数名       ：void Sif_Write_N_Byte(void)
+  59          // 作者         ：
+  60          // 功能         ：(单）多字节写
+  61          // 参数         ：无
+  62          // 返回值       ：0/1
+  63          // 调用全局变量：无
+  64          // 修改全局变量：无
+  65          // 备注         ：
+  66          //**************************************************************
+  67          bit  Sif_Write_N_Byte(void)
+  68          {
+  69   1              unsigned char i;
+  70   1              for(i=0;i<SIF_WDat_Num;i++)
+  71   1                      {
+  72   2                              send_byte(send_dat_buff[i]); //发送字节
+  73   2                      
+  74   2                              if(!sif_waitack())                      //判断是否有响应,如果没有响应，进入Stop
+  75   2                                      {                                       
+  76   3                                              send_stop();
+  77   3                                              I2C_Usdelay(50);        //方便资料准备
+  78   3                                              return  (false);
+  79   3                                      }                                       
+  80   2                      }
+  81   1              
+  82   1               send_stop();                                           //发送停止信号
+  83   1               I2C_Usdelay(50);                                       //方便资料准备
+  84   1               return (ture);
+  85   1                              
+  86   1      }
+  87          
+  88          //*************************************************************
+  89          // 函数名       ：void Sif_Read_N_Byte(void)
+  90          // 作者         ：
+  91          // 功能         ：(单)多字节读
+  92          // 参数         ：无
+  93          // 返回值       ：0/1
+  94          // 调用全局变量：无
+  95          // 修改全局变量：无
+  96          // 备注         ：
+  97          //**************************************************************
+  98          void Sif_Read_N_Byte(void)
+  99          {
+ 100   1              unsigned char i=0;
+ 101   1              for(i=0;i<SIF_RDat_Num;i++)
+ 102   1                      {
+ 103   2      //先判断是否给应答位,该bit位作为通讯控制位使用
+ 104   2                              if(i==(SIF_RDat_Num-1))                         //最后一个byte读取完成，发送NOACK
+ 105   2                                      {
+ 106   3                                              sif_noack();                            //不发送应答
+ 107   3                                      }
+ 108   2                              else
+ 109   2                                      {
+ 110   3                                              sif_ack();                                      //发送应答
+ 111   3                                      }
+ 112   2      //完成判断，接收数据后，可完成应答位控制                                        
+ 113   2                              receive_dat_buff[i]=receive_byte();     //读取字节              
+ 114   2                      }
+ 115   1                send_stop();                          //发送stop命令
+ 116   1                I2C_Usdelay(50);                      //方便资料准备
+C51 COMPILER V9.01   MASTER_8_1_N                                                          05/21/2012 13:58:30 PAGE 3   
+
+ 117   1                              
+ 118   1      }
+ 119          //*************************************************************
+ 120          // 函数名       ：void Sif_Read_Writ_Byte(void))
+ 121          // 作者         ：
+ 122          // 功能         ：单字节读写连续操作：先写后读
+ 123          // 参数         ：无
+ 124          // 返回值       ：0/1
+ 125          // 调用全局变量：无
+ 126          // 修改全局变量：无
+ 127          // 备注         ：                
+ 128          //**************************************************************
+ 129          bit Sif_Writ_Read_Byte(void)
+ 130          {
+ 131   1              send_start();
+ 132   1              send_byte(send_dat_buff[0]);                    //发送1byte-> send_dat_buff[0]
+ 133   1              if(!sif_waitack())                                              //判断是否有响应,如果没有响应，进入Stop
+ 134   1                      {
+ 135   2                              send_stop();
+ 136   2                              I2C_Usdelay(50);                                //方便资料准备
+ 137   2                              return  (false);                        
+ 138   2                      }
+ 139   1               sif_noack();                                                   //设置寄存器，表明不发送应答
+ 140   1               receive_dat_buff[0]=receive_byte();    //读取1byte,字节存入receive_dat_buff[0]  
+ 141   1               send_stop();                                                   //发送停止信号
+ 142   1               return (ture);
+ 143   1      }
+ 144          
+ 145          //*************************************************************
+ 146          // 函数名       ：void Sif_Read_Writ_Byte(void))
+ 147          // 作者         ：
+ 148          // 功能         ：单字节读写连续操作：先读后写
+ 149          // 参数         ：无
+ 150          // 返回值       ：0/1
+ 151          // 调用全局变量：无
+ 152          // 修改全局变量：无
+ 153          // 备注         ：                
+ 154          //**************************************************************
+ 155          bit Sif_Read_Writ_Byte(void)
+ 156          {       
+ 157   1              send_start();
+ 158   1      
+ 159   1              sif_ack();                                                               //设置寄存器，表明发送应答
+ 160   1              receive_dat_buff[0]=receive_byte();             //读取1byte,字节存入receive_dat_buff[0]
+ 161   1      
+ 162   1              send_dat_buff[0]=receive_dat_buff[0];   //将读到的值赋给发送的值                                                        
+ 163   1              send_byte(send_dat_buff[0]);                    //发送1byte-> send_dat_buff[0]
+ 164   1              if(!sif_waitack())                                              //判断是否有响应,如果没有响应，进入Stop
+ 165   1                      {
+ 166   2                              send_stop();
+ 167   2                              I2C_Usdelay(50);                                //方便资料准备
+ 168   2                              return  (false);        
+ 169   2                      }
+ 170   1              send_stop();                                                    //发送停止信号
+ 171   1              return  (ture);          
+ 172   1      }
+ 173                                                                          
+ 174          void main()
+ 175          {
+ 176   1              RSTCFG = 0x0b;
+ 177   1              sif_init();                                             //SIF初始化
+ 178   1              for(;;)
+C51 COMPILER V9.01   MASTER_8_1_N                                                          05/21/2012 13:58:30 PAGE 4   
+
+ 179   1              {                       
+ 180   2                      send_start();                           //SIF通讯start,写Nbyte，读Nbyte会用到
+ 181   2                      Sif_Write_N_Byte();                     //写N byte数据
+ 182   2      //              Sif_Read_N_Byte();                      //读N byte数据
+ 183   2      //              Sif_Writ_Read_Byte();           //先写后读
+ 184   2      //              Sif_Read_Writ_Byte();           //先读后写              
+ 185   2              }
+ 186   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    191    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      6       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

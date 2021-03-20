@@ -1,0 +1,124 @@
+C51 COMPILER V9.55   PWM_INIT                                                              05/19/2020 14:42:11 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE PWM_INIT
+OBJECT MODULE PLACED IN .\Objects\PWM_Init.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE c\PWM_Init.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\PWM_Init.lst) OBJECT(.\Objects\PWM_Init.obj)
+
+line level    source
+
+   1          #include "H/Function_Init.H"
+   2          
+   3          #if (IC_MODEL == SC95F8523 || IC_MODEL == SC95F8522)
+              unsigned int xdata PWMRD0  _at_  0x1040;
+              unsigned int xdata PWMRD1  _at_  0x1042;
+              unsigned int xdata PWMRD2  _at_  0x1044;
+              unsigned int xdata PWMRD3  _at_  0x1046;
+              unsigned int xdata PWMRD4  _at_  0x1048;
+              unsigned int xdata PWMRD5  _at_  0x104A;
+              unsigned int xdata PWMRD6  _at_  0x104C;
+              unsigned int xdata PWMRD7  _at_  0x104E;
+              #endif
+  13          
+  14          #if (IC_MODEL == SC95F8521)
+              unsigned int xdata PWMRD0  _at_  0x1040;
+              unsigned int xdata PWMRD1  _at_  0x1042;
+              unsigned int xdata PWMRD4  _at_  0x1048;
+              unsigned int xdata PWMRD5  _at_  0x104A;
+              unsigned int xdata PWMRD6  _at_  0x104C;
+              #endif
+  21          
+  22          #if (IC_MODEL == SC95F8520S || IC_MODEL == SC95F8520M)
+  23          unsigned int xdata PWMRD4  _at_  0x1048;
+  24          #endif
+  25          
+  26          unsigned int xdata PWMRD_Temp;
+  27          void PWM_Init(void);
+  28          /*****************************************************
+  29          *函数名称：void PWM_Test(void)
+  30          *函数功能：PWM测试
+  31          *入口参数：void
+  32          *出口参数：void
+  33          *****************************************************/
+  34          void PWM_Test(void)
+  35          {
+  36   1              PWM_Init();
+  37   1              while(1)
+  38   1              {
+  39   2              }
+  40   1      }
+  41          
+  42          /*****************************************************
+  43          *函数名称：void PWM_Init(void)
+  44          *函数功能：PWM独立模式初始化
+  45          *入口参数：void
+  46          *出口参数：void
+  47          *****************************************************/
+  48          void PWM_Init(void)
+  49          {
+  50   1              //设置了周期为1ms，占空比为50%的PWM波形
+  51   1          PWMCON0 = 0x00;    //独立模式，边沿对齐，PWM时钟=fHRC
+  52   1              PWMCON1 = 0x10;    //使能PWM0波形输出
+  53   1          PWMCFG  = 0x00;    //PWM0输出不反向
+  54   1          PWMPDL  = 0xFF;    //周期低8位
+C51 COMPILER V9.55   PWM_INIT                                                              05/19/2020 14:42:11 PAGE 2   
+
+  55   1          PWMPDH  = 0x7C;    //周期高8位，周期：(0x7CFF+1)/32M=1ms
+  56   1              PWMRD4 = 0x3E80;   //开启PWM0口，设置占空比
+  57   1          PWMCON0 |= 0x80;   //使能PWM
+  58   1          PWMFLT = 0xA1;     //使能故障检测，立即模式，检测低电平，1uS滤波时间
+  59   1          IE1 |= 0x02;       //开启中断标志位
+  60   1          EA = 1;
+  61   1      }
+  62          
+  63          /*****************************************************
+  64          *函数名称：void PWM_Init(void)
+  65          *函数功能：PWM互补模式初始化
+  66          *入口参数：void
+  67          *出口参数：void
+  68          *****************************************************
+  69          void PWM_Init(void)
+  70          {
+  71                  //设置了周期为50us，占空比为50%的PWM波形
+  72              PWMCON0 = 0x00;    //独立模式，边沿对齐，PWM时钟=fHRC
+  73                  PWMCON1 = 0x03;    //使能PWM0/1波形输出
+  74              PWMCFG  = 0x02;    //PWM1输出反向
+  75              PWMPDL  = 0xFF;    //周期低8位
+  76              PWMPDH  = 0x7C;    //周期高8位，周期：(0x7CFF+1)/32M=1ms
+  77                  PWMRD0 = 0x3E80;   //开启PWM0口，设置占空比
+  78              PWMDFR = 0x88;     //设置上升沿死区时间：4*PWMDFR[3:0]/fHRC  设置下降沿死区时间：4*PWMDFR[7:4]/fHRC
+  79              PWMCON0 |= 0x80;   //使能PWM
+  80              IE1 |= 0x02;       //开启中断标志位
+  81              EA = 1;
+  82          }*/
+  83          
+  84          
+  85          /*****************************************************
+  86          *函数名称：void PWM_Interrup() interrupt 8
+  87          *函数功能：PWM中断服务函数
+  88          *入口参数：void
+  89          *出口参数：void
+  90          *****************************************************/
+  91          void PWM_Interrup() interrupt 8
+  92          {
+  93   1          if(PWMCON0 & 0x40)
+  94   1          {
+  95   2              PWMCFG &= ~0x40;  //清除中断标志位
+  96   2              P04 = ~P04;       
+  97   2          }
+  98   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     56    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      2    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

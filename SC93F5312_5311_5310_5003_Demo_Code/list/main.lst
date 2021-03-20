@@ -1,0 +1,70 @@
+C51 COMPILER V9.55   MAIN                                                                  11/19/2018 17:47:06 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\output\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE c\main.c OPTIMIZE(8,SPEED) BROWSE NOINTPROMOTE DEBUG OBJECTEXTEND PRINT(
+                    -.\list\main.lst) OBJECT(.\output\main.obj)
+
+line level    source
+
+   1          #include "H/Function_Init.H"
+   2          
+   3          /*************************************************************
+   4          ËµÃ÷£º
+   5          1¡¢Options for Target¡®Target1¡¯£ºBL51 Locate->Code Range:0x100£¬ÉÕÂ¼Ñ¡ÏîÇëÑ¡ÔñDISRST£¬¸´Î»½Å×÷ÎªÆÕÍ¨IOÊ¹Ó
+             -Ã£»
+   6          2¡¢¸Ä±äTestµÄ¶¨Òå£¬¿ÉÒÔ·Ö±ð²âÊÔ¶ÔÓ¦µÄ¹¦ÄÜ£
+   7          3¡¢×¢Òâ£ºÏÈÔÚFunction.HÀïÃæÑ¡Ôñ²âÊÔÐÍºÅ
+   8          ***************************************************************/
+   9          
+  10          #define  Test       8     // (0:BTM  1:EX  2:LCD 3:Timer  4:PWM  5:Uart0  6:SPI  7:ADC  8:IAP)
+  11          
+  12          void main(void)
+  13          {
+  14   1              IO_Init();
+  15   1              WDTCON |= 0x10;             //Çå¿´ÃÅ¹·
+  16   1              while(1)
+  17   1              {                       
+  18   2                      switch(Test)
+  19   2                      {
+  20   3                              case 0:  BTM_Test();
+  21   3                              break;
+  22   3                              case 1:  EX_Test();
+  23   3                              break;
+  24   3                              case 2:  LCD_Test();
+  25   3                              break;
+  26   3                              case 3:  Timer_Test();
+  27   3                              break;
+  28   3                              case 4:  PWM_Test();
+  29   3                              break;
+  30   3                              case 5:  Uart0_Test();
+  31   3                              break;
+  32   3                  case 6:  SPI_Test();
+  33   3                              break;
+  34   3                              case 7:  ADC_Test();
+  35   3                              break;
+  36   3                              case 8:  IAP_Test(0x1fff,IapROM);   //²Ù×÷ROM£¬¶ÔµØÖ·0x1fff½øÐÐ¶ÁÐ´²âÊÔ
+  37   3      //                           IAP_Test(0x7f,IapEPPROM);   //²Ù×÷EPPROM£¬¶ÔµØÖ·0x7f½øÐÐ¶ÁÐ´²âÊÔ
+  38   3                              break;
+  39   3                              default: 
+  40   3                              break;
+  41   3                      }
+  42   2              }
+  43   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    101    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+C51 COMPILER V9.55   MAIN                                                                  11/19/2018 17:47:06 PAGE 2   
+
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

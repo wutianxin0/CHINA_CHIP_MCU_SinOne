@@ -1,0 +1,1 @@
+"c\main.c" OPTIMIZE (8,SPEED) BROWSE NOINTPROMOTE DEBUG OBJECTEXTEND PRINT(.\list\main.lst) OBJECT(.\output\main.obj)

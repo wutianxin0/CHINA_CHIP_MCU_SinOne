@@ -1,0 +1,1 @@
+"c\ADC_Init.c" OPTIMIZE (8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ADC_Init.lst) OBJECT(.\Objects\ADC_Init.obj)

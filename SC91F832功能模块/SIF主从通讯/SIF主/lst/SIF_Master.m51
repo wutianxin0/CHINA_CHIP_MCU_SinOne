@@ -1,0 +1,289 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/16/2014  15:37:58  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE .\output\STARTUP.obj, .\output\Master_8_1.obj, .\output\Master_8_1_r_n.obj TO .\output\SIF_Mast
+>> er PRINT (.\lst\SIF_Master.m51) RAMSIZE (256) CODE (0X100)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\STARTUP.obj (?C_STARTUP)
+  .\output\Master_8_1.obj (MASTER_8_1)
+  .\output\Master_8_1_r_n.obj (MASTER_8_1_R_N)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\output\SIF_Master (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?MASTER_8_1_R_N
+            DATA    000BH     0001H     UNIT         _DATA_GROUP_
+            IDATA   000CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     00FDH                  *** GAP ***
+            CODE    0100H     008CH     UNIT         ?C_C51STARTUP
+            CODE    018CH     002FH     UNIT         ?PR?SIF_READ_N_BYTE?MASTER_8_1_R_N
+            CODE    01BBH     000EH     UNIT         ?PR?MAIN?MASTER_8_1_R_N
+            CODE    01C9H     000DH     UNIT         ?PR?SIF_INIT?MASTER_8_1
+            CODE    01D6H     000CH     UNIT         ?PR?_I2C_USDELAY?MASTER_8_1_R_N
+            CODE    01E2H     000BH     UNIT         ?PR?_SEND_BYTE?MASTER_8_1
+            CODE    01EDH     000BH     UNIT         ?PR?RECEIVE_BYTE?MASTER_8_1
+            CODE    01F8H     0009H     UNIT         ?PR?SEND_START?MASTER_8_1
+            CODE    0201H     0009H     UNIT         ?PR?SEND_STOP?MASTER_8_1
+            CODE    020AH     0006H     UNIT         ?C_INITSEG
+            CODE    0210H     0004H     UNIT         ?PR?SIF_WAITACK?MASTER_8_1
+            CODE    0214H     0004H     UNIT         ?PR?SIF_ACK?MASTER_8_1
+            CODE    0218H     0004H     UNIT         ?PR?SIF_NOACK?MASTER_8_1
+
+
+
+OVERLAY MAP OF MODULE:   .\output\SIF_Master (?C_STARTUP)
+
+
+SEGMENT                                      DATA_GROUP 
+  +--> CALLED SEGMENT                      START    LENGTH
+----------------------------------------------------------
+?C_C51STARTUP                              -----    -----
+  +--> ?PR?MAIN?MASTER_8_1_R_N
+  +--> ?C_INITSEG
+
+?PR?MAIN?MASTER_8_1_R_N                    -----    -----
+  +--> ?PR?SIF_INIT?MASTER_8_1
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/16/2014  15:37:58  PAGE 2
+
+
+  +--> ?PR?SEND_START?MASTER_8_1
+  +--> ?PR?SIF_READ_N_BYTE?MASTER_8_1_R_N
+
+?PR?SIF_READ_N_BYTE?MASTER_8_1_R_N         000BH    0001H
+  +--> ?PR?SIF_NOACK?MASTER_8_1
+  +--> ?PR?SIF_ACK?MASTER_8_1
+  +--> ?PR?RECEIVE_BYTE?MASTER_8_1
+  +--> ?PR?SEND_STOP?MASTER_8_1
+  +--> ?PR?_I2C_USDELAY?MASTER_8_1_R_N
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\SIF_Master (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0100H         SEGMENT       ?C_C51STARTUP
+  I:000CH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0103H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0100H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0100H         LINE#         133
+  C:0102H         LINE#         134
+  C:0103H         LINE#         135
+  C:0104H         LINE#         136
+  C:0106H         LINE#         185
+  C:0109H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MASTER_8_1
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:01EDH         PUBLIC        receive_byte
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/16/2014  15:37:58  PAGE 3
+
+
+  D:0091H         PUBLIC        P1CFG1
+  D:00C0H         PUBLIC        P4
+  B:00D8H.3       PUBLIC        STPIF
+  B:00D8H.0       PUBLIC        STRIF
+  D:00F8H         PUBLIC        PWMCR
+  C:0210H         PUBLIC        sif_waitack
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0218H         PUBLIC        sif_noack
+  D:00D4H         PUBLIC        SIFCFG
+  D:00E8H         PUBLIC        TKCR
+  D:0088H         PUBLIC        TCON
+  B:00D8H.1       PUBLIC        RXIF
+  B:00D8H.2       PUBLIC        TXIF
+  C:01F8H         PUBLIC        send_start
+  C:01E2H         PUBLIC        _send_byte
+  B:00D8H.7       PUBLIC        RTNACK
+  D:00D5H         PUBLIC        SIFCTL
+  D:00D8H         PUBLIC        SIFSTA
+  D:00D7H         PUBLIC        SIFRXD
+  C:0214H         PUBLIC        sif_ack
+  D:00D6H         PUBLIC        SIFTXD
+  C:0201H         PUBLIC        send_stop
+  C:01C9H         PUBLIC        sif_init
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          SIF_INIT
+  C:01C9H         LINE#         28
+  C:01C9H         LINE#         29
+  C:01C9H         LINE#         30
+  C:01CCH         LINE#         31
+  C:01CFH         LINE#         32
+  C:01D2H         LINE#         33
+  C:01D5H         LINE#         34
+  -------         ENDPROC       SIF_INIT
+  -------         PROC          SEND_START
+  C:01F8H         LINE#         46
+  C:01F8H         LINE#         47
+  C:01F8H         LINE#         48
+  C:01FBH         LINE#         49
+  C:01FEH         LINE#         50
+  C:0200H         LINE#         51
+  -------         ENDPROC       SEND_START
+  -------         PROC          SEND_STOP
+  C:0201H         LINE#         63
+  C:0201H         LINE#         64
+  C:0201H         LINE#         65
+  C:0204H         LINE#         66
+  C:0207H         LINE#         67
+  C:0209H         LINE#         68
+  -------         ENDPROC       SEND_STOP
+  -------         PROC          _SEND_BYTE
+  D:0007H         SYMBOL        sif_send_byte
+  C:01E2H         LINE#         80
+  C:01E2H         LINE#         81
+  C:01E2H         LINE#         82
+  C:01E4H         LINE#         83
+  C:01E7H         LINE#         84
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/16/2014  15:37:58  PAGE 4
+
+
+  C:01EAH         LINE#         85
+  C:01ECH         LINE#         86
+  -------         ENDPROC       _SEND_BYTE
+  -------         PROC          RECEIVE_BYTE
+  C:01EDH         LINE#         98
+  C:01EDH         LINE#         99
+  C:01EDH         LINE#         101
+  C:01F0H         LINE#         102
+  C:01F3H         LINE#         103
+  C:01F5H         LINE#         104
+  C:01F7H         LINE#         105
+  -------         ENDPROC       RECEIVE_BYTE
+  -------         PROC          SIF_WAITACK
+  C:0210H         LINE#         117
+  C:0210H         LINE#         118
+  C:0210H         LINE#         119
+  C:0213H         LINE#         120
+  -------         ENDPROC       SIF_WAITACK
+  -------         PROC          SIF_ACK
+  C:0214H         LINE#         132
+  C:0214H         LINE#         133
+  C:0214H         LINE#         134
+  C:0217H         LINE#         135
+  -------         ENDPROC       SIF_ACK
+  -------         PROC          SIF_NOACK
+  C:0218H         LINE#         147
+  C:0218H         LINE#         148
+  C:0218H         LINE#         149
+  C:021BH         LINE#         150
+  -------         ENDPROC       SIF_NOACK
+  -------         ENDMOD        MASTER_8_1
+
+  -------         MODULE        MASTER_8_1_R_N
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:0008H         SYMBOL        receive_dat_buff
+  D:00F8H         PUBLIC        PWMCR
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:01BBH         PUBLIC        main
+  C:018CH         PUBLIC        Sif_Read_N_Byte
+  D:00E8H         PUBLIC        TKCR
+  D:0088H         PUBLIC        TCON
+  D:00F6H         PUBLIC        RSTCFG
+  D:00D8H         PUBLIC        SIFSTA
+  C:01D6H         PUBLIC        _I2C_Usdelay
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _I2C_USDELAY
+  D:0006H         SYMBOL        delay
+  C:01D6H         LINE#         45
+  C:01D6H         LINE#         46
+  C:01D6H         LINE#         47
+  C:01DAH         LINE#         48
+  C:01DAH         LINE#         49
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/16/2014  15:37:58  PAGE 5
+
+
+  C:01DFH         LINE#         50
+  C:01E1H         LINE#         51
+  -------         ENDPROC       _I2C_USDELAY
+  -------         PROC          SIF_READ_N_BYTE
+  -------         DO            
+  D:000BH         SYMBOL        i
+  -------         ENDDO         
+  C:018CH         LINE#         62
+  C:018CH         LINE#         63
+  C:018CH         LINE#         64
+  C:018FH         LINE#         65
+  C:0191H         LINE#         66
+  C:0191H         LINE#         68
+  C:0196H         LINE#         69
+  C:0196H         LINE#         70
+  C:0199H         LINE#         71
+  C:019BH         LINE#         73
+  C:019BH         LINE#         74
+  C:019EH         LINE#         75
+  C:019EH         LINE#         77
+  C:01A8H         LINE#         78
+  C:01B1H         LINE#         79
+  C:01B4H         LINE#         80
+  -------         ENDPROC       SIF_READ_N_BYTE
+  -------         PROC          MAIN
+  C:01BBH         LINE#         83
+  C:01BBH         LINE#         84
+  C:01BBH         LINE#         85
+  C:01BEH         LINE#         86
+  C:01C1H         LINE#         87
+  C:01C1H         LINE#         88
+  C:01C1H         LINE#         89
+  C:01C4H         LINE#         90
+  C:01C7H         LINE#         92
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MASTER_8_1_R_N
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SEND_BYTE?MASTER_8_1
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SIF_WAITACK?MASTER_8_1
+
+Program Size: data=13.0 xdata=0 code=287
+LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)

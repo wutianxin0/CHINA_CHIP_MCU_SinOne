@@ -1,0 +1,59 @@
+C51 COMPILER V9.55   PWM_INIT                                                              07/25/2019 10:18:31 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE PWM_INIT
+OBJECT MODULE PLACED IN .\Objects\PWM_Init.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE c\PWM_Init.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\PWM_Init.lst) OBJECT(.\Objects\PWM_Init.obj)
+
+line level    source
+
+   1          #include "H/Function_Init.H"
+   2          
+   3          unsigned int xdata PWMRD_41  _at_  0x742;
+   4          unsigned int xdata PWMRD_42  _at_  0x744;
+   5          unsigned int xdata PWMRD_43  _at_  0x746;
+   6          
+   7          unsigned int xdata PWMRD_Temp;
+   8          void PWM_Init(void);
+   9          /*****************************************************
+  10          *函数名称：void PWM_Test(void)
+  11          *函数功能：PWM测试
+  12          *入口参数：void
+  13          *出口参数：void
+  14          *****************************************************/
+  15          void PWM_Test(void)
+  16          {
+  17   1              PWM_Init();
+  18   1              while(1)
+  19   1              {
+  20   2              }
+  21   1      }
+  22          /*****************************************************
+  23          *函数名称：void PWM_Init(void)
+  24          *函数功能：PWM初始化
+  25          *入口参数：void
+  26          *出口参数：void
+  27          *****************************************************/
+  28          void PWM_Init(void)
+  29          {
+  30   1              //设置了周期为200us，占空比为50%的PWM波形
+  31   1              PWMCON = 0x7F;           //周期设置低8位,200us
+  32   1          PWMCFG = 0x8C;           //7:开关  5-4：时钟源选择  3-0：周期设置高4位      
+  33   1              PWMRD_Temp = 0x8000 | 0x640;     //PWM的占空比调节寄存只可写,所以可借用变量PWMRD_temp来读写占空比的值
+  34   1              PWMRD_41 = PWMRD_Temp;
+  35   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     32    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      2    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

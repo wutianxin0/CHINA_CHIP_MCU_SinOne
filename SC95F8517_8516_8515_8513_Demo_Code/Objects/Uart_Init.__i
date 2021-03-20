@@ -1,0 +1,1 @@
+"c\Uart_Init.c" OPTIMIZE (8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\Uart_Init.lst) OBJECT(.\Objects\Uart_Init.obj)

@@ -1,0 +1,407 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Capri\Desktop\赛元程序功能模块\main.uvproj
+Project File Date:  04/21/2012
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling timer_1.c...
+linking...
+Program Size: data=9.0 xdata=0 code=57
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling timer_1.c...
+linking...
+Program Size: data=9.0 xdata=0 code=57
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling ADC.c...
+linking...
+Program Size: data=11.0 xdata=0 code=57
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling ADC.c...
+linking...
+Program Size: data=11.0 xdata=0 code=57
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling EX0_8.c...
+C\EX0_8.C(44): error C237: 'EX0': function already has a body
+C\EX0_8.C(47): error C237: 'EX0': function already has a body
+C\EX0_8.C(50): error C237: 'EX0': function already has a body
+C\EX0_8.C(53): error C237: 'EX0': function already has a body
+C\EX0_8.C(56): error C237: 'EX0': function already has a body
+C\EX0_8.C(59): error C237: 'EX0': function already has a body
+C\EX0_8.C(62): error C237: 'EX0': function already has a body
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling EX0_8.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?EX0_8INIT?EX0_8
+Program Size: data=9.0 xdata=0 code=67
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling EX0_8.c...
+linking...
+Program Size: data=9.0 xdata=0 code=70
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling EX0_8.c...
+linking...
+Program Size: data=9.0 xdata=0 code=70
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling IAP.C...
+C\IAP.C(34): error C202: 'IAPADL': undefined identifier
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling IAP.C...
+C\IAP.C(34): error C202: 'IAPADL': undefined identifier
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling IAP.C...
+C\IAP.C(37): warning C206: 'nop': missing function-prototype
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  NOP
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  RDAT
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  WDAT
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  ADDR
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  WDAT
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 018DH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ADDR
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 0190H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  NOP
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 0199H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  NOP
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 019CH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  NOP
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 019FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  NOP
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 01A2H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ADDR
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 01A7H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  RDAT
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 01B2H
+Program Size: data=11.0 xdata=0 code=202
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 13 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling IAP.C...
+C\IAP.C(37): warning C206: 'nop': missing function-prototype
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  NOP
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  RDAT
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  WDAT
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  ADDR
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  WDAT
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 018DH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ADDR
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 0190H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  NOP
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 0199H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  NOP
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 019CH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  NOP
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 019FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  NOP
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 01A2H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ADDR
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 01A7H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  RDAT
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 01B2H
+Program Size: data=11.0 xdata=0 code=202
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 13 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling IAP.C...
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  RDAT
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  WDAT
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  ADDR
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  WDAT
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 018DH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ADDR
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 0190H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ADDR
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 01A0H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  RDAT
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 01ABH
+Program Size: data=11.0 xdata=0 code=195
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 7 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling IAP.C...
+C\IAP.C(62): warning C209: '_IAPWrite': too few actual parameters
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  RDAT
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  ADDR
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ADDR
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 018FH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  RDAT
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 019AH
+Program Size: data=11.0 xdata=0 code=193
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 5 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling IAP.C...
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  RDAT
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  WDAT
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  ADDR
+    MODULE:  .\output\IAP.obj (IAP)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  WDAT
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 01A1H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ADDR
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 01A4H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ADDR
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 01B4H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  RDAT
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 01BFH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  WDAT
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 0193H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ADDR
+    MODULE:  .\output\IAP.obj (IAP)
+    ADDRESS: 0196H
+Program Size: data=11.0 xdata=0 code=201
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 9 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling IAP.C...
+linking...
+Program Size: data=14.0 xdata=0 code=201
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling IAP.C...
+linking...
+Program Size: data=14.0 xdata=0 code=195
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling IAP.C...
+linking...
+Program Size: data=14.0 xdata=0 code=195
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling IAP.C...
+linking...
+Program Size: data=14.0 xdata=0 code=195
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling IAP.C...
+linking...
+Program Size: data=14.0 xdata=0 code=195
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling IO的设置.c...
+linking...
+Program Size: data=9.0 xdata=0 code=23
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling IO的设置.c...
+linking...
+Program Size: data=9.0 xdata=0 code=23
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling PWM.C...
+C\PWM.C(49): warning C206: 'Timer0init': missing function-prototype
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?PWMINIT?PWM
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  TIMER0INIT
+    MODULE:  .\output\PWM.obj (PWM)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  TIMER0INIT
+    MODULE:  .\output\PWM.obj (PWM)
+    ADDRESS: 0117H
+Program Size: data=9.0 xdata=0 code=50
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 4 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling PWM.C...
+linking...
+Program Size: data=9.0 xdata=0 code=50
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling PWM.C...
+linking...
+Program Size: data=9.0 xdata=0 code=50
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling PWM.C...
+linking...
+Program Size: data=9.0 xdata=0 code=50
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling timer_1.c...
+linking...
+Program Size: data=9.0 xdata=0 code=57
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling timer_2.C...
+linking...
+Program Size: data=9.0 xdata=0 code=51
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling timer_2.C...
+linking...
+Program Size: data=9.0 xdata=0 code=51
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling timer_2.C...
+linking...
+Program Size: data=9.0 xdata=0 code=51
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  ?C_START
+    MODULE:  .\output\STARTUP.obj (?C_STARTUP)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ?C_START
+    MODULE:  .\output\STARTUP.obj (?C_STARTUP)
+    ADDRESS: 010AH
+Program Size: data=9.0 xdata=0 code=15
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 2 Warning(s).

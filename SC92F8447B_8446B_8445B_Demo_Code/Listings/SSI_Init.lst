@@ -1,0 +1,178 @@
+C51 COMPILER V9.55   SSI_INIT                                                              07/25/2019 10:28:55 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE SSI_INIT
+OBJECT MODULE PLACED IN .\Objects\SSI_Init.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE c\SSI_Init.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\SSI_Init.lst) OBJECT(.\Objects\SSI_Init.obj)
+
+line level    source
+
+   1          #include "H/Function_Init.H"
+   2          
+   3          //选择三合一模式：
+   4          #define  Uart1  0
+   5          #define  TWI    1
+   6          #define  SPI    2
+   7          
+   8          #define  SSI_Mode  Uart1
+   9          
+  10          void Uart1_Init(uint Freq,unsigned long int baud);
+  11          void TWI_Init(void);
+  12          void SPI_Init(void);
+  13          
+  14          bit Uart1SendFlag = 0;    //Uart发送中断标志位
+  15          bit Uart1ReceiveFlag = 0; //Uart接收中断标志位
+  16          bit SPIFlag = 0;         //SPI数据传输完成标志位
+  17          bit TWIFlag = 0;         //中断标志位
+  18          /*****************************************************
+  19          *函数名称：void SSI_Test(void)
+  20          *函数功能：SSI测试
+  21          *入口参数：void
+  22          *出口参数：void
+  23          *****************************************************/
+  24          void SSI_Test(void)
+  25          {
+  26   1      #if (SSI_Mode == Uart1)
+  27   1              Uart1_Init(16,9600);
+  28   1              while(1)
+  29   1              {
+  30   2                      SSDAT = 0xAA;
+  31   2                      while(!Uart1SendFlag);
+  32   2                      Uart1SendFlag = 0;
+  33   2              }
+  34   1      #endif
+  35   1              
+  36   1      #if (SSI_Mode == TWI)
+                      TWI_Init();
+                      while(1)
+                      {
+                      }
+              #endif
+  42   1      
+  43   1      #if (SSI_Mode == SPI)
+                      SPI_Init();
+                      while(1)
+                      {
+                              SSDAT = 0xAA;
+                              while(!SPIFlag);
+                              SPIFlag = 0;
+                      }
+              #endif  
+  52   1      }
+  53          /*****************************************************
+  54          *函数名称：void Uart1_Init(uint Freq,unsigned long int baud)
+C51 COMPILER V9.55   SSI_INIT                                                              07/25/2019 10:28:55 PAGE 2   
+
+  55          *函数功能：Uart1中断初始化
+  56          *入口参数：Freq-主频，baud-波特率
+  57          *出口参数：void
+  58          *****************************************************/
+  59          void Uart1_Init(uint Freq,unsigned long int baud)
+  60          {
+  61   1              P1CON &= 0xF5;   //TX/RX设置为输入带上拉
+  62   1              P1PH  |= 0x0A;
+  63   1              
+  64   1              OTCON |= 0xC0;    //串行接口SSI选择Uart1通信
+  65   1              SSCON0 = 0x50;   //设置通信方式为模式一，允许接收
+  66   1              SSCON1 = Freq*1000000/baud;   //波特率低位控制
+  67   1              SSCON2 = (Freq*1000000/baud)>>8;   //波特率高位控制
+  68   1              IE1 |= 0x01;      //开启SSI中断
+  69   1          EA = 1;     
+  70   1      }
+  71          
+  72          /*****************************************************
+  73          *函数名称：void TWI_Init(void)
+  74          *函数功能：TWI初始化
+  75          *入口参数：void
+  76          *出口参数：void
+  77          *****************************************************/
+  78          void TWI_Init(void)
+  79          {
+  80   1              OTCON |= 0x80;  //选择TWI模式
+  81   1              SSCON0 = 0x80;  // ---- x---  0为不允许接收，1为允许接收
+  82   1              SSCON1 = 0x01;  //xxxx xxxy  x为地址寄存器，y为0禁止/1允许通用地址响应
+  83   1              IE1 |= 0x01;
+  84   1              EA = 1;
+  85   1      }
+  86          
+  87          /*****************************************************
+  88          *函数名称：void SPI_Init(void)
+  89          *函数功能：SPI初始化
+  90          *入口参数：void
+  91          *出口参数：void
+  92          *****************************************************/
+  93          void SPI_Init(void)
+  94          {
+  95   1              OTCON |= 0X40;  //选择SPI模式
+  96   1              SSCON0 = 0x2F; //设置SPI为主设备，SCK空闲时间为低电平，SCK周期第二沿采集数据，时钟速率为Fsys/512
+  97   1              SSCON1 = 0x01;   //允许发送中断
+  98   1              SSCON0 |= 0x80; //开启SPI
+  99   1              IE1 |= 0x01;
+ 100   1              EA = 1;
+ 101   1      }
+ 102          
+ 103          
+ 104          /*****************************************************
+ 105          *函数名称：void TWI/SPI/UART1_Int() interrupt 7
+ 106          *函数功能：SSI中断函数
+ 107          *入口参数：void
+ 108          *出口参数：void
+ 109          *****************************************************/
+ 110          #if (SSI_Mode == Uart1)
+ 111          void Uart1_Int() interrupt 7   //Uart1中断函数
+ 112          {
+ 113   1              if(SSCON0&0x02)    //发送标志位判断
+ 114   1              {
+ 115   2                      SSCON0 &= 0xFD;
+ 116   2                      Uart1SendFlag = 1;
+C51 COMPILER V9.55   SSI_INIT                                                              07/25/2019 10:28:55 PAGE 3   
+
+ 117   2              }
+ 118   1              if((SSCON0&0x01))  //接收标志位判断
+ 119   1              {
+ 120   2                      SSCON0 &= 0xFE;
+ 121   2                      Uart1ReceiveFlag = 1;
+ 122   2              }       
+ 123   1      }
+ 124          #endif
+ 125          
+ 126          #if (SSI_Mode == TWI)
+              void TWI_Int() interrupt 7     //TWI中断函数
+              {
+                      if(SSCON0&0x40)
+                      {
+                              SSCON0 &= 0xbf;  //中断清零
+                              TWIFlag = 1;
+                      }       
+              }
+              #endif 
+ 136          
+ 137          #if (SSI_Mode == SPI)
+              void SpiInt(void) interrupt 7    //SPI中断函数
+              {         
+                      if(SSCON1&0X08)    //发送缓存器空标志判断
+                      {
+                              SSCON1 &= ~0X08;
+                      }
+                      if(SSCON1&0X80)    //数据传输标志位判断
+                      {
+                              SSCON1 &= ~0X80;
+                              SPIFlag = 1;
+                      }
+              }
+              #endif 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    172    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      4    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

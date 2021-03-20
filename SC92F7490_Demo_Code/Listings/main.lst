@@ -1,0 +1,59 @@
+C51 COMPILER V9.55   MAIN                                                                  07/25/2019 10:27:39 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE c\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ma
+                    -in.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "H/Function_Init.H"
+   2          
+   3          /**************************************************************
+   4          ËµÃ÷£º
+   5          1¡¢Options for Target¡®Target1¡¯£ºBL51 Locate->Code Range:0x100£¬ÉÕÂ¼Ñ¡ÏîÇëÑ¡ÔñDISRST£¬¸´Î»½Å×÷ÎªÆÕÍ¨IOÊ¹Ó
+             -Ã£»
+   6          2¡¢¸Ä±äTESTµÄ¶¨Òå£¬¿ÉÒÔ·Ö±ð²âÊÔ¶ÔÓ¦µÄ¹¦ÄÜ£»
+   7          ***************************************************************/
+   8          #define Test  8    //BTM:0 EXTI:1 Timer:2 SSI0:3 SSI1:4 ADC:5 IAP:6 
+   9          
+  10          void main(void)
+  11          {
+  12   1              IO_Init();
+  13   1              WDTCON |= 0x10;             //Çå¿´ÃÅ¹·
+  14   1              switch(Test)
+  15   1              {
+  16   2                      case 0: BTM_Test();
+  17   2                      break;
+  18   2                      case 1: EXTI_Test();
+  19   2                      break;
+  20   2                      case 2: Timer_Test();
+  21   2                      break;
+  22   2                      case 3: SSI0_Test();
+  23   2                      break;
+  24   2              case 4: SSI1_Test();
+  25   2                      break;
+  26   2                      case 5: ADC_Test();
+  27   2                      break;
+  28   2                      case 6: IAP_Test(0x1fff,IapROM);   //²Ù×÷ROM£¬¶ÔµØÖ·0x1fff½øÐÐ¶ÁÐ´²âÊÔ
+  29   2      //                      IAP_Test(0x7f,IapEPPROM);   //²Ù×÷EPPROM£¬¶ÔµØÖ·0x7f½øÐÐ¶ÁÐ´²âÊÔ
+  30   2                      break;
+  31   2                      default:
+  32   2                      break;
+  33   2              }
+  34   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     72    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

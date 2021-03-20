@@ -1,0 +1,115 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/03/2014  09:31:26  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE .\output\PWM.obj TO .\output\main PRINT (.\lst\main.m51) CODE (0X100)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\PWM.obj (PWM)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\output\main (PWM)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0028H                  *** GAP ***
+            CODE    002BH     0003H     ABSOLUTE     
+                    002EH     00D2H                  *** GAP ***
+            CODE    0100H     0012H     UNIT         ?PR?MAIN?PWM
+            CODE    0112H     0010H     UNIT         ?PR?PWMINIT?PWM
+            CODE    0122H     000CH     UNIT         ?C_C51STARTUP
+            CODE    012EH     0005H     UNIT         ?PR?PWM?PWM
+
+
+
+OVERLAY MAP OF MODULE:   .\output\main (PWM)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?PWM
+
+?PR?MAIN?PWM
+  +--> ?PR?PWMINIT?PWM
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\main (PWM)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        PWM
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/03/2014  09:31:26  PAGE 2
+
+
+  B:00F8H.6       PUBLIC        PWMIF
+  B:00A8H.7       PUBLIC        EA
+  D:00C1H         PUBLIC        WDTCR
+  D:00F8H         PUBLIC        PWMCR
+  D:00A8H         PUBLIC        IE
+  D:00FBH         PUBLIC        PWMDTY0
+  D:00FAH         PUBLIC        PWMDTY1
+  D:00B8H         PUBLIC        IP
+  C:0100H         PUBLIC        main
+  C:0112H         PUBLIC        PWMinit
+  B:00A0H.0       PUBLIC        P20
+  D:0088H         PUBLIC        TCON
+  B:00A8H.5       PUBLIC        EPWM
+  D:00FCH         PUBLIC        PWMCFG
+  D:00F6H         PUBLIC        RSTCFG
+  D:00F9H         PUBLIC        PWMPRD
+  C:012EH         PUBLIC        PWM
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          PWMINIT
+  C:0112H         LINE#         24
+  C:0112H         LINE#         25
+  C:0112H         LINE#         26
+  C:0115H         LINE#         27
+  C:0118H         LINE#         28
+  C:011BH         LINE#         29
+  C:011EH         LINE#         30
+  C:0121H         LINE#         31
+  -------         ENDPROC       PWMINIT
+  -------         PROC          PWM
+  C:012EH         LINE#         42
+  C:012EH         LINE#         44
+  C:0130H         LINE#         45
+  C:0132H         LINE#         46
+  -------         ENDPROC       PWM
+  -------         PROC          MAIN
+  C:0100H         LINE#         47
+  C:0100H         LINE#         48
+  C:0100H         LINE#         49
+  C:0103H         LINE#         50
+  C:0106H         LINE#         51
+  C:0109H         LINE#         52
+  C:010BH         LINE#         53
+  C:010DH         LINE#         54
+  C:010DH         LINE#         55
+  C:010DH         LINE#         56
+  C:0110H         LINE#         57
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        PWM
+
+Program Size: data=9.0 xdata=0 code=57
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

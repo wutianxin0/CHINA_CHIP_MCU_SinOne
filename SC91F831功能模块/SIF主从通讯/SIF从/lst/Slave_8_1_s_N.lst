@@ -1,0 +1,119 @@
+C51 COMPILER V9.03   SLAVE_8_1_S_N                                                         04/16/2014 15:28:44 PAGE 1   
+
+
+C51 COMPILER V9.03, COMPILATION OF MODULE SLAVE_8_1_S_N
+OBJECT MODULE PLACED IN .\output\Slave_8_1_s_N.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE c\Slave_8_1_s_N.C BROWSE DEBUG OBJECTEXTEND PRINT(.\lst\Slave_8_1_s_N.lst) 
+                    -OBJECT(.\output\Slave_8_1_s_N.obj)
+
+line level    source
+
+   1          //************************************************************
+   2          //  Copyright (c) 深圳市赛元微电子有限公司
+   3          //      文件名称        : slave_8_1.c
+   4          //      作者            : 
+   5          //      模块功能        : SIF slave 8+1多字节发送模块
+   6          //      局部函数列表:
+   7          //  最后更正日期:
+   8          //      版本            :
+   9          //      更改记录        : 从向主发送3Byte的数据，完成发送，切换接收模式，接收主的Stop信号.
+  10          //*************************************************************
+  11          #include "H\SC91F832_C.H"
+  12          
+  13          //============================
+  14          //模块内常量定义
+  15          //============================
+  16          #define         SIF_SLAVE_RECE_ACK              0x08            //SIF从8+1接收模式
+  17          #define         SIF_SLAVE_SEND_ACK              0x0a            //SIF从8+1发送模式
+  18          
+  19          #define         BS(SFR,NUM)             (SFR|=(1<<NUM))
+  20          #define         BC(SFR,NUM)             (SFR&=~(1<<NUM))
+  21          
+  22          #define         SIF_SET_RECE    (BC(SIFCFG,1))            //设置SIF接收状态
+  23          #define         SIF_SET_SEND    (BS(SIFCFG,1))            //设置SIF发送状态
+  24          
+  25          #define         Send_Date_Max                   3       
+  26          
+  27          //=====================================
+  28          //声明需要调用的全局变量
+  29          //=====================================
+  30          extern          unsigned char Sif_Send_dat_1 ;
+  31          extern          unsigned char Sif_Send_dat_2 ;
+  32          extern          unsigned char Sif_Send_dat_3 ;
+  33          
+  34          extern          unsigned char Send_Date_Cnt;     //发送数据标志 
+  35          //*************************************************************
+  36          // 函数名       ：void sif_init(void)
+  37          // 作者         ：
+  38          // 功能         ：sif初始化
+  39          // 参数         ：无
+  40          // 返回值       ：无
+  41          // 调用全局变量：无
+  42          // 修改全局变量：无
+  43          // 备注         ：
+  44          //**************************************************************
+  45          void sif_init(void)
+  46          {
+  47   1              P1CFG1 &= 0xF0;         //设置P11、P12状态为准双向模式
+  48   1              P1 |= 0x30;         //设置P11、P12输出高
+  49   1              SIFCFG = SIF_SLAVE_SEND_ACK;  //选择SIF从8+1发送模式
+  50   1              SIFCFG |= 0x80;         //打开SIF
+  51   1              ESIF = 1;                       //开SIF中断     
+  52   1      }
+  53          
+  54          //*************************************************************
+C51 COMPILER V9.03   SLAVE_8_1_S_N                                                         04/16/2014 15:28:44 PAGE 2   
+
+  55          // 函数名       ：void Sif_Slave_Int() interrupt 5
+  56          // 作者         ：
+  57          // 功能         ：SIF 从模式中断机制
+  58          // 参数         ：无
+  59          // 返回值       ：无
+  60          // 调用全局变量：无
+  61          // 修改全局变量：无
+  62          // 备注         ：
+  63          //**************************************************************
+  64          void Sif_Slave_Int() interrupt 4
+  65          {
+  66   1              if(STRIF==1)
+  67   1              {
+  68   2                      STRIF = 0;                                      //接收完成start,中断标志清0     
+  69   2                      SIFTXD = Sif_Send_dat_1;        //准备数据(1)
+  70   2                      SIF_SET_SEND;                           //slave切换为发送状态，发送N byte的数据
+  71   2              }
+  72   1              else if(TXIF==1)
+  73   1              {
+  74   2                      TXIF = 0;                                                               //数据发送完成,中断标志清0
+  75   2                      if(++Send_Date_Cnt>= Send_Date_Max)
+  76   2                              {
+  77   3                                      Send_Date_Cnt = 0 ;
+  78   3                              }
+  79   2                      if(Send_Date_Cnt==1)
+  80   2                              {SIFTXD = Sif_Send_dat_2;}              //准备数据(2)
+  81   2                      else if(Send_Date_Cnt==2)
+  82   2                              {SIFTXD = Sif_Send_dat_3;}              //准备数据(3)
+  83   2                      else
+  84   2                      {SIF_SET_RECE;}                               //数据发送完成，slave切换输入模式，准备接收stop   
+  85   2              }
+  86   1              else if(STPIF==1)
+  87   1              {
+  88   2                      STPIF=0;                                                  //接收完成stop,中断标志清0
+  89   2                      
+  90   2              }
+  91   1                      
+  92   1      }
+  93          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     84    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

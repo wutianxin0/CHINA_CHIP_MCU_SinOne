@@ -1,0 +1,4 @@
+".\output\32K.obj" 
+TO ".\output\main" 
+PRINT(".\lst\main.m51") RAMSIZE(256) 
+CODE( 0x100 )

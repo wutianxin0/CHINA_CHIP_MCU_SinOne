@@ -1,0 +1,228 @@
+C51 COMPILER V9.52.0.0   LCD_1_2                                                           09/15/2017 09:14:53 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE LCD_1_2
+OBJECT MODULE PLACED IN .\output\LCD_1_2.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE c\LCD_1_2.c OPTIMIZE(8,SPEED) BROWSE NOINTPROMOTE DEBUG OBJECTEXTEND PRI
+                    -NT(.\list\LCD_1_2.lst) TABS(2) OBJECT(.\output\LCD_1_2.obj)
+
+line level    source
+
+   1          //************************************************************
+   2          //  Copyright (c) 深圳市赛元微电子有限公司
+   3          //  文件名称  : LCD_1_2.C
+   4          //  作者    : 
+   5          //  模块功能  : 1/2bias LCD 驱动  1/4duty 83hz
+   6          //  局部函数列表:
+   7          //  最后更正日期: 2015/12/8
+   8          //  版本    : V1.0
+   9          //  更改记录  : 73X rom前256byte禁止查表,因此在编译的时候，
+  10          ////设置keil->option for Target->BL51 Locate->Code Range:0x100
+  11          //*************************************************************
+  12          #include "mydefine.h"
+  13          unsigned char Handle_com=0;
+  14          unsigned  int  LcdData[4][2]={0X0F0F,0X0F0F,0X0F0F,0X0F0F,0X0F0F,0X0F0F,0X0F0F,0X0F0F};
+  15          //*************************************************************
+  16          // 函数名 ：void ScanCom(void)
+  17          // 功能   ：LCD COM扫描
+  18          // 参数   ：无
+  19          // 返回值 ：无
+  20          // 备注   ：
+  21          //**************************************************************
+  22          void ScanCom(void)
+  23          {
+  24   1        switch(Handle_com)
+  25   1        {
+  26   2          case 0:     
+  27   2                  COM0SETVDD;
+  28   2                COM1SET1_2VDD;
+  29   2                COM2SET1_2VDD;
+  30   2                COM3SET1_2VDD;
+  31   2                COM4SET1_2VDD;            
+  32   2                  break;
+  33   2          case 1:
+  34   2                COM0SET1_2VDD;  
+  35   2                COM1SETVDD;       
+  36   2                COM2SET1_2VDD;
+  37   2                COM3SET1_2VDD;
+  38   2                COM4SET1_2VDD;
+  39   2                break;
+  40   2          case 2:     
+  41   2                COM0SET1_2VDD;
+  42   2                COM1SET1_2VDD;
+  43   2                COM2SETVDD;
+  44   2                COM3SET1_2VDD;
+  45   2                COM4SET1_2VDD;    
+  46   2                break;
+  47   2          case 3:
+  48   2                COM0SET1_2VDD;
+  49   2                COM1SET1_2VDD;
+  50   2                COM2SET1_2VDD;
+  51   2                COM3SETVDD;
+  52   2                COM4SET1_2VDD;
+  53   2                break;  
+  54   2          case 4:
+C51 COMPILER V9.52.0.0   LCD_1_2                                                           09/15/2017 09:14:53 PAGE 2   
+
+  55   2                  COM0SETGND;
+  56   2                COM1SET1_2VDD;
+  57   2                COM2SET1_2VDD;
+  58   2                COM3SET1_2VDD;
+  59   2                COM4SET1_2VDD;      
+  60   2                break;
+  61   2          case 5:
+  62   2                COM0SET1_2VDD;  
+  63   2                COM1SETGND;       
+  64   2                COM2SET1_2VDD;
+  65   2                COM3SET1_2VDD;
+  66   2                COM4SET1_2VDD;
+  67   2                break;
+  68   2          case 6:         
+  69   2                COM0SET1_2VDD;
+  70   2                COM1SET1_2VDD;
+  71   2                COM2SETGND;
+  72   2                COM3SET1_2VDD;    
+  73   2                break;
+  74   2          case 7:
+  75   2                COM0SET1_2VDD;
+  76   2                COM1SET1_2VDD;
+  77   2                COM2SET1_2VDD;
+  78   2                COM3SETGND;
+  79   2                COM4SET1_2VDD;  
+  80   2                break;
+  81   2      
+  82   2          default:
+  83   2              break;
+  84   2        }
+  85   1      }
+  86          //*************************************************************
+  87          // 函数名 ：void SEGSet(long int num)
+  88          // 功能   ：LCD SEG 扫描
+  89          // 参数   ：int num,int num1
+  90          // 返回值 ：无
+  91          // 备注   ：根据宏选择SEG个数，最大26SEG
+  92          //**************************************************************
+  93          void SEGSet(unsigned int num,unsigned int num1)
+  94          {
+  95   1        #ifdef  SEG1
+  96   1        (num&BIT0)?(BS(SEG1,SEG1LCDNUM)):(BC(SEG1,SEG1LCDNUM));
+  97   1        #endif
+  98   1        #ifdef  SEG2
+  99   1          (num&BIT1)?(BS(SEG2,SEG2LCDNUM)):(BC(SEG2,SEG2LCDNUM));
+ 100   1        #endif
+ 101   1        #ifdef  SEG3
+ 102   1        (num&BIT2)?(BS(SEG3,SEG3LCDNUM)):(BC(SEG3,SEG3LCDNUM));
+ 103   1        #endif
+ 104   1        #ifdef  SEG4
+ 105   1        (num&BIT3)?(BS(SEG4,SEG4LCDNUM)):(BC(SEG4,SEG4LCDNUM));
+ 106   1        #endif
+ 107   1        #ifdef  SEG5
+ 108   1        (num&BIT4)?(BS(SEG5,SEG5LCDNUM)):(BC(SEG5,SEG5LCDNUM));
+ 109   1        #endif
+ 110   1        #ifdef  SEG6
+ 111   1        (num&BIT5)?(BS(SEG6,SEG6LCDNUM)):(BC(SEG6,SEG6LCDNUM));
+ 112   1        #endif
+ 113   1        #ifdef  SEG7
+ 114   1        (num&BIT6)?(BS(SEG7,SEG7LCDNUM)):(BC(SEG7,SEG7LCDNUM));
+ 115   1        #endif
+ 116   1        #ifdef  SEG8
+C51 COMPILER V9.52.0.0   LCD_1_2                                                           09/15/2017 09:14:53 PAGE 3   
+
+ 117   1        (num&BIT7)?(BS(SEG8,SEG8LCDNUM)):(BC(SEG8,SEG8LCDNUM));
+ 118   1        #endif
+ 119   1        #ifdef  SEG9
+ 120   1        (num&BIT8)?(BS(SEG9,SEG9LCDNUM)):(BC(SEG9,SEG9LCDNUM));
+ 121   1        #endif
+ 122   1        #ifdef  SEG10
+ 123   1        (num&BIT9)?(BS(SEG10,SEG10LCDNUM)):(BC(SEG10,SEG10LCDNUM));
+ 124   1        #endif
+ 125   1      
+ 126   1        #ifdef  SEG11
+ 127   1        (num&BIT10)?(BS(SEG11,SEG11LCDNUM)):(BC(SEG11,SEG11LCDNUM));
+ 128   1        #endif
+ 129   1        #ifdef  SEG12
+ 130   1          (num&BIT11)?(BS(SEG12,SEG12LCDNUM)):(BC(SEG12,SEG12LCDNUM));
+ 131   1        #endif
+ 132   1        #ifdef  SEG13
+ 133   1        (num&BIT12)?(BS(SEG13,SEG13LCDNUM)):(BC(SEG13,SEG13LCDNUM));
+ 134   1        #endif
+ 135   1        #ifdef  SEG14
+ 136   1        (num&BIT13)?(BS(SEG14,SEG14LCDNUM)):(BC(SEG14,SEG14LCDNUM));
+ 137   1        #endif
+ 138   1        #ifdef  SEG15
+ 139   1        (num&BIT14)?(BS(SEG15,SEG15LCDNUM)):(BC(SEG15,SEG15LCDNUM));
+ 140   1        #endif
+ 141   1        #ifdef  SEG16
+ 142   1        (num&BIT15)?(BS(SEG16,SEG16LCDNUM)):(BC(SEG16,SEG16LCDNUM));
+ 143   1        #endif
+ 144   1        #ifdef  SEG17
+ 145   1        (num1&BIT0)?(BS(SEG17,SEG17LCDNUM)):(BC(SEG17,SEG17LCDNUM));
+ 146   1        #endif
+ 147   1        #ifdef  SEG18
+                (num1&BIT1)?(BS(SEG18,SEG18LCDNUM)):(BC(SEG18,SEG18LCDNUM));
+                #endif
+ 150   1        #ifdef  SEG19
+                (num1&BIT2)?(BS(SEG19,SEG19LCDNUM)):(BC(SEG19,SEG19LCDNUM));
+                #endif
+ 153   1        #ifdef  SEG20
+                (num1&BIT3)?(BS(SEG20,SEG20LCDNUM)):(BC(SEG20,SEG20LCDNUM));
+                #endif
+ 156   1        #ifdef  SEG21
+                (num1&BIT4)?(BS(SEG21,SEG21LCDNUM)):(BC(SEG21,SEG21LCDNUM));
+                #endif
+ 159   1        #ifdef  SEG22
+                  (num1&BIT5)?(BS(SEG22,SEG22LCDNUM)):(BC(SEG22,SEG22LCDNUM));
+                #endif
+ 162   1        #ifdef  SEG23
+                (num1&BIT6)?(BS(SEG23,SEG23LCDNUM)):(BC(SEG23,SEG23LCDNUM));
+                #endif
+ 165   1        #ifdef  SEG24
+                (num1&BIT7)?(BS(SEG24,SEG24LCDNUM)):(BC(SEG24,SEG24LCDNUM));
+                #endif
+ 168   1        #ifdef  SEG25
+                (num1&BIT8)?(BS(SEG25,SEG25LCDNUM)):(BC(SEG25,SEG25LCDNUM));
+                #endif
+ 171   1        #ifdef  SEG26
+                (num1&BIT9)?(BS(SEG26,SEG26LCDNUM)):(BC(SEG26,SEG26LCDNUM));
+                #endif  
+ 174   1      }
+ 175          //*************************************************************
+ 176          // 函数名 ：void LCD_Display(void)
+ 177          // 功能   ：LCD显示函数
+ 178          // 参数   ：无
+C51 COMPILER V9.52.0.0   LCD_1_2                                                           09/15/2017 09:14:53 PAGE 4   
+
+ 179          // 返回值 ：无
+ 180          // 备注   ：
+ 181          //**************************************************************
+ 182          void LCD_Display(void)
+ 183          {   
+ 184   1          if(++Handle_com >7)      
+ 185   1          {
+ 186   2            Handle_com=0;
+ 187   2          }
+ 188   1          ScanCom();                //调用子函数，扫描COM口   
+ 189   1          
+ 190   1            if(Handle_com<4)
+ 191   1          {
+ 192   2              SEGSet(~LcdData[Handle_com][0],~LcdData[Handle_com][1]); //正周期
+ 193   2          }
+ 194   1          else
+ 195   1          {
+ 196   2            SEGSet(LcdData[Handle_com-4][0],LcdData[Handle_com-4][1]); //负周期
+ 197   2          }
+ 198   1       }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    457    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     17    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

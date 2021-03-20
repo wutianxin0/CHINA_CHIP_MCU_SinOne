@@ -1,0 +1,203 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/16/2014  15:28:44  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE .\output\STARTUP.obj, .\output\main.obj, .\output\Slave_8_1_s_N.obj TO .\output\SIF_SLAVE PRINT
+>>  (.\lst\SIF_SLAVE.m51) RAMSIZE (256) CODE (0X100)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\STARTUP.obj (?C_STARTUP)
+  .\output\main.obj (MAIN)
+  .\output\Slave_8_1_s_N.obj (SLAVE_8_1_S_N)
+
+
+LINK MAP OF MODULE:  .\output\SIF_SLAVE (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000AH     UNIT         ?DT?MAIN
+            IDATA   0012H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0020H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+                    0026H     00DAH                  *** GAP ***
+            CODE    0100H     0045H     UNIT         ?PR?SIF_SLAVE_INT?SLAVE_8_1_S_N
+            CODE    0145H     000FH     UNIT         ?PR?SIF_INIT?SLAVE_8_1_S_N
+            CODE    0154H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0160H     000AH     UNIT         ?PR?MAIN?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\output\SIF_SLAVE (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?SIF_INIT?SLAVE_8_1_S_N
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\SIF_SLAVE (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0154H         SEGMENT       ?C_C51STARTUP
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/16/2014  15:28:44  PAGE 2
+
+
+  I:0012H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0157H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0154H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0154H         LINE#         133
+  C:0156H         LINE#         134
+  C:0157H         LINE#         135
+  C:0158H         LINE#         136
+  C:015AH         LINE#         185
+  C:015DH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  B:00A8H.7       PUBLIC        EA
+  D:00F8H         PUBLIC        PWMCR
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:0008H         PUBLIC        Sif_Rece_dat
+  C:0160H         PUBLIC        main
+  D:0009H         PUBLIC        Sif_Send_dat
+  D:00E8H         PUBLIC        TKCR
+  D:0088H         PUBLIC        TCON
+  D:000AH         PUBLIC        Sif_Send_dat_1
+  D:000BH         PUBLIC        Sif_Send_dat_2
+  D:000CH         PUBLIC        Sif_Send_dat_3
+  D:000DH         PUBLIC        Sif_Rec_dat_1
+  D:00F6H         PUBLIC        RSTCFG
+  D:000EH         PUBLIC        Sif_Rec_dat_2
+  D:00D8H         PUBLIC        SIFSTA
+  D:000FH         PUBLIC        Sif_Rec_dat_3
+  D:0010H         PUBLIC        Rece_Date_Cnt
+  D:0011H         PUBLIC        Send_Date_Cnt
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/16/2014  15:28:44  PAGE 3
+
+
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:0160H         LINE#         40
+  C:0160H         LINE#         41
+  C:0160H         LINE#         42
+  C:0163H         LINE#         43
+  C:0166H         LINE#         48
+  C:0168H         LINE#         49
+  C:0168H         LINE#         50
+  C:0168H         LINE#         52
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        SLAVE_8_1_S_N
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:0091H         PUBLIC        P1CFG1
+  D:00C0H         PUBLIC        P4
+  B:00D8H.3       PUBLIC        STPIF
+  B:00D8H.0       PUBLIC        STRIF
+  D:00F8H         PUBLIC        PWMCR
+  D:00A8H         PUBLIC        IE
+  C:0100H         PUBLIC        Sif_Slave_Int
+  D:00B8H         PUBLIC        IP
+  B:00A8H.4       PUBLIC        ESIF
+  D:00D4H         PUBLIC        SIFCFG
+  D:00E8H         PUBLIC        TKCR
+  D:0088H         PUBLIC        TCON
+  B:00D8H.2       PUBLIC        TXIF
+  D:00D8H         PUBLIC        SIFSTA
+  D:00D6H         PUBLIC        SIFTXD
+  C:0145H         PUBLIC        sif_init
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          SIF_INIT
+  C:0145H         LINE#         45
+  C:0145H         LINE#         46
+  C:0145H         LINE#         47
+  C:0148H         LINE#         48
+  C:014BH         LINE#         49
+  C:014EH         LINE#         50
+  C:0151H         LINE#         51
+  C:0153H         LINE#         52
+  -------         ENDPROC       SIF_INIT
+  -------         PROC          SIF_SLAVE_INT
+  C:0100H         LINE#         64
+  C:0104H         LINE#         66
+  C:0107H         LINE#         67
+  C:0107H         LINE#         68
+  C:0109H         LINE#         69
+  C:010CH         LINE#         70
+  C:010FH         LINE#         71
+  C:0111H         LINE#         72
+  C:0114H         LINE#         73
+  C:0114H         LINE#         74
+  C:0116H         LINE#         75
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/16/2014  15:28:44  PAGE 4
+
+
+  C:011FH         LINE#         76
+  C:011FH         LINE#         77
+  C:0122H         LINE#         78
+  C:0122H         LINE#         79
+  C:0127H         LINE#         80
+  C:012CH         LINE#         81
+  C:0131H         LINE#         82
+  C:0136H         LINE#         84
+  C:0139H         LINE#         85
+  C:013BH         LINE#         86
+  C:013EH         LINE#         87
+  C:013EH         LINE#         88
+  C:0140H         LINE#         90
+  C:0140H         LINE#         92
+  -------         ENDPROC       SIF_SLAVE_INT
+  -------         ENDMOD        SLAVE_8_1_S_N
+
+Program Size: data=19.0 xdata=0 code=112
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

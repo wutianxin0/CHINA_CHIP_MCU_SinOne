@@ -1,0 +1,117 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        05/15/2013  16:27:48  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL\C51\BIN\BL51.EXE .\output\timer_2.obj TO .\output\main PRINT (.\lst\main.m51) RAMSIZE (256) CODE (0X100)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\timer_2.obj (TIMER_2)
+  D:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\output\main (TIMER_2)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     00F2H                  *** GAP ***
+            CODE    0100H     0013H     UNIT         ?PR?TIMER1INIT?TIMER_2
+            CODE    0113H     0010H     UNIT         ?PR?MAIN?TIMER_2
+            CODE    0123H     000CH     UNIT         ?C_C51STARTUP
+            CODE    012FH     0003H     UNIT         ?PR?TIMER0?TIMER_2
+
+
+
+OVERLAY MAP OF MODULE:   .\output\main (TIMER_2)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TIMER_2
+
+?PR?MAIN?TIMER_2
+  +--> ?PR?TIMER1INIT?TIMER_2
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\main (TIMER_2)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TIMER_2
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:008EH         PUBLIC        TMCON
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/15/2013  16:27:48  PAGE 2
+
+
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  B:00A8H.7       PUBLIC        EA
+  D:00C9H         PUBLIC        WDTCR
+  D:00F8H         PUBLIC        PWMCR
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0113H         PUBLIC        main
+  C:012FH         PUBLIC        Timer0
+  D:0088H         PUBLIC        TCON
+  D:0089H         PUBLIC        TMOD
+  B:0090H.7       PUBLIC        P17
+  B:00A8H.1       PUBLIC        ET0
+  D:00F6H         PUBLIC        RSTCFG
+  D:00D8H         PUBLIC        SIFSTA
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  C:0100H         PUBLIC        Timer1init
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          TIMER1INIT
+  C:0100H         LINE#         24
+  C:0100H         LINE#         25
+  C:0100H         LINE#         26
+  C:0103H         LINE#         27
+  C:0106H         LINE#         28
+  C:0109H         LINE#         29
+  C:010CH         LINE#         30
+  C:010EH         LINE#         31
+  C:0110H         LINE#         32
+  C:0112H         LINE#         33
+  -------         ENDPROC       TIMER1INIT
+  -------         PROC          TIMER0
+  C:012FH         LINE#         44
+  C:012FH         LINE#         46
+  C:0131H         LINE#         47
+  -------         ENDPROC       TIMER0
+  -------         PROC          MAIN
+  C:0113H         LINE#         48
+  C:0113H         LINE#         49
+  C:0113H         LINE#         50
+  C:0116H         LINE#         51
+  C:0119H         LINE#         52
+  C:011CH         LINE#         53
+  C:011EH         LINE#         54
+  C:011EH         LINE#         55
+  C:011EH         LINE#         56
+  C:0121H         LINE#         57
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TIMER_2
+
+Program Size: data=9.0 xdata=0 code=56
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

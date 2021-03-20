@@ -1,0 +1,239 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/23/2012  18:17:10  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL\C51\BIN\BL51.EXE 73.obj TO 73 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  73.obj (73)
+  D:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  73 (73)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         _DATA_GROUP_
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     001DH     UNIT         ?PR?DELAY?73
+            CODE    0020H     0019H     UNIT         ?PR?READ?73
+            CODE    0039H     0019H     UNIT         ?PR?MAIN?73
+            CODE    0052H     0015H     UNIT         ?PR?_SEND?73
+            CODE    0067H     0013H     UNIT         ?PR?SLAVE_RESPOND?73
+            CODE    007AH     000FH     UNIT         ?PR?GPIO_INIT?73
+            CODE    0089H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0095H     0009H     UNIT         ?PR?START?73
+            CODE    009EH     0009H     UNIT         ?PR?STOP?73
+            CODE    00A7H     0009H     UNIT         ?PR?MASTER_RESPOND?73
+            CODE    00B0H     0005H     UNIT         ?PR?INIT?73
+
+
+
+OVERLAY MAP OF MODULE:   73 (73)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?73
+
+?PR?MAIN?73                    0008H    0001H
+  +--> ?PR?GPIO_INIT?73
+  +--> ?PR?INIT?73
+  +--> ?PR?START?73
+  +--> ?PR?_SEND?73
+  +--> ?PR?SLAVE_RESPOND?73
+  +--> ?PR?STOP?73
+
+?PR?SLAVE_RESPOND?73           0009H    0001H
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/23/2012  18:17:10  PAGE 2
+
+
+
+
+SYMBOL TABLE OF MODULE:  73 (73)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        73
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0067H         PUBLIC        slave_respond
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:0092H         PUBLIC        P1CFG0
+  D:00B0H         PUBLIC        P3
+  D:0091H         PUBLIC        P1CFG1
+  D:00C0H         PUBLIC        P4
+  D:00B2H         PUBLIC        P3CFG0
+  D:00B1H         PUBLIC        P3CFG1
+  D:00F8H         PUBLIC        PWMCR
+  D:00A8H         PUBLIC        IE
+  C:0003H         PUBLIC        delay
+  D:00B8H         PUBLIC        IP
+  B:00D0H.7       PUBLIC        CY
+  C:0020H         PUBLIC        read
+  C:0039H         PUBLIC        main
+  C:0052H         PUBLIC        _send
+  C:0095H         PUBLIC        start
+  B:0090H.4       PUBLIC        P14
+  D:0088H         PUBLIC        TCON
+  C:00B0H         PUBLIC        init
+  B:0090H.5       PUBLIC        P15
+  C:007AH         PUBLIC        GPIO_init
+  C:009EH         PUBLIC        stop
+  D:00F6H         PUBLIC        RSTCFG
+  D:00D8H         PUBLIC        SIFSTA
+  C:00A7H         PUBLIC        master_respond
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          GPIO_INIT
+  C:007AH         LINE#         5
+  C:007AH         LINE#         6
+  C:007AH         LINE#         7
+  C:007DH         LINE#         8
+  C:0080H         LINE#         9
+  C:0082H         LINE#         10
+  C:0085H         LINE#         11
+  C:0088H         LINE#         12
+  -------         ENDPROC       GPIO_INIT
+  -------         PROC          DELAY
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:0003H         LINE#         13
+  C:0003H         LINE#         14
+  C:0003H         LINE#         16
+  C:0006H         LINE#         17
+  C:001FH         LINE#         18
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/23/2012  18:17:10  PAGE 3
+
+
+  -------         ENDPROC       DELAY
+  -------         PROC          INIT
+  C:00B0H         LINE#         19
+  C:00B0H         LINE#         20
+  C:00B0H         LINE#         21
+  C:00B2H         LINE#         22
+  C:00B4H         LINE#         23
+  -------         ENDPROC       INIT
+  -------         PROC          START
+  C:0095H         LINE#         24
+  C:0095H         LINE#         25
+  C:0095H         LINE#         26
+  C:0097H         LINE#         27
+  C:0099H         LINE#         28
+  C:009BH         LINE#         29
+  C:009DH         LINE#         30
+  -------         ENDPROC       START
+  -------         PROC          _SEND
+  D:0007H         SYMBOL        Sdata
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0052H         LINE#         31
+  C:0052H         LINE#         32
+  C:0052H         LINE#         34
+  C:0054H         LINE#         35
+  C:0054H         LINE#         36
+  C:0058H         LINE#         37
+  C:005AH         LINE#         38
+  C:005CH         LINE#         39
+  C:005EH         LINE#         40
+  C:0062H         LINE#         41
+  C:0064H         LINE#         42
+  C:0066H         LINE#         43
+  -------         ENDPROC       _SEND
+  -------         PROC          READ
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0007H         SYMBOL        Rdata
+  -------         ENDDO         
+  C:0020H         LINE#         44
+  C:0020H         LINE#         45
+  C:0020H         LINE#         47
+  C:0022H         LINE#         48
+  C:0024H         LINE#         49
+  C:0024H         LINE#         50
+  C:0026H         LINE#         51
+  C:0030H         LINE#         52
+  C:0032H         LINE#         53
+  C:0036H         LINE#         54
+  C:0038H         LINE#         55
+  C:0038H         LINE#         56
+  -------         ENDPROC       READ
+  -------         PROC          STOP
+  C:009EH         LINE#         57
+  C:009EH         LINE#         58
+  C:009EH         LINE#         59
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/23/2012  18:17:10  PAGE 4
+
+
+  C:00A0H         LINE#         60
+  C:00A2H         LINE#         61
+  C:00A4H         LINE#         62
+  C:00A6H         LINE#         63
+  -------         ENDPROC       STOP
+  -------         PROC          MASTER_RESPOND
+  C:00A7H         LINE#         64
+  C:00A7H         LINE#         65
+  C:00A7H         LINE#         66
+  C:00A9H         LINE#         67
+  C:00ABH         LINE#         68
+  C:00ADH         LINE#         69
+  C:00AFH         LINE#         70
+  -------         ENDPROC       MASTER_RESPOND
+  -------         PROC          SLAVE_RESPOND
+  -------         DO            
+  D:0009H         SYMBOL        i
+  -------         ENDDO         
+  C:0067H         LINE#         71
+  C:0067H         LINE#         72
+  C:0067H         LINE#         74
+  C:0069H         LINE#         75
+  C:0077H         LINE#         76
+  C:0079H         LINE#         77
+  -------         ENDPROC       SLAVE_RESPOND
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        temp
+  -------         ENDDO         
+  C:0039H         LINE#         78
+  C:0039H         LINE#         79
+  C:0039H         LINE#         80
+  C:003CH         LINE#         81
+  C:003FH         LINE#         82
+  C:0042H         LINE#         83
+  C:0042H         LINE#         84
+  C:0042H         LINE#         85
+  C:0045H         LINE#         86
+  C:004AH         LINE#         87
+  C:004DH         LINE#         88
+  C:0050H         LINE#         104
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        73
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DELAY?73
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?READ?73
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?MASTER_RESPOND?73
+
+Program Size: data=11.0 xdata=0 code=181
+LINK/LOCATE RUN COMPLETE.  3 WARNING(S),  0 ERROR(S)

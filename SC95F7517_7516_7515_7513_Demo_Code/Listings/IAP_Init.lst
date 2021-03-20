@@ -1,0 +1,138 @@
+C51 COMPILER V9.55   IAP_INIT                                                              11/29/2019 15:34:30 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE IAP_INIT
+OBJECT MODULE PLACED IN .\Objects\IAP_Init.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE c\IAP_Init.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\IAP_Init.lst) OBJECT(.\Objects\IAP_Init.obj)
+
+line level    source
+
+   1          #include "H/Function_Init.H"
+   2          
+   3          unsigned char code *IapAddr = 0x00;
+   4          
+   5          void IAPWrite(uint Addr,uchar Value);
+   6          void IAPPageErase(uint Addr);
+   7          uchar IAPRead(uint Addr);
+   8          uchar IapReadData = 0x00;   //存放读取的IAP数据
+   9          
+  10          /*****************************************************
+  11          *函数名称：void IAP_Test(uchar Address)
+  12          *函数功能：IAP测试
+  13          *入口参数：Address
+  14          *出口参数：void
+  15          *****************************************************/
+  16          void IAP_Test(uint Address)
+  17          {
+  18   1          IAPPageErase(Address);   //页擦除
+  19   1              IAPWrite(Address,0xff);  //写数据
+  20   1              IapReadData = IAPRead(Address);
+  21   1              while(1)
+  22   1              {
+  23   2                      if(IapReadData == 0xff)
+  24   2                      {
+  25   3                              P02 = ~P02;
+  26   3                      }
+  27   2                      else
+  28   2                      {
+  29   3                              P03 = ~P03;
+  30   3                      }
+  31   2              }
+  32   1      }
+  33          
+  34          /*****************************************************
+  35          *函数名称：void IAPWrite(uchar Addr,uchar Value)
+  36          *函数功能：IAP写初始化
+  37          *入口参数：Addr,Value
+  38          *出口参数：void
+  39          *****************************************************/
+  40          //IAP写操作
+  41          void IAPWrite(uint Addr,uchar Value)
+  42          {       
+  43   1          bit temp = EA;
+  44   1              EA = 0;
+  45   1          IAPADE = 0x00;   
+  46   1              IAPDAT = Value;     //写入数据Data
+  47   1              IAPADH = (unsigned char)((Addr >> 8));   //写入地址的高8位
+  48   1              IAPADL = (unsigned char)Addr;            //写入地址的低8位
+  49   1              IAPKEY = 0xF0;          //IAP开启保护控制时间
+  50   1          IAPCTL = 0X10;      //执行“写入或快擦除操作命令”后，进入flash编程操作
+  51   1              IAPCTL |= 0x02;     //执行“写入或快擦除操作命令”
+  52   1              _nop_();
+  53   1              _nop_();
+  54   1              _nop_();
+C51 COMPILER V9.55   IAP_INIT                                                              11/29/2019 15:34:30 PAGE 2   
+
+  55   1              _nop_();
+  56   1              _nop_();
+  57   1              _nop_();
+  58   1              _nop_();
+  59   1              _nop_();
+  60   1              IAPADE = 0x00;      //MOVC指向ROM
+  61   1              EA = temp;
+  62   1      }
+  63          
+  64          /*****************************************************
+  65          *函数名称：void IAPPageErase(uint Addr)
+  66          *函数功能：IAP页擦除
+  67          *入口参数：Addr
+  68          *出口参数：void
+  69          *****************************************************/
+  70          void IAPPageErase(uint Addr)
+  71          {
+  72   1              bit temp = EA;
+  73   1              EA = 0;
+  74   1              IAPADE = 0x00;
+  75   1              
+  76   1              IAPADH = (unsigned char)((Addr >> 8)); //写入待擦除首地址高位
+  77   1          IAPADL = (unsigned char)Addr;          //写入待擦除首地址低位
+  78   1              
+  79   1              IAPKEY = 0XF0;
+  80   1              IAPCTL = 0X20;
+  81   1              IAPCTL |= 0X02;
+  82   1              _nop_();
+  83   1              _nop_();
+  84   1              _nop_();
+  85   1              _nop_();
+  86   1          _nop_();
+  87   1              _nop_();
+  88   1              _nop_();
+  89   1              _nop_();
+  90   1              IAPADE = 0x00;
+  91   1              EA = temp;              
+  92   1      }
+  93          
+  94          /*****************************************************
+  95          *函数名称：uchar IAPRead(uchar Addr)
+  96          *函数功能：IAP读初始化
+  97          *入口参数：Addr
+  98          *出口参数：ReadValue
+  99          *****************************************************/
+ 100          uchar IAPRead(uint Addr)
+ 101          {
+ 102   1              uchar ReadValue = 0x00;
+ 103   1          bit temp = EA;
+ 104   1              EA = 0;
+ 105   1              IAPADE = 0x00;
+ 106   1              ReadValue = *(IapAddr+Addr); //读取的数据
+ 107   1              IAPADE = 0x00;               //MOVC指向ROM
+ 108   1              EA = temp;
+ 109   1              return ReadValue;
+ 110   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    154    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.55   IAP_INIT                                                              11/29/2019 15:34:30 PAGE 3   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       3
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

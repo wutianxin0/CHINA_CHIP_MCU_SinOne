@@ -1,0 +1,6 @@
+".\output\STARTUP.obj",
+".\output\main.obj",
+".\output\Slave_8_1_s_N.obj" 
+TO ".\output\SIF_SLAVE" 
+PRINT(".\lst\SIF_SLAVE.m51") RAMSIZE(256) 
+CODE( 0x100 )

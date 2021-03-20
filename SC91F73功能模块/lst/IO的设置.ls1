@@ -1,0 +1,357 @@
+A51 MACRO ASSEMBLER  IO_ÄÉ_ÖÃ                                                             04/21/2012 16:12:34 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02
+NO OBJECT MODULE REQUESTED
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE .\output\IOµÄÉèÖÃ.src PR(.\lst\IOµÄÉèÖÃ.ls1) EP DEBUG
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; .\output\IOµÄÉèÖÃ.SRC generated from: c\IOµÄÉèÖÃ.c
+                       2     ; COMPILER INVOKED BY:
+                       3     ;        C:\Keil\C51\BIN\C51.EXE c\IOµÄÉèÖÃ.c BROWSE DEBUG OBJECTEXTEND PRINT(.\lst\IOµÄÉèÖ
+                             Ã.lst) SRC(.\output\IOµÄÉèÖÃ.SRC)
+                       4     
+                       5     $nomod51 
+                       6     
+                       7     NAME    IOµÄÉè_Ã
+*** ___________________________________^
+*** ____________________________________^
+*** _____________________________________^
+*** ______________________________________^
+*** ________________________________________^
+*** ERROR #A9 IN 7 (.\output\IOµÄÉèÖÃ.src, LINE 7): SYNTAX ERROR
+*** ERROR #A3 IN 7 (.\output\IOµÄÉèÖÃ.src, LINE 7): ILLEGAL CHARACTER
+*** ERROR #A3 IN 7 (.\output\IOµÄÉèÖÃ.src, LINE 7): ILLEGAL CHARACTER
+*** ERROR #A3 IN 7 (.\output\IOµÄÉèÖÃ.src, LINE 7): ILLEGAL CHARACTER
+*** ERROR #A3 IN 7 (.\output\IOµÄÉèÖÃ.src, LINE 7): ILLEGAL CHARACTER
+                       8     
+  0090                 9     P1      DATA    090H
+  00A0                10     P2      DATA    0A0H
+  008E                11     TMCON   DATA    08EH
+  0092                12     P1CFG0  DATA    092H
+  00B0                13     P3      DATA    0B0H
+  00D6                14     AC      BIT     0D0H.6
+  0091                15     P1CFG1  DATA    091H
+  00A2                16     P2CFG0  DATA    0A2H
+  00FE                17     PWMIF   BIT     0F8H.6
+  00B2                18     P3CFG0  DATA    0B2H
+  00AF                19     EA      BIT     0A8H.7
+  00C1                20     WDTCR   DATA    0C1H
+  00B1                21     P3CFG1  DATA    0B1H
+  00F8                22     ENPWM0O BIT     0F8H.0
+  00FF                23     ENPWM   BIT     0F8H.7
+  00FA                24     ENPWM1O BIT     0F8H.2
+  00F8                25     PWMCR   DATA    0F8H
+  00AE                26     EADC    BIT     0A8H.6
+  00A8                27     IE      DATA    0A8H
+  00BD                28     IPPWM   BIT     0B8H.5
+  00FB                29     PWMDTY0 DATA    0FBH
+  00FA                30     PWMDTY1 DATA    0FAH
+  00B8                31     IP      DATA    0B8H
+  00C4                32     ADCCFG  DATA    0C4H
+  00D7                33     CY      BIT     0D0H.7
+  00B9                34     IPT0    BIT     0B8H.1
+  00BB                35     IPT1    BIT     0B8H.3
+  0081                36     SP      DATA    081H
+  00D2                37     OV      BIT     0D0H.2
+  00B4                38     EXIE    DATA    0B4H
+  0090                39     P10     BIT     090H.0
+  0087                40     PCON    DATA    087H
+  00A0                41     P20     BIT     0A0H.0
+  0091                42     P11     BIT     090H.1
+  00B0                43     P30     BIT     0B0H.0
+  00A1                44     P21     BIT     0A0H.1
+  0092                45     P12     BIT     090H.2
+  00EC                46     IAPADR  DATA    0ECH
+  00B1                47     P31     BIT     0B0H.1
+A51 MACRO ASSEMBLER  IO_ÄÉ_ÖÃ                                                             04/21/2012 16:12:34 PAGE     2
+
+  0093                48     P13     BIT     090H.3
+  00B2                49     P32     BIT     0B0H.2
+  0094                50     P14     BIT     090H.4
+  00ED                51     IAPDAT  DATA    0EDH
+  0088                52     TCON    DATA    088H
+  0089                53     TMOD    DATA    089H
+  00B3                54     P33     BIT     0B0H.3
+  0095                55     P15     BIT     090H.5
+  00B4                56     P34     BIT     0B0H.4
+  0096                57     P16     BIT     090H.6
+  00B5                58     EXIP    DATA    0B5H
+  00B5                59     P35     BIT     0B0H.5
+  0097                60     P17     BIT     090H.7
+  00B6                61     P36     BIT     0B0H.6
+  00B7                62     P37     BIT     0B0H.7
+  00AD                63     EPWM    BIT     0A8H.5
+  0093                64     INT4IT  DATA    093H
+  00EE                65     IAPCTL  DATA    0EEH
+  00F0                66     B       DATA    0F0H
+  00EA                67     IAPKEY  DATA    0EAH
+  00FC                68     PWMCFG  DATA    0FCH
+  00E0                69     ACC     DATA    0E0H
+  00A9                70     ET0     BIT     0A8H.1
+  008D                71     TF0     BIT     088H.5
+  00AB                72     ET1     BIT     0A8H.3
+  008F                73     TF1     BIT     088H.7
+  00F6                74     RSTCFG  DATA    0F6H
+  00B6                75     P3ADC   DATA    0B6H
+  008C                76     TH0     DATA    08CH
+  008D                77     TH1     DATA    08DH
+  00D0                78     P       BIT     0D0H.0
+  008A                79     TL0     DATA    08AH
+  008B                80     TL1     DATA    08BH
+  00D3                81     RS0     BIT     0D0H.3
+  008C                82     TR0     BIT     088H.4
+  00D4                83     RS1     BIT     0D0H.4
+  008E                84     TR1     BIT     088H.6
+  00F9                85     DTY08   BIT     0F8H.1
+  00FB                86     DTY18   BIT     0F8H.3
+  00F9                87     PWMPRD  DATA    0F9H
+  0083                88     DPH     DATA    083H
+  00C5                89     ADCCR   DATA    0C5H
+  0082                90     DPL     DATA    082H
+  00BE                91     IPADC   BIT     0B8H.6
+  00C6                92     ADCVH   DATA    0C6H
+  00C7                93     ADCVL   DATA    0C7H
+  00D5                94     F0      BIT     0D0H.5
+  00D0                95     PSW     DATA    0D0H
+                      96     ?PR?main?IOµÄÉè_Ã    SEGMENT CODE 
+*** _________________________^
+*** ____________________________________^
+*** _____________________________________^
+*** ______________________________________^
+*** _______________________________________^
+*** ERROR #A9 IN 96 (.\output\IOµÄÉèÖÃ.src, LINE 96): SYNTAX ERROR
+*** ERROR #A3 IN 96 (.\output\IOµÄÉèÖÃ.src, LINE 96): ILLEGAL CHARACTER
+*** ERROR #A3 IN 96 (.\output\IOµÄÉèÖÃ.src, LINE 96): ILLEGAL CHARACTER
+*** ERROR #A3 IN 96 (.\output\IOµÄÉèÖÃ.src, LINE 96): ILLEGAL CHARACTER
+*** ERROR #A3 IN 96 (.\output\IOµÄÉèÖÃ.src, LINE 96): ILLEGAL CHARACTER
+*** MORE ERRORS DETECTED, NOT REPORTED                      97             EXTRN   CODE (?C_STARTUP)
+                      98             PUBLIC  main
+                      99     ; //************************************************************
+                     100     ; //  Copyright (c) ÉîÛÚÊÐÈüÔªÎ¢µç×ÓÓÐÏÞ¹«Ë¾
+                     101     ; //    ÎÄ¼þÃû³Æ        : IO_Set.c
+                     102     ; //    ×÷Õß            : 
+A51 MACRO ASSEMBLER  IO_ÄÉ_ÖÃ                                                             04/21/2012 16:12:34 PAGE     3
+
+                     103     ; //    Ä£¿é¹¦ÄÜ        : IO³£ÓÃÉèÖÃ
+                     104     ; //    ¾Ö²¿º¯ÊÁÐ±í:
+                     105     ; //  ×îºó¸üÕÈÕÆÚ:
+                     106     ; //    °æ±¾            :
+                     107     ; //    ¸ü¸Ä¼ÇÂ¼        :72B romÇ°256byte½ûÖ¹²é±í,Òò´ËÔÚ±àÒëµÄÊ±ºò£¬ÉèÖÃkeil->option for Target->BL51 Locate->Code Range:0x100
+                     108     ; //*************************************************************
+                     109     ; #include "h\sc91f72B_C.h"
+                     110     ; 
+                     111     ; //============================
+                     112     ; //Ä£¿éÄÚºê¶¨Òå
+                     113     ; //============================
+                     114     ; #define               BS(SFR,NUM)             (SFR|=(1<<NUM))             //Î»ÖÃ1
+                     115     ; #define               BC(SFR,NUM)             (SFR&=~(1<<NUM))                  //Î»Çå0
+                     116     ; //============================
+                     117     ; //°´¼üÊäÈë£¬Ê¹ÓÃ×¼Ë«ÏòÄ£Ê½Ê±£¬ÐèÒªÇÐ»»Îª×¼Ë«ÏòÄ£Ê½£¬²¢¶Ô¸ÃIO¿ÚÐ´1,Êä³öÔòÑ¡ÔñÇ¿ÍÆÍìÄ£Ê½
+                     118     ; //============================
+                     119     ; #define               SET(SFR,NUM)    (SFR = NUM)     
+                     120     ; 
+                     121     ; //=========================P1 ×¼Ë«ÏòIOÉèÖÃ=========================================//
+                     122     ; #define               P10M                                    (BC(P1CFG0,0),BC(P1CFG0,1))                                                     //ÉèÖÃP10Îª×¼Ë«ÏòIO
+                     123     ; #define               P11M                                    (BC(P1CFG0,2),BC(P1CFG0,3))                                                      //ÉèÖÃP11Îª×¼Ë«ÏòIO
+                     124     ; #define               P12M                                    (BC(P1CFG0,4),BC(P1CFG0,5))                                                     //ÉèÖÃP12Îª×¼Ë«ÏòIO
+                     125     ; #define               P13M                                    (BC(P1CFG0,6),BC(P1CFG0,7))                                                     //ÉèÖÃP13Îª×¼Ë«ÏòIO
+                     126     ; #define               P14M                                    (BC(P1CFG1,0),BC(P1CFG1,1))                                                     //ÉèÖÃP14Îª×¼Ë«ÏòIO
+                     127     ; #define               P15M                                    (BC(P1CFG1,2),BC(P1CFG1,3))                                                      //ÉèÖÃP15Îª×¼Ë«ÏòIO
+                     128     ; #define               P16M                                    (BC(P1CFG1,4),BC(P1CFG1,5))                                                     //ÉèÖÃP16Îª×¼Ë«ÏòIO
+                     129     ; #define               P17M                                    (BC(P1CFG1,6),BC(P1CFG1,7))                                                     //ÉèÖÃP17Îª×¼Ë«ÏòIO     
+                     130     ; 
+                     131     ; //=========================P1 Ç¿ÍÆÍìIOÉèÖÃ=========================================//
+                     132     ; 
+                     133     ; #define               P10PM                                   (BS(P1CFG0,0),BC(P1CFG0,1))                                                     //ÉèÖÃP10ÎªÇ¿ÍÆÍìIO
+                     134     ; #define               P11PM                                   (BS(P1CFG0,2),BC(P1CFG0,3))                                                      //ÉèÖÃP11ÎªÇ¿ÍÆÍìIO
+                     135     ; #define               P12PM                                   (BS(P1CFG0,4),BC(P1CFG0,5))                                                     //ÉèÖÃP12ÎªÇ¿ÍÆÍìIO
+                     136     ; #define               P13PM                                   (BS(P1CFG0,6),BC(P1CFG0,7))                                                     //ÉèÖÃP13ÎªÇ¿ÍÆÍìIO
+                     137     ; #define               P14PM                                   (BS(P1CFG1,0),BC(P1CFG1,1))                                                     //ÉèÖÃP14ÎªÇ¿ÍÆÍìIO
+                     138     ; #define               P15PM                                   (BS(P1CFG1,2),BC(P1CFG1,3))                                                      //ÉèÖÃP15ÎªÇ¿ÍÆÍìIO
+                     139     ; #define               P16PM                                   (BS(P1CFG1,4),BC(P1CFG1,5))                                                     //ÉèÖÃP16ÎªÇ¿ÍÆÍìIO
+                     140     ; #define               P17PM                                   (BS(P1CFG1,6),BC(P1CFG1,7))                                                     //ÉèÖÃP17ÎªÇ¿ÍÆÍìIO
+                     141     ; 
+                     142     ; //=========================P1 ¸ß×èÌ¬(½öÊäÈë)IOÉèÖÃ=========================================//
+                     143     ; 
+                     144     ; #define               P10IM                                   (BC(P1CFG0,0),BS(P1CFG0,1))                                                     //ÉèÖÃP10Îª¸ß×èÌ¬IO
+                     145     ; #define               P11IM                                   (BC(P1CFG0,2),BS(P1CFG0,3))                                                      //ÉèÖÃP11Îª¸ß×èÌ¬IO
+                     146     ; #define               P12IM                                   (BC(P1CFG0,4),BS(P1CFG0,5))                                                     //ÉèÖÃP12Îª¸ß×èÌ¬IO
+                     147     ; #define               P13IM                                   (BC(P1CFG0,6),BS(P1CFG0,7))                                                     //ÉèÖÃP13Îª¸ß×èÌ¬IO
+                     148     ; #define               P14IM                                   (BC(P1CFG1,0),BS(P1CFG1,1))                                                     //ÉèÖÃP14Îª¸ß×èÌ¬IO
+                     149     ; #define               P15IM                                   (BC(P1CFG1,2),BS(P1CFG1,3))                                                      //ÉèÖÃP15Îª¸ß×èÌ¬IO
+                     150     ; #define               P16IM                                   (BC(P1CFG1,4),BS(P1CFG1,5))                                                     //ÉèÖÃP16Îª¸ß×èÌ¬IO
+                     151     ; #define               P17IM                                   (BC(P1CFG1,6),BS(P1CFG1,7))                                                     //ÉèÖÃP17Îª¸ß×èÌ¬IO
+                     152     ; 
+                     153     ; //=========================P1 ¿ªÂ©Êä³öIOÉèÖÃ=========================================//
+                     154     ; 
+                     155     ; #define               P10OM                                   (BS(P1CFG0,0),BS(P1CFG0,1))                                                     //ÉèÖÃP10Îª¿ªÂ©Êä³öIO
+                     156     ; #define               P11OM                                   (BS(P1CFG0,2),BS(P1CFG0,3))                                                      //ÉèÖÃP11Îª¿ªÂ©Êä³öIO
+                     157     ; #define               P12OM                                   (BS(P1CFG0,4),BS(P1CFG0,5))                                                     //ÉèÖÃP12Îª¿ªÂ©Êä³öIO
+                     158     ; #define               P13OM                                   (BS(P1CFG0,6),BS(P1CFG0,7))                                                     //ÉèÖÃP13Îª¿ªÂ©Êä³öIO
+                     159     ; #define               P14OM                                   (BS(P1CFG1,0),BS(P1CFG1,1))                                                     //ÉèÖÃP14Îª¿ªÂ©Êä³öIO
+                     160     ; #define               P15OM                                   (BS(P1CFG1,2),BS(P1CFG1,3))                                                      //ÉèÖÃP15Îª¿ªÂ©Êä³öIO
+                     161     ; #define               P16OM                                   (BS(P1CFG1,4),BS(P1CFG1,5))                                                     //ÉèÖÃP16Îª¿ªÂ©Êä³öIO
+                     162     ; #define               P17OM                                   (BS(P1CFG1,6),BS(P1CFG1,7))                                                     //ÉèÖÃP17Îª¿ªÂ©Êä³öIO
+                     163     ; 
+                     164     ; //=========================P1 ×¼Ë«ÏòIOÉèÖÃÊäÈë=========================================//
+                     165     ; #define               P10MI                                   (BC(P1CFG0,0),BC(P1CFG0,1),SET(P10,1))                          //ÉèÖÃP10Îª×¼Ë«ÏòIOÊäÈë
+                     166     ; #define               P11MI                                   (BC(P1CFG0,2),BC(P1CFG0,3),SET(P11,1))                          //ÉèÖÃP11Îª×¼Ë«ÏòIOÊäÈë
+                     167     ; #define               P12MI                                   (BC(P1CFG0,4),BC(P1CFG0,5),SET(P12,1))                          //ÉèÖÃP12Îª×¼Ë«ÏòIOÊäÈë
+                     168     ; #define               P13MI                                   (BC(P1CFG0,6),BC(P1CFG0,7),SET(P13,1))                          //ÉèÖÃP13Îª×¼Ë«ÏòIOÊäÈë
+A51 MACRO ASSEMBLER  IO_ÄÉ_ÖÃ                                                             04/21/2012 16:12:34 PAGE     4
+
+                     169     ; #define               P14MI                                   (BC(P1CFG1,0),BC(P1CFG1,1),SET(P14,1))                          //ÉèÖÃP14Îª×¼Ë«ÏòIOÊäÈë
+                     170     ; #define               P15MI                                   (BC(P1CFG1,2),BC(P1CFG1,3),SET(P15,1))                          //ÉèÖÃP15Îª×¼Ë«ÏòIOÊäÈë
+                     171     ; #define               P16MI                                   (BC(P1CFG1,4),BC(P1CFG1,5),SET(P16,1))                          //ÉèÖÃP16Îª×¼Ë«ÏòIOÊäÈë
+                     172     ; #define               P17MI                                   (BC(P1CFG1,6),BC(P1CFG1,7),SET(P17,1))                          //ÉèÖÃP17Îª×¼Ë«ÏòIOÊäÈë
+                     173     ; //*************************************************************
+                     174     ; // º¯ÊÃû      £ºvoid main()
+                     175     ; // ×÷Õß               £º
+                     176     ; // ¹¦ÄÜ               £ºÖ÷º¯Ê
+                     177     ; // ²ÎÊ                £ºÎÞ
+                     178     ; // ·µ»ØÖµ     £ºÎÞ
+                     179     ; // µ÷ÓÃÈ«¾Ö±äÁ¿£ºÎÞ
+                     180     ; // ÐÞ¸ÄÈ«¾Ö±äÁ¿£ºÎÞ
+                     181     ; // ±¸×¢               £º
+                     182     ; //**************************************************************
+                     183     ; void main()
+                     184     
+----                 185             RSEG  ?PR?main?IOµÄÉè_Ã
+*** _______________________________________^
+*** __________________________________________________^
+*** ___________________________________________________^
+*** ____________________________________________________^
+*** _____________________________________________________^
+*** ERROR #A30 IN 185 (.\output\IOµÄÉèÖÃ.src, LINE 185): SEGMENT SYMBOL EXPECTED
+*** ERROR #A3 IN 185 (.\output\IOµÄÉèÖÃ.src, LINE 185): ILLEGAL CHARACTER
+*** ERROR #A3 IN 185 (.\output\IOµÄÉèÖÃ.src, LINE 185): ILLEGAL CHARACTER
+*** ERROR #A3 IN 185 (.\output\IOµÄÉèÖÃ.src, LINE 185): ILLEGAL CHARACTER
+*** ERROR #A3 IN 185 (.\output\IOµÄÉèÖÃ.src, LINE 185): ILLEGAL CHARACTER
+*** MORE ERRORS DETECTED, NOT REPORTED0000                 186     main:
+                     187                             ; SOURCE LINE # 85
+                     188     ; {
+                     189                             ; SOURCE LINE # 86
+                     190     ;       RSTCFG=0x0b;                            //RSTpinÇÐ»»GPIO,lvr Ñ¡Ôñ3.5V¸´Î»
+                     191                             ; SOURCE LINE # 87
+0000 75F60B          192             MOV     RSTCFG,#0BH
+                     193     ;       WDTCR = 0x90;                           //1--1 -- 00    ¿ªWDT,WDTÇå0,WDT 524.288msÒç³ö;ÉÕÂ¼Ê±£¬¿ÉCode OptionÑ¡ÔñENWDT
+                     194                             ; SOURCE LINE # 88
+0003 75C190          195             MOV     WDTCR,#090H
+                     196     ;       for(; ;);
+                     197                             ; SOURCE LINE # 89
+0006                 198     ?C0001:
+0006 80FE            199             SJMP    ?C0001
+                     200     ; END OF main
+                     201     
+                     202             END
+A51 MACRO ASSEMBLER  IO_ÄÉ_ÖÃ                                                             04/21/2012 16:12:34 PAGE     5
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+?C0001 . . . . . .  C ADDR   0006H   A   
+?C_STARTUP . . . .  C ADDR   -----       EXT
+?PR?MAIN?IO. . . .    ----   -----       
+AC . . . . . . . .  B ADDR   00D0H.6 A   
+ACC. . . . . . . .  D ADDR   00E0H   A   
+ADCCFG . . . . . .  D ADDR   00C4H   A   
+ADCCR. . . . . . .  D ADDR   00C5H   A   
+ADCVH. . . . . . .  D ADDR   00C6H   A   
+ADCVL. . . . . . .  D ADDR   00C7H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+CY . . . . . . . .  B ADDR   00D0H.7 A   
+DPH. . . . . . . .  D ADDR   0083H   A   
+DPL. . . . . . . .  D ADDR   0082H   A   
+DTY08. . . . . . .  B ADDR   00F8H.1 A   
+DTY18. . . . . . .  B ADDR   00F8H.3 A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+EADC . . . . . . .  B ADDR   00A8H.6 A   
+ENPWM. . . . . . .  B ADDR   00F8H.7 A   
+ENPWM0O. . . . . .  B ADDR   00F8H.0 A   
+ENPWM1O. . . . . .  B ADDR   00F8H.2 A   
+EPWM . . . . . . .  B ADDR   00A8H.5 A   
+ET0. . . . . . . .  B ADDR   00A8H.1 A   
+ET1. . . . . . . .  B ADDR   00A8H.3 A   
+EXIE . . . . . . .  D ADDR   00B4H   A   
+EXIP . . . . . . .  D ADDR   00B5H   A   
+F0 . . . . . . . .  B ADDR   00D0H.5 A   
+IAPADR . . . . . .  D ADDR   00ECH   A   
+IAPCTL . . . . . .  D ADDR   00EEH   A   
+IAPDAT . . . . . .  D ADDR   00EDH   A   
+IAPKEY . . . . . .  D ADDR   00EAH   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+INT4IT . . . . . .  D ADDR   0093H   A   
+IO . . . . . . . .  N NUMB   -----       
+IP . . . . . . . .  D ADDR   00B8H   A   
+IPADC. . . . . . .  B ADDR   00B8H.6 A   
+IPPWM. . . . . . .  B ADDR   00B8H.5 A   
+IPT0 . . . . . . .  B ADDR   00B8H.1 A   
+IPT1 . . . . . . .  B ADDR   00B8H.3 A   
+MAIN . . . . . . .  C ADDR   0000H   A   
+OV . . . . . . . .  B ADDR   00D0H.2 A   
+P. . . . . . . . .  B ADDR   00D0H.0 A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P10. . . . . . . .  B ADDR   0090H.0 A   
+P11. . . . . . . .  B ADDR   0090H.1 A   
+P12. . . . . . . .  B ADDR   0090H.2 A   
+P13. . . . . . . .  B ADDR   0090H.3 A   
+P14. . . . . . . .  B ADDR   0090H.4 A   
+P15. . . . . . . .  B ADDR   0090H.5 A   
+P16. . . . . . . .  B ADDR   0090H.6 A   
+P17. . . . . . . .  B ADDR   0090H.7 A   
+P1CFG0 . . . . . .  D ADDR   0092H   A   
+P1CFG1 . . . . . .  D ADDR   0091H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P20. . . . . . . .  B ADDR   00A0H.0 A   
+P21. . . . . . . .  B ADDR   00A0H.1 A   
+P2CFG0 . . . . . .  D ADDR   00A2H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+P30. . . . . . . .  B ADDR   00B0H.0 A   
+P31. . . . . . . .  B ADDR   00B0H.1 A   
+P32. . . . . . . .  B ADDR   00B0H.2 A   
+A51 MACRO ASSEMBLER  IO_ÄÉ_ÖÃ                                                             04/21/2012 16:12:34 PAGE     6
+
+P33. . . . . . . .  B ADDR   00B0H.3 A   
+P34. . . . . . . .  B ADDR   00B0H.4 A   
+P35. . . . . . . .  B ADDR   00B0H.5 A   
+P36. . . . . . . .  B ADDR   00B0H.6 A   
+P37. . . . . . . .  B ADDR   00B0H.7 A   
+P3ADC. . . . . . .  D ADDR   00B6H   A   
+P3CFG0 . . . . . .  D ADDR   00B2H   A   
+P3CFG1 . . . . . .  D ADDR   00B1H   A   
+PCON . . . . . . .  D ADDR   0087H   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+PWMCFG . . . . . .  D ADDR   00FCH   A   
+PWMCR. . . . . . .  D ADDR   00F8H   A   
+PWMDTY0. . . . . .  D ADDR   00FBH   A   
+PWMDTY1. . . . . .  D ADDR   00FAH   A   
+PWMIF. . . . . . .  B ADDR   00F8H.6 A   
+PWMPRD . . . . . .  D ADDR   00F9H   A   
+RS0. . . . . . . .  B ADDR   00D0H.3 A   
+RS1. . . . . . . .  B ADDR   00D0H.4 A   
+RSTCFG . . . . . .  D ADDR   00F6H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+TCON . . . . . . .  D ADDR   0088H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMCON. . . . . . .  D ADDR   008EH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+WDTCR. . . . . . .  D ADDR   00C1H   A   
+_. . . . . . . . .    ----   -----       
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 17 ERROR(S)

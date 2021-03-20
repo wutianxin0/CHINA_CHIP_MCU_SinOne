@@ -1,0 +1,23 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\FAE（对外）\SOC产品客服资料（20160812）\SOC-功能模块\736功能模块\main.uvproj
+Project File Date:  08/14/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling UART.C...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?X32K_INIT?UART
+Program Size: data=10.2 xdata=0 code=267
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling UART.C...
+linking...
+Program Size: data=10.2 xdata=0 code=259
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).

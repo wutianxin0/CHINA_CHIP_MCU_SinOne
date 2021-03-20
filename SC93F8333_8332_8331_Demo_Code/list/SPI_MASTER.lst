@@ -1,0 +1,107 @@
+C51 COMPILER V9.03   SPI_MASTER                                                            05/03/2017 17:30:55 PAGE 1   
+
+
+C51 COMPILER V9.03, COMPILATION OF MODULE SPI_MASTER
+OBJECT MODULE PLACED IN .\output\SPI_MASTER.obj
+COMPILER INVOKED BY: D:\keil\C51\BIN\C51.EXE c\SPI_MASTER.c BROWSE DEBUG OBJECTEXTEND PRINT(.\list\SPI_MASTER.lst) OBJEC
+                    -T(.\output\SPI_MASTER.obj)
+
+line level    source
+
+   1          //************************************************************
+   2          //  Copyright (c) 深圳市赛元微电子有限公司
+   3          //      文件名称        :
+   4          //      作者            : 
+   5          //      模块功能        : 
+   6          //      局部函数列表:
+   7          //  最后更正日期:
+   8          //      版本            :
+   9          //      更改记录        :rom前256byte禁止查表,因此在编译的时候，设置keil->option for Target->BL51 Locate->Code Range:
+             -0x100
+  10          //*************************************************************
+  11          
+  12          #include "h\SC93F5312_C.h"
+  13          
+  14          #define master 1
+  15          #define slaver 0
+  16          
+  17          void delay(unsigned int timer)
+  18          {
+  19   1              for(;timer>0;timer--);
+  20   1      }
+  21          
+  22          void IoInit(void)
+  23          {
+  24   1              P0CON=0X03;
+  25   1              P0=0X03;
+  26   1              P1CON=0XFF;
+  27   1              P2CON=0XFF;
+  28   1              P1=0XFF;
+  29   1              P2=0XFF;
+  30   1      }
+  31          
+  32          void SpiIoInit(void)
+  33          {
+  34   1              //SCK=P25  MOSI=P26  MISO=P27
+  35   1              P2CON=0x7F;
+  36   1              P2PH=0x80;
+  37   1      }
+  38          
+  39          void SpiInit(unsigned char mode,unsigned char clk,bit MorS)
+  40          {
+  41   1              SPCON=0X00;                                      //清零
+  42   1              SPCON|=(mode<<3);                        //第一沿或第二沿采集数据
+  43   1              SPCON|=clk;                                      //时钟分频
+  44   1              if(MorS) {SPCON|=0X20;}          //主机或从机
+  45   1              SPCON |=0x80;                            //SPI使能
+  46   1      
+  47   1              SPSTA=0x0;                   //第二位控制高低位优先传输
+  48   1      }
+  49          
+  50          void main()
+  51          {
+  52   1              IoInit();
+  53   1              SpiIoInit();
+C51 COMPILER V9.03   SPI_MASTER                                                            05/03/2017 17:30:55 PAGE 2   
+
+  54   1              SpiInit(0x1,0x5,master);         //第二沿采集数据 128分频 主机模式
+  55   1              IE1|=0X01;
+  56   1              EA=1;
+  57   1      
+  58   1              while(1)
+  59   1              {
+  60   2                      delay(1500);
+  61   2                      SPDAT=0x55;                              //一直发送0X55
+  62   2              }
+  63   1      }
+  64          
+  65          void SpiInt(void) interrupt 7
+  66          {
+  67   1              P13=~P13;delay(1);
+  68   1              P13=~P13;delay(1);
+  69   1              P13=~P13;delay(1);
+  70   1              if(SPSTA&0X08)                           //发送缓存器是否已空
+  71   1              {
+  72   2                      SPSTA&=~0X08;
+  73   2                      P00=~P00;
+  74   2              }
+  75   1              if(SPSTA&0X80)                           //数据传输是否完成
+  76   1              {
+  77   2                      SPSTA&=~0X80;
+  78   2                      P01=~P01;
+  79   2              }
+  80   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    157    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       1
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,202 @@
+; .\output\IOµÄÉèÖÃ.SRC generated from: c\IOµÄÉèÖÃ.c
+; COMPILER INVOKED BY:
+;        C:\Keil\C51\BIN\C51.EXE c\IOµÄÉèÖÃ.c BROWSE DEBUG OBJECTEXTEND PRINT(.\lst\IOµÄÉèÖÃ.lst) SRC(.\output\IOµÄÉèÖÃ.SRC)
+
+$NOMOD51
+
+NAME	IOµÄÉè_Ã
+
+P1	DATA	090H
+P2	DATA	0A0H
+TMCON	DATA	08EH
+P1CFG0	DATA	092H
+P3	DATA	0B0H
+AC	BIT	0D0H.6
+P1CFG1	DATA	091H
+P2CFG0	DATA	0A2H
+PWMIF	BIT	0F8H.6
+P3CFG0	DATA	0B2H
+EA	BIT	0A8H.7
+WDTCR	DATA	0C1H
+P3CFG1	DATA	0B1H
+ENPWM0O	BIT	0F8H.0
+ENPWM	BIT	0F8H.7
+ENPWM1O	BIT	0F8H.2
+PWMCR	DATA	0F8H
+EADC	BIT	0A8H.6
+IE	DATA	0A8H
+IPPWM	BIT	0B8H.5
+PWMDTY0	DATA	0FBH
+PWMDTY1	DATA	0FAH
+IP	DATA	0B8H
+ADCCFG	DATA	0C4H
+CY	BIT	0D0H.7
+IPT0	BIT	0B8H.1
+IPT1	BIT	0B8H.3
+SP	DATA	081H
+OV	BIT	0D0H.2
+EXIE	DATA	0B4H
+P10	BIT	090H.0
+PCON	DATA	087H
+P20	BIT	0A0H.0
+P11	BIT	090H.1
+P30	BIT	0B0H.0
+P21	BIT	0A0H.1
+P12	BIT	090H.2
+IAPADR	DATA	0ECH
+P31	BIT	0B0H.1
+P13	BIT	090H.3
+P32	BIT	0B0H.2
+P14	BIT	090H.4
+IAPDAT	DATA	0EDH
+TCON	DATA	088H
+TMOD	DATA	089H
+P33	BIT	0B0H.3
+P15	BIT	090H.5
+P34	BIT	0B0H.4
+P16	BIT	090H.6
+EXIP	DATA	0B5H
+P35	BIT	0B0H.5
+P17	BIT	090H.7
+P36	BIT	0B0H.6
+P37	BIT	0B0H.7
+EPWM	BIT	0A8H.5
+INT4IT	DATA	093H
+IAPCTL	DATA	0EEH
+B	DATA	0F0H
+IAPKEY	DATA	0EAH
+PWMCFG	DATA	0FCH
+ACC	DATA	0E0H
+ET0	BIT	0A8H.1
+TF0	BIT	088H.5
+ET1	BIT	0A8H.3
+TF1	BIT	088H.7
+RSTCFG	DATA	0F6H
+P3ADC	DATA	0B6H
+TH0	DATA	08CH
+TH1	DATA	08DH
+P	BIT	0D0H.0
+TL0	DATA	08AH
+TL1	DATA	08BH
+RS0	BIT	0D0H.3
+TR0	BIT	088H.4
+RS1	BIT	0D0H.4
+TR1	BIT	088H.6
+DTY08	BIT	0F8H.1
+DTY18	BIT	0F8H.3
+PWMPRD	DATA	0F9H
+DPH	DATA	083H
+ADCCR	DATA	0C5H
+DPL	DATA	082H
+IPADC	BIT	0B8H.6
+ADCVH	DATA	0C6H
+ADCVL	DATA	0C7H
+F0	BIT	0D0H.5
+PSW	DATA	0D0H
+?PR?main?IOµÄÉè_Ã    SEGMENT CODE 
+	EXTRN	CODE (?C_STARTUP)
+	PUBLIC	main
+; //************************************************************
+; //  Copyright (c) ÉîÛÚÊÐÈüÔªÎ¢µç×ÓÓÐÏÞ¹«Ë¾
+; //	ÎÄ¼þÃû³Æ	: IO_Set.c
+; //	×÷Õß		: 
+; //	Ä£¿é¹¦ÄÜ	: IO³£ÓÃÉèÖÃ
+; //	¾Ö²¿º¯ÊýÁÐ±í:
+; //  ×îºó¸üÕýÈÕÆÚ:
+; // 	°æ±¾		:
+; // 	¸ü¸Ä¼ÇÂ¼	:72B romÇ°256byte½ûÖ¹²é±í,Òò´ËÔÚ±àÒëµÄÊ±ºò£¬ÉèÖÃkeil->option for Target->BL51 Locate->Code Range:0x100
+; //*************************************************************
+; #include "h\sc91f72B_C.h"
+; 
+; //============================
+; //Ä£¿éÄÚºê¶¨Òå
+; //============================
+; #define		BS(SFR,NUM)		(SFR|=(1<<NUM))             //Î»ÖÃ1
+; #define		BC(SFR,NUM)		(SFR&=~(1<<NUM))		  //Î»Çå0
+; //============================
+; //°´¼üÊäÈë£¬Ê¹ÓÃ×¼Ë«ÏòÄ£Ê½Ê±£¬ÐèÒªÇÐ»»Îª×¼Ë«ÏòÄ£Ê½£¬²¢¶Ô¸ÃIO¿ÚÐ´1,Êä³öÔòÑ¡ÔñÇ¿ÍÆÍìÄ£Ê½
+; //============================
+; #define		SET(SFR,NUM)	(SFR = NUM)	
+; 
+; //=========================P1 ×¼Ë«ÏòIOÉèÖÃ=========================================//
+; #define		P10M					(BC(P1CFG0,0),BC(P1CFG0,1))							//ÉèÖÃP10Îª×¼Ë«ÏòIO
+; #define		P11M					(BC(P1CFG0,2),BC(P1CFG0,3))							 //ÉèÖÃP11Îª×¼Ë«ÏòIO
+; #define		P12M					(BC(P1CFG0,4),BC(P1CFG0,5))							//ÉèÖÃP12Îª×¼Ë«ÏòIO
+; #define		P13M					(BC(P1CFG0,6),BC(P1CFG0,7))							//ÉèÖÃP13Îª×¼Ë«ÏòIO
+; #define		P14M					(BC(P1CFG1,0),BC(P1CFG1,1))							//ÉèÖÃP14Îª×¼Ë«ÏòIO
+; #define		P15M					(BC(P1CFG1,2),BC(P1CFG1,3))							 //ÉèÖÃP15Îª×¼Ë«ÏòIO
+; #define		P16M					(BC(P1CFG1,4),BC(P1CFG1,5))							//ÉèÖÃP16Îª×¼Ë«ÏòIO
+; #define		P17M					(BC(P1CFG1,6),BC(P1CFG1,7))							//ÉèÖÃP17Îª×¼Ë«ÏòIO	
+; 
+; //=========================P1 Ç¿ÍÆÍìIOÉèÖÃ=========================================//
+; 
+; #define		P10PM					(BS(P1CFG0,0),BC(P1CFG0,1))							//ÉèÖÃP10ÎªÇ¿ÍÆÍìIO
+; #define		P11PM					(BS(P1CFG0,2),BC(P1CFG0,3))							 //ÉèÖÃP11ÎªÇ¿ÍÆÍìIO
+; #define		P12PM					(BS(P1CFG0,4),BC(P1CFG0,5))							//ÉèÖÃP12ÎªÇ¿ÍÆÍìIO
+; #define		P13PM					(BS(P1CFG0,6),BC(P1CFG0,7))							//ÉèÖÃP13ÎªÇ¿ÍÆÍìIO
+; #define		P14PM					(BS(P1CFG1,0),BC(P1CFG1,1))							//ÉèÖÃP14ÎªÇ¿ÍÆÍìIO
+; #define		P15PM					(BS(P1CFG1,2),BC(P1CFG1,3))							 //ÉèÖÃP15ÎªÇ¿ÍÆÍìIO
+; #define		P16PM					(BS(P1CFG1,4),BC(P1CFG1,5))							//ÉèÖÃP16ÎªÇ¿ÍÆÍìIO
+; #define		P17PM					(BS(P1CFG1,6),BC(P1CFG1,7))							//ÉèÖÃP17ÎªÇ¿ÍÆÍìIO
+; 
+; //=========================P1 ¸ß×èÌ¬(½öÊäÈë)IOÉèÖÃ=========================================//
+; 
+; #define		P10IM					(BC(P1CFG0,0),BS(P1CFG0,1))							//ÉèÖÃP10Îª¸ß×èÌ¬IO
+; #define		P11IM					(BC(P1CFG0,2),BS(P1CFG0,3))							 //ÉèÖÃP11Îª¸ß×èÌ¬IO
+; #define		P12IM					(BC(P1CFG0,4),BS(P1CFG0,5))							//ÉèÖÃP12Îª¸ß×èÌ¬IO
+; #define		P13IM					(BC(P1CFG0,6),BS(P1CFG0,7))							//ÉèÖÃP13Îª¸ß×èÌ¬IO
+; #define		P14IM					(BC(P1CFG1,0),BS(P1CFG1,1))							//ÉèÖÃP14Îª¸ß×èÌ¬IO
+; #define		P15IM					(BC(P1CFG1,2),BS(P1CFG1,3))							 //ÉèÖÃP15Îª¸ß×èÌ¬IO
+; #define		P16IM					(BC(P1CFG1,4),BS(P1CFG1,5))							//ÉèÖÃP16Îª¸ß×èÌ¬IO
+; #define		P17IM					(BC(P1CFG1,6),BS(P1CFG1,7))							//ÉèÖÃP17Îª¸ß×èÌ¬IO
+; 
+; //=========================P1 ¿ªÂ©Êä³öIOÉèÖÃ=========================================//
+; 
+; #define		P10OM					(BS(P1CFG0,0),BS(P1CFG0,1))							//ÉèÖÃP10Îª¿ªÂ©Êä³öIO
+; #define		P11OM					(BS(P1CFG0,2),BS(P1CFG0,3))							 //ÉèÖÃP11Îª¿ªÂ©Êä³öIO
+; #define		P12OM					(BS(P1CFG0,4),BS(P1CFG0,5))							//ÉèÖÃP12Îª¿ªÂ©Êä³öIO
+; #define		P13OM					(BS(P1CFG0,6),BS(P1CFG0,7))							//ÉèÖÃP13Îª¿ªÂ©Êä³öIO
+; #define		P14OM					(BS(P1CFG1,0),BS(P1CFG1,1))							//ÉèÖÃP14Îª¿ªÂ©Êä³öIO
+; #define		P15OM					(BS(P1CFG1,2),BS(P1CFG1,3))							 //ÉèÖÃP15Îª¿ªÂ©Êä³öIO
+; #define		P16OM					(BS(P1CFG1,4),BS(P1CFG1,5))							//ÉèÖÃP16Îª¿ªÂ©Êä³öIO
+; #define		P17OM					(BS(P1CFG1,6),BS(P1CFG1,7))							//ÉèÖÃP17Îª¿ªÂ©Êä³öIO
+; 
+; //=========================P1 ×¼Ë«ÏòIOÉèÖÃÊäÈë=========================================//
+; #define		P10MI					(BC(P1CFG0,0),BC(P1CFG0,1),SET(P10,1))				//ÉèÖÃP10Îª×¼Ë«ÏòIOÊäÈë
+; #define		P11MI					(BC(P1CFG0,2),BC(P1CFG0,3),SET(P11,1))				//ÉèÖÃP11Îª×¼Ë«ÏòIOÊäÈë
+; #define		P12MI					(BC(P1CFG0,4),BC(P1CFG0,5),SET(P12,1))			 	//ÉèÖÃP12Îª×¼Ë«ÏòIOÊäÈë
+; #define		P13MI					(BC(P1CFG0,6),BC(P1CFG0,7),SET(P13,1))				//ÉèÖÃP13Îª×¼Ë«ÏòIOÊäÈë
+; #define		P14MI					(BC(P1CFG1,0),BC(P1CFG1,1),SET(P14,1))				//ÉèÖÃP14Îª×¼Ë«ÏòIOÊäÈë
+; #define		P15MI					(BC(P1CFG1,2),BC(P1CFG1,3),SET(P15,1))				//ÉèÖÃP15Îª×¼Ë«ÏòIOÊäÈë
+; #define		P16MI					(BC(P1CFG1,4),BC(P1CFG1,5),SET(P16,1))				//ÉèÖÃP16Îª×¼Ë«ÏòIOÊäÈë
+; #define		P17MI					(BC(P1CFG1,6),BC(P1CFG1,7),SET(P17,1))				//ÉèÖÃP17Îª×¼Ë«ÏòIOÊäÈë
+; //*************************************************************
+; // º¯ÊýÃû	£ºvoid main()
+; // ×÷Õß		£º
+; // ¹¦ÄÜ		£ºÖ÷º¯Êý
+; // ²ÎÊý		£ºÎÞ
+; // ·µ»ØÖµ	£ºÎÞ
+; // µ÷ÓÃÈ«¾Ö±äÁ¿£ºÎÞ
+; // ÐÞ¸ÄÈ«¾Ö±äÁ¿£ºÎÞ
+; // ±¸×¢		£º
+; //**************************************************************
+; void main()
+
+	RSEG  ?PR?main?IOµÄÉè_Ã
+main:
+			; SOURCE LINE # 85
+; {
+			; SOURCE LINE # 86
+; 	RSTCFG=0x0b;				//RSTpinÇÐ»»GPIO,lvr Ñ¡Ôñ3.5V¸´Î»
+			; SOURCE LINE # 87
+	MOV  	RSTCFG,#0BH
+; 	WDTCR = 0x90;				//1--1 -- 00    ¿ªWDT,WDTÇå0,WDT 524.288msÒç³ö;ÉÕÂ¼Ê±£¬¿ÉCode OptionÑ¡ÔñENWDT
+			; SOURCE LINE # 88
+	MOV  	WDTCR,#090H
+; 	for(; ;);
+			; SOURCE LINE # 89
+?C0001:
+	SJMP 	?C0001
+; END OF main
+
+	END

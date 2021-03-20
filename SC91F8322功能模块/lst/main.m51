@@ -1,0 +1,112 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/14/2016  21:42:38  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE .\output\32K.obj TO .\output\main PRINT (.\lst\main.m51) RAMSIZE (256) CODE (0X100)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\32K.obj (32K)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\output\main (32K)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0002H     UNIT         ?DT?32K
+            IDATA   000AH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0010H                  *** GAP ***
+            CODE    0013H     0003H     ABSOLUTE     
+                    0016H     00EAH                  *** GAP ***
+            CODE    0100H     001FH     UNIT         ?PR?X32K?32K
+            CODE    011FH     0010H     UNIT         ?PR?MAIN?32K
+            CODE    012FH     000CH     UNIT         ?C_C51STARTUP
+            CODE    013BH     0008H     UNIT         ?PR?X32K_INIT?32K
+
+
+
+OVERLAY MAP OF MODULE:   .\output\main (32K)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?32K
+
+?PR?MAIN?32K
+  +--> ?PR?X32K_INIT?32K
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\main (32K)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        32K
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/14/2016  21:42:38  PAGE 2
+
+
+  D:00A0H         PUBLIC        P2
+  D:00D8H         PUBLIC        P5
+  B:00A8H.7       PUBLIC        EA
+  D:00C9H         PUBLIC        WDTCR
+  C:0100H         PUBLIC        X32K
+  D:00F8H         PUBLIC        PWMCR
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:013BH         PUBLIC        X32K_init
+  D:00CAH         PUBLIC        X32CTL
+  C:011FH         PUBLIC        main
+  D:0008H         PUBLIC        count
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00F6H         PUBLIC        RSTCFG
+  B:00A8H.2       PUBLIC        E32K
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          X32K_INIT
+  C:013BH         LINE#         23
+  C:013BH         LINE#         24
+  C:013BH         LINE#         25
+  C:013DH         LINE#         26
+  C:0140H         LINE#         27
+  C:0142H         LINE#         28
+  -------         ENDPROC       X32K_INIT
+  -------         PROC          X32K
+  C:0100H         LINE#         39
+  C:0104H         LINE#         41
+  C:010CH         LINE#         42
+  C:0114H         LINE#         43
+  C:011AH         LINE#         44
+  -------         ENDPROC       X32K
+  -------         PROC          MAIN
+  C:011FH         LINE#         45
+  C:011FH         LINE#         46
+  C:011FH         LINE#         47
+  C:0122H         LINE#         48
+  C:0125H         LINE#         49
+  C:0128H         LINE#         50
+  C:012AH         LINE#         51
+  C:012AH         LINE#         52
+  C:012AH         LINE#         53
+  C:012DH         LINE#         54
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        32K
+
+Program Size: data=11.0 xdata=0 code=73
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

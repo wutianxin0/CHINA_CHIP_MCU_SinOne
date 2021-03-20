@@ -1,0 +1,3 @@
+".\output\ADC.obj" 
+TO ".\output\main" 
+PRINT(".\lst\main.m51") CODE( 0x100 )

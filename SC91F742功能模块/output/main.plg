@@ -1,0 +1,20 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+F:\SOC产品客服资料（20161027）\SOC-功能模块\742功能模块\main.uvproj
+Project File Date:  10/28/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+linking...
+Program Size: data=10.2 xdata=0 code=259
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling UART.C...
+linking...
+Program Size: data=10.2 xdata=0 code=264
+creating hex file from ".\output\main"...
+".\output\main" - 0 Error(s), 0 Warning(s).

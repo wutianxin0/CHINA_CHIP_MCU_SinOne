@@ -1,0 +1,15 @@
+".\output\STARTUP.obj",
+".\output\main.obj",
+".\output\IO_Init.obj",
+".\output\BTM.obj",
+".\output\EX_Init.obj",
+".\output\LCD_Init.obj",
+".\output\Timer_Init.obj",
+".\output\SSI_Init.obj",
+".\output\PWM_Init.obj",
+".\output\Uart_Init.obj",
+".\output\ADC_Init.obj",
+".\output\IAP_Init.obj" 
+TO ".\output\main" 
+PRINT(".\list\main.m51") RAMSIZE(256) 
+CODE( 0x100 )

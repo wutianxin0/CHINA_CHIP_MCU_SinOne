@@ -1,0 +1,1 @@
+"c\SmartCard.c" OPTIMIZE (8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\SmartCard.lst) OBJECT(.\Objects\SmartCard.obj)

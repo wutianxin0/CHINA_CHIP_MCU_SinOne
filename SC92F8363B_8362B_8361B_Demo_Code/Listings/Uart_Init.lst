@@ -1,0 +1,109 @@
+C51 COMPILER V9.01   UART_INIT                                                             06/04/2020 10:34:22 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE UART_INIT
+OBJECT MODULE PLACED IN .\Objects\Uart_Init.obj
+COMPILER INVOKED BY: C:\Keil_v4\C51\BIN\C51.EXE c\Uart_Init.c BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\Uart_Init.lst) 
+                    -TABS(2) OBJECT(.\Objects\Uart_Init.obj)
+
+line level    source
+
+   1          #include "H/Function_Init.H" 
+   2          
+   3          void Uart0_Init(uint Freq,unsigned long int baud);
+   4          bit UartSendFlag = 0; //发送中断标志位
+   5          bit UartReceiveFlag = 0; //接收中断标志位
+   6          /*****************************************************
+   7          *函数名称：void Uart0_Test(void)
+   8          *函数功能：Uart0测试
+   9          *入口参数：void
+  10          *出口参数：void
+  11          *****************************************************/
+  12          void Uart0_Test(void)
+  13          {
+  14   1        Uart0_Init(12,9600);
+  15   1        while(1)
+  16   1        {
+  17   2          SBUF = 0x55;
+  18   2          while(!UartSendFlag);
+  19   2          UartSendFlag = 0;
+  20   2        }
+  21   1      }
+  22          /*****************************************************
+  23          *函数名称：void Uart0_Init(uint Freq,unsigned long int baud)
+  24          *函数功能：Uart0中断初始化
+  25          *入口参数：Freq-主频，baud-波特率
+  26          *出口参数：void
+  27          *****************************************************/
+  28          void Uart0_Init(uint Freq,unsigned long int baud)    //选择Timer1作为波特率信号发生器
+  29          {
+  30   1        P1CON &= 0xF3;   //TX/RX设置为输入带上拉
+  31   1        P1PH  |= 0x0C;
+  32   1        
+  33   1        SCON  |= 0X50;   //设置通信方式为模式一，允许接收
+  34   1        TMCON |= 0X02;
+  35   1        TMOD  |= 0X20;
+  36   1        PCON  |= 0X80;  //SMOD=1
+  37   1        TH1 = (Freq*1000000/baud)>>8;   //波特率为T1的溢出时间；
+  38   1        TL1 = Freq*1000000/baud;
+  39   1        TR1 = 0;
+  40   1        ET1 = 0;
+  41   1        EUART = 1;     //开启Uart0中断
+  42   1        EA = 1;
+  43   1      }
+  44          /*
+  45          void Uart0_Init(uint Freq,unsigned long int baud)    //选择Timer2作为波特率信号发生器
+  46          {
+  47              P1CON &= 0xF3;   //TX设置为强推挽输出高，RX设置为输入带上拉
+  48            P1CON |= 0x08;
+  49            P1PH  |= 0x04;
+  50            P13 = 1;
+  51          
+  52            SCON  |= 0X50;   //设置通信方式为模式一，允许接收
+  53            TMCON |= 0X04;
+  54            T2MOD = 0X00;
+C51 COMPILER V9.01   UART_INIT                                                             06/04/2020 10:34:22 PAGE 2   
+
+  55            T2CON = 0X30;
+  56            RCAP2H = Freq*1000000/baud/256;
+  57            RCAP2L = Freq*1000000/baud%256;
+  58            TR2 = 0;
+  59            ET2 = 0;
+  60            EUART = 1;     //开启Uart0中断
+  61            EA = 1;
+  62          }
+  63          */
+  64          
+  65          /*****************************************************
+  66          *函数名称：void UartInt(void) interrupt 4
+  67          *函数功能：Uart0中断函数
+  68          *入口参数：void
+  69          *出口参数：void
+  70          *****************************************************/
+  71          void UartInt(void) interrupt 4
+  72          {
+  73   1        if(TI)
+  74   1        {
+  75   2          TI = 0; 
+  76   2          UartSendFlag = 1;   
+  77   2        }
+  78   1        if(RI)
+  79   1        {
+  80   2          RI = 0; 
+  81   2          UartReceiveFlag = 1;
+  82   2        } 
+  83   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    138    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

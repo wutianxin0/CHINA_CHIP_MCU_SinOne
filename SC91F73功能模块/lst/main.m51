@@ -1,0 +1,85 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        05/15/2013  16:17:26  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL\C51\BIN\BL51.EXE .\output\buzzer.obj TO .\output\main PRINT (.\lst\main.m51) RAMSIZE (256) CODE (0X100)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\buzzer.obj (BUZZER)
+  D:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\output\main (BUZZER)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     00FDH                  *** GAP ***
+            CODE    0100H     0011H     UNIT         ?PR?MAIN?BUZZER
+            CODE    0111H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\output\main (BUZZER)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?BUZZER
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\main (BUZZER)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        BUZZER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C9H         PUBLIC        WDTCR
+  D:00F8H         PUBLIC        PWMCR
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0100H         PUBLIC        main
+  D:00C3H         PUBLIC        BUZTGPH
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/15/2013  16:17:26  PAGE 2
+
+
+  D:00C4H         PUBLIC        BUZTGPL
+  D:0088H         PUBLIC        TCON
+  D:00F6H         PUBLIC        RSTCFG
+  D:00D8H         PUBLIC        SIFSTA
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:0100H         LINE#         12
+  C:0100H         LINE#         13
+  C:0100H         LINE#         14
+  C:0103H         LINE#         15
+  C:0106H         LINE#         16
+  C:0109H         LINE#         17
+  C:010CH         LINE#         18
+  C:010CH         LINE#         19
+  C:010CH         LINE#         20
+  C:010FH         LINE#         21
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        BUZZER
+
+Program Size: data=9.0 xdata=0 code=32
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
